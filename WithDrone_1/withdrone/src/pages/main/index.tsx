@@ -87,6 +87,7 @@ const Category = styled.div`
   border: 2px solid black;
   cursor: pointer;
 `;
+
 export default function Main() {
   const navigate = useNavigate();
   const { bookId } = useParams();
