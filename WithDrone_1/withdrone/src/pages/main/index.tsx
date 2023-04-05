@@ -23,7 +23,7 @@ export default function Main() {
 
   return (
     <Containers>
-      응 여기다가 메인 짜. 띠거운 빨간색은 저기 border 제거하면 된다
+      응 여기다가 메인 짜. 띠거운 빨간색은 저기 border 제거하면 된다 ㅇㅋ
     </Containers>
   );
 }
