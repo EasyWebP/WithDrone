@@ -15,33 +15,51 @@ const Containers = styled.div`
 `;
 
 const Image1 = styled.img`
-    width: 579px;
-    height: 527px;
+    width: 500px;
+    height: 480px;
 `
 
 const Excontainer = styled.div`
     display: flex;
-    flet-direction column: 
-    width: 579px;
-    height: 527px;
+    flex-direction: column;
+    width: 500px;
+    height: 480px;
+    margin-left: 20px;
+    margin-top: 40px;
 `
 
 const Title = styled.div`
-  position: absolute;
-  width: 600px;
-  height: 80px;
-  left: 961px;
-  top: 303px;
+ 
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 25px;
+//   line-height: 30px;
 
   color: #000000;
 `;
 
-const Explain = styled.div``;
+const Explain = styled.table`
+    margin-top: 40px;
+    border: none;
+    // align: left;
+    border-spacing: 0px 20px;
+`;
+
+const Tr = styled.tr`
+   
+`
+
+const Td = styled.td`
+    width: 15px;
+    vertical-align: top;
+    color: #A5A3A3;
+`
+
+const Td2 = styled.td`
+    width: 15px;
+    vertical-align: top;
+`
 
 export default function Main() {
   const navigate = useNavigate();
@@ -51,8 +69,22 @@ export default function Main() {
     <Containers>
       <Image1 src={image1} />
       <Excontainer>
-        <Title>title</Title>
-        <Explain></Explain>
+        <Title>[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보</Title>
+        <Explain>
+            <Tr>
+                <Td>판매가</Td>
+                <Td2>200,000원</Td2>
+            </Tr>
+            <Tr>
+                <Td>제조사</Td>
+                <Td2>삼성</Td2>
+            </Tr>
+            <Tr>
+                <Td>제품 설명</Td>
+                <Td2>[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보</Td2>
+            </Tr>
+                
+        </Explain>
       </Excontainer>
     </Containers>
   );
