@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./index.styles";
 import logo from "../../../img/drone.png";
-import { SignButton } from "./index.styles";
 import PATH from "../../../constants/path";
 
 export default function Header() {
