@@ -107,6 +107,7 @@ export default function Main() {
       <Bottom>
         <h1>나에게 필요한 드론을 선택할 수 있어요</h1>
         <h3>목적에 맞는 드론을 선택해보세요</h3>
+
         <CategoryWrapper>
           <Category>
             <CategoryImg src={hobby} />
