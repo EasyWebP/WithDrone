@@ -5,7 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PATH from "./constants/path";
 import MainLayout from "./components/Layout/MainLayout";
 import Main from "./pages/main";
-import Sell from "./pages/Sell";
+import Sell from "./pages/sell";
+import Intro from "./pages/intro";
+import Rent from "./pages/rent";
+import Login from "./pages/login";
 import Detail from "./pages/Detail";
 
 

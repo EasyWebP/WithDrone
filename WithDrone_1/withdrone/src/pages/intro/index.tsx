@@ -14,9 +14,9 @@ const Bottom = styled.div`
   display: flex;
   gap: 1.5rem;
 `;
-export default function Sell() {
+export default function Intro() {
   const navigate = useNavigate();
   const { bookId } = useParams();
 
-  return <Containers>여기가 판매 페이지 </Containers>;
+  return <Containers>여기가 회사소개 페이지 </Containers>;
 }
