@@ -49,10 +49,6 @@ export default function Sell() {
     { id: 4, label: "취미용", content: <Commercial /> },
   ];
 
-  // const selectMenuHandler = (index: any) => {
-  //   clickTab(index);
-  // };
-
   return (
     <Containers>
       <TabMenu>

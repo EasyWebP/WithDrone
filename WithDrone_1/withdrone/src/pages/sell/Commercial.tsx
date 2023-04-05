@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import drone from "../../img/drone.png";
+import camera from "../../img/camera.png";
 
 const Containers = styled.div`
   width: 100%;
@@ -34,52 +36,37 @@ const ProductContainer = styled.div`
   }
 `;
 export default function Commercial() {
+  const productList = [
+    {
+      title: "[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보",
+      imgSrc: { drone },
+    },
+    { title: "드론 2", imgSrc: { drone } },
+    { title: "드론 3", imgSrc: { camera } },
+    { title: "드론 4", imgSrc: { drone } },
+    { title: "드론 5", imgSrc: { drone } },
+    { title: "드론 6", imgSrc: { drone } },
+  ];
+
   return (
     <Containers>
       <ProductContainer>
-        <div className="product">
-          <div className="product_img_div">
-            <img src={require("../../img/drone.png")} className="product_img" />
+        {productList.map((product, index) => (
+          <div className="product" key={index}>
+            <div className="product_img_div">
+              <img
+                src={
+                  typeof product.imgSrc === "string"
+                    ? product.imgSrc
+                    : product.imgSrc.drone || product.imgSrc.camera
+                  // 더 간략하게는 안될까?
+                }
+                className="product_img"
+              />
+            </div>
+            <p className="product_title">{product.title}</p>
           </div>
-          <p className="product_title">
-            [DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보
-          </p>
-        </div>
-
-        <div className="product">
-          <div className="product_img_div">
-            <img src={require("../../img/drone.png")} className="product_img" />
-          </div>
-          <p className="product_title">드론 2</p>
-        </div>
-
-        <div className="product">
-          <div className="product_img_div">
-            <img src={require("../../img/drone.png")} className="product_img" />
-          </div>
-          <p className="product_title">드론 3</p>
-        </div>
-
-        <div className="product">
-          <div className="product_img_div">
-            <img src={require("../../img/drone.png")} className="product_img" />
-          </div>
-          <p className="product_title">드론 4</p>
-        </div>
-
-        <div className="product">
-          <div className="product_img_div">
-            <img src={require("../../img/drone.png")} className="product_img" />
-          </div>
-          <p className="product_title">드론 5</p>
-        </div>
-
-        <div className="product">
-          <div className="product_img_div">
-            <img src={require("../../img/drone.png")} className="product_img" />
-          </div>
-          <p className="product_title">드론 6</p>
-        </div>
+        ))}
       </ProductContainer>
     </Containers>
   );
