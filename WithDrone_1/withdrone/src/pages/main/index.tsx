@@ -57,7 +57,7 @@ const Bottom = styled.div`
   gap: 2rem;
   h1 {
     font-weight: bold;
-    margin-top: -9rem;
+    //margin-top: -9rem;
   }
   h3 {
     font-weight: 500;
