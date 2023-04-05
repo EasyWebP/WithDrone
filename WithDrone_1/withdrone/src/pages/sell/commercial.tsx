@@ -1,56 +1,86 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* border: 1px black solid; */
-  width: 20%;
-
-  margin: 3% 1%;
-  padding: 1%;
-
-  box-shadow: -1px 6px 10px 0 rgba(80, 80, 80, 0.473);
+const Containers = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
-const ImgBox = styled.figure`
+const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .product {
+    width: 15%;
+    height: 15%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    margin-left: 7%;
+    /* border: 1px solid black; */
+  }
+  .product_img_div {
+    text-align: center;
+  }
+  .product_img {
+    max-width: 95%;
+    max-height: 100%;
+  }
+  .product_title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 4%;
   }
 `;
-
-const CardInfo = styled.div`
-  width: 100%;
-  padding-left: 20%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  font-size: 1.1em;
-`;
-
-export default function commercial(drone: any) {
-  const { model, kind, company, image, spec } = drone;
-
+export default function Commercial() {
   return (
-    <Container>
-      <ImgBox>
-        <img src={image} />
-      </ImgBox>
-      <CardInfo>
-        <span>제조사: {company}</span>
-        <span>종류: {kind}</span>
-        <span>모델명: {model}</span>
-        <span>아키텍쳐: {spec.architecture}</span>
-        <span>메모리: {spec.vram}</span>
-      </CardInfo>
-    </Container>
+    <Containers>
+      <ProductContainer>
+        <div className="product">
+          <div className="product_img_div">
+            <img src={require("../../img/drone.png")} className="product_img" />
+          </div>
+          <p className="product_title">
+            [DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보
+          </p>
+        </div>
+
+        <div className="product">
+          <div className="product_img_div">
+            <img src={require("../../img/drone.png")} className="product_img" />
+          </div>
+          <p className="product_title">드론 2</p>
+        </div>
+
+        <div className="product">
+          <div className="product_img_div">
+            <img src={require("../../img/drone.png")} className="product_img" />
+          </div>
+          <p className="product_title">드론 3</p>
+        </div>
+
+        <div className="product">
+          <div className="product_img_div">
+            <img src={require("../../img/drone.png")} className="product_img" />
+          </div>
+          <p className="product_title">드론 4</p>
+        </div>
+
+        <div className="product">
+          <div className="product_img_div">
+            <img src={require("../../img/drone.png")} className="product_img" />
+          </div>
+          <p className="product_title">드론 5</p>
+        </div>
+
+        <div className="product">
+          <div className="product_img_div">
+            <img src={require("../../img/drone.png")} className="product_img" />
+          </div>
+          <p className="product_title">드론 6</p>
+        </div>
+      </ProductContainer>
+    </Containers>
   );
 }

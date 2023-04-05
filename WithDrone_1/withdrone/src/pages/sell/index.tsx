@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import drone from "../../img/drone.png";
+import Commercial from "./Commercial";
 
 const Containers = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ const TabMenu = styled.ul`
   list-style: none;
   border-radius: 10px 10px 0px 0px;
   margin-bottom: 7rem;
-  margin-top: 200px;
+  margin-top: 100px;
   margin-left: 100px;
 
   .submenu {
@@ -70,7 +70,7 @@ export default function Sell() {
         ))}
       </TabMenu>
       <Desc>
-        {currentTab === 0 && "상업용"}
+        {currentTab === 0 && <Commercial></Commercial>}
         {currentTab === 1 && "교육용"}
         {currentTab === 2 && "촬영용"}
         {currentTab === 3 && "취미용"}
