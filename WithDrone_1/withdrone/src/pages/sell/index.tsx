@@ -6,10 +6,7 @@ const Containers = styled.div`
   width: 100%;
   height: 100%;
   //gap: 2rem;
-  padding: 4rem;
-  //display: flex;
-  //flex-direction: column;
-  align-items: center;
+
   border: 1px solid red;
 `;
 
@@ -17,7 +14,7 @@ const Bottom = styled.div`
   display: flex;
   gap: 1.5rem;
 `;
-export default function Main() {
+export default function Sell() {
   const navigate = useNavigate();
   const { bookId } = useParams();
 

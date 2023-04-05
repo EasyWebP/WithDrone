@@ -16,19 +16,19 @@ const Full = styled.div`
 const Inner = styled.div`
   width: 75%;
   padding-top: 5.5rem;
-  //background-color: blue;
+  background-color: white;
   height: 100vh;
   border-right: 0.1rem solid ${COLORS.GREY[200]};
+  border-left: 0.1rem solid ${COLORS.GREY[200]};
 `;
 
-
 export default function MainLayout() {
-    return (
-        <Full>
-            <Header />
-            <Inner>
-                    <Outlet />
-            </Inner>
-        </Full>
-    );
+  return (
+    <Full>
+      <Header />
+      <Inner>
+        <Outlet />
+      </Inner>
+    </Full>
+  );
 }

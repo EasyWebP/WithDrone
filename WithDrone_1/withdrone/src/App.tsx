@@ -5,7 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PATH from "./constants/path";
 import MainLayout from "./components/Layout/MainLayout";
 import Main from "./pages/main";
-import Sell from "./pages/Sell";
+import Sell from "./pages/sell";
+import Intro from "./pages/intro";
+import Rent from "./pages/rent";
+import Login from "./pages/login";
 
 function App() {
   return (
@@ -16,6 +19,15 @@ function App() {
         </Route>
         <Route path={PATH.SELL} element={<MainLayout />}>
           <Route index element={<Sell />} />
+        </Route>
+        <Route path={PATH.RENT} element={<MainLayout />}>
+          <Route index element={<Rent />} />
+        </Route>
+        <Route path={PATH.INTRO} element={<MainLayout />}>
+          <Route index element={<Intro />} />
+        </Route>
+        <Route path={PATH.LOGIN} element={<MainLayout />}>
+          <Route index element={<Login />} />
         </Route>
       </Routes>
     </Router>
