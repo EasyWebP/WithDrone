@@ -8,8 +8,8 @@ export default function Header() {
   const navigate = useNavigate();
   const buttonList = [
     { label: "회사 제품", path: PATH.INTRO },
-    { label: "대여 제품", path: PATH.SELL },
-    { label: "판매 제품", path: PATH.RENT },
+    { label: "대여 제품", path: PATH.RENT },
+    { label: "판매 제품", path: PATH.SELL },
     { label: "커뮤니티", path: PATH.MAIN },
   ];
 
