@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import Commercial from "./Commercial";
+import Commercial from "./commercial";
 
 const Containers = styled.div`
   width: 100%;
