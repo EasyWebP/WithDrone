@@ -17,12 +17,13 @@ const Containers = styled.div`
 const Image1 = styled.img`
     width: 579px;
     height: 527px;
-    
 `
 
 const Excontainer = styled.div`
     display: flex;
     flet-direction column: 
+    width: 579px;
+    height: 527px;
 `
 
 const Title = styled.div`
