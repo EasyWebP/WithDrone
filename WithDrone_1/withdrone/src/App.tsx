@@ -11,7 +11,6 @@ import Rent from "./pages/rent";
 import Login from "./pages/login";
 import Detail from "./pages/Detail";
 
-
 function App() {
   return (
     <Router>
@@ -21,6 +20,15 @@ function App() {
         </Route>
         <Route path={PATH.SELL} element={<MainLayout />}>
           <Route index element={<Sell />} />
+        </Route>
+        <Route path={PATH.INTRO} element={<MainLayout />}>
+          <Route index element={<Intro />} />
+        </Route>
+        <Route path={PATH.RENT} element={<MainLayout />}>
+          <Route index element={<Rent />} />
+        </Route>
+        <Route path={PATH.LOGIN} element={<MainLayout />}>
+          <Route index element={<Login />} />
         </Route>
         <Route path={PATH.DETAIL} element={<MainLayout />}>
           <Route index element={<Detail />} />
