@@ -37,44 +37,36 @@ const TabMenu = styled.ul`
   }
 `;
 
-const Desc = styled.div`
-  text-align: center;
-`;
-
 export default function Sell() {
   const navigate = useNavigate();
   const { bookId } = useParams();
-  const [currentTab, clickTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(1);
 
-  const menuArr = [
-    { name: "상업용" },
-    { name: "교육용" },
-    { name: "촬영용" },
-    { name: "취미용" },
+  const tabs = [
+    { id: 1, label: "상업용", content: <Commercial /> },
+    { id: 2, label: "교육용", content: <Commercial /> },
+    { id: 3, label: "촬영용", content: <Commercial /> },
+    { id: 4, label: "취미용", content: <Commercial /> },
   ];
 
-  const selectMenuHandler = (index: any) => {
-    clickTab(index);
-  };
+  // const selectMenuHandler = (index: any) => {
+  //   clickTab(index);
+  // };
 
   return (
     <Containers>
       <TabMenu>
-        {menuArr.map((el, index) => (
+        {tabs.map((tab) => (
           <li
-            className={index === currentTab ? "submenu focused" : "submenu"}
-            onClick={() => selectMenuHandler(index)}
+            className={tab.id === selectedTab ? "submenu focused" : "submenu"}
+            key={tab.id}
+            onClick={() => setSelectedTab(tab.id)}
           >
-            {el.name}
+            {selectedTab === tab.id ? <b>{tab.label}</b> : tab.label}
           </li>
         ))}
       </TabMenu>
-      <Desc>
-        {currentTab === 0 && <Commercial></Commercial>}
-        {currentTab === 1 && "교육용"}
-        {currentTab === 2 && "촬영용"}
-        {currentTab === 3 && "취미용"}
-      </Desc>
+      <div>{tabs.find((tab) => tab.id === selectedTab)?.content}</div>
     </Containers>
   );
 }
