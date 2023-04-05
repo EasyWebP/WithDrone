@@ -17,6 +17,7 @@ const Bottom = styled.div`
   display: flex;
   gap: 1.5rem;
 `;
+
 export default function Main() {
   const navigate = useNavigate();
   const { bookId } = useParams();

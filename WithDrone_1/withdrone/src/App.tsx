@@ -6,6 +6,8 @@ import PATH from "./constants/path";
 import MainLayout from "./components/Layout/MainLayout";
 import Main from "./pages/main";
 import Sell from "./pages/Sell";
+import Detail from "./pages/Detail";
+
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
         </Route>
         <Route path={PATH.SELL} element={<MainLayout />}>
           <Route index element={<Sell />} />
+        </Route>
+        <Route path={PATH.DETAIL} element={<MainLayout />}>
+          <Route index element={<Detail />} />
         </Route>
       </Routes>
     </Router>
