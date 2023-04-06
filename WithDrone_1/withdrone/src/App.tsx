@@ -9,7 +9,7 @@ import Sell from "./pages/sell";
 import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
-import Detail from "./pages/Detail";
+import Detail from "./pages/detail";
 
 function App() {
   return (
