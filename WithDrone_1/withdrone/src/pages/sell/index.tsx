@@ -2,6 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import Commercial from "./Commercial";
+import Educational from "./Educational";
+import Filming from "./Filming";
+import Hobby from "./Hobby";
 
 const Containers = styled.div`
   width: 100%;
@@ -44,9 +47,9 @@ export default function Sell() {
 
   const tabs = [
     { id: 1, label: "상업용", content: <Commercial /> },
-    { id: 2, label: "교육용", content: <Commercial /> },
-    { id: 3, label: "촬영용", content: <Commercial /> },
-    { id: 4, label: "취미용", content: <Commercial /> },
+    { id: 2, label: "교육용", content: <Educational /> },
+    { id: 3, label: "촬영용", content: <Filming /> },
+    { id: 4, label: "취미용", content: <Hobby /> },
   ];
 
   return (

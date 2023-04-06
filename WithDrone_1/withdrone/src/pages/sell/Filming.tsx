@@ -5,7 +5,7 @@ import noImg from "../../img/200.png";
 export default function Commercial() {
   const productList = [
     {
-      title: "[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보",
+      title: "나는 촬영용",
       imgSrc: drone,
     },
     { title: "드론 2", imgSrc: noImg },
