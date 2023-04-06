@@ -26,7 +26,7 @@ export default function Commercial() {
     <P.Containers>
       <P.ProductContainer>
         {productList.map((product, index) => (
-          <P.Product key={index} onClick={() => navigate("../Detail")}>
+          <P.Product key={index} onClick={() => navigate("../detail")}>
             <P.ProductImgDiv>
               <P.ProductImg src={product.imgSrc} alt={product.title} />
             </P.ProductImgDiv>

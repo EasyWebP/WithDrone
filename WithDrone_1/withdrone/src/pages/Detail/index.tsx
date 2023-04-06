@@ -11,7 +11,6 @@ const Containers = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid red;
 `;
 
 const Image1 = styled.img`
