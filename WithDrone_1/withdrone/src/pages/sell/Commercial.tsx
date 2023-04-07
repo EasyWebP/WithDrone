@@ -11,11 +11,12 @@ export default function Commercial() {
     navigate(path);
   };
 
-
   return (
     <P.Containers>
       <P.ProductContainer>
-        {droneList.map((product, index) => (
+        {droneList
+          .filter((product)=> product.category==="상업용")
+          .map((product, index) => (
             <Link 
               to={`/detail/${product.keys}`} 
               state={{product:product}} 
