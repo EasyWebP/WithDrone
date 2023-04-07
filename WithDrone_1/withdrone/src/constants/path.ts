@@ -3,7 +3,7 @@ const PATH = {
   SIGNUP: "/signup",
   MAIN: "/",
   SELL: "/sell",
-  DETAIL: "/detail",
+  DETAIL: `/detail/:productId`,
   RENT: "/rent",
   INTRO: "/intro",
 } as const;

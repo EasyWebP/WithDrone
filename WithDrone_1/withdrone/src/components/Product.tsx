@@ -12,6 +12,7 @@ export const ProductContainer = styled.div`
   width: 100%;
 `;
 
+
 export const Product = styled.div`
   width: 15%;
   height: 15%;
