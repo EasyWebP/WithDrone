@@ -12,13 +12,12 @@ export const ProductContainer = styled.div`
   width: 100%;
 `;
 
-
 export const Product = styled.div`
-  width: 15%;
-  height: 15%;
-  margin-top: 2%;
-  margin-bottom: 5%;
-  margin-left: 7%;
+  // width: 15%;
+  // height: 15%;
+  // margin-top: 2%;
+  // margin-bottom: 5%;
+  // margin-left: 7%;
   /* border: 1px solid black; */
 `;
 
@@ -27,8 +26,10 @@ export const ProductImgDiv = styled.div`
 `;
 
 export const ProductImg = styled.img`
-  max-width: 95%;
-  max-height: 100%;
+  width: 200px;
+  height: 150px;
+  // max-width: 95%;
+  // max-height: 100%;
 `;
 
 export const ProductTitle = styled.p`

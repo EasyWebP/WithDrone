@@ -57,7 +57,7 @@ export default function Commercial() {
             <Link 
               to={`/detail/${product.keys}`} 
               state={{product:product}} 
-              style={{   }}
+              style={{ width:"15%", height:"15%", margin:"2% 0% 5% 7%" }}
             >
               <P.Product>
                 <P.ProductImgDiv>
