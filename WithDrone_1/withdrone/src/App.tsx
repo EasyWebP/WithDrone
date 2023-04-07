@@ -9,7 +9,7 @@ import Sell from "./pages/sell";
 import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
-import Detail from "./pages/detail";
+import ProductDetail from "./pages/detail/ProductDetail";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
           <Route index element={<Login />} />
         </Route>
         <Route path={PATH.DETAIL} element={<MainLayout />}>
-          <Route index element={<Detail />} />
+          <Route index element={<ProductDetail />} />
         </Route>
       </Routes>
     </Router>

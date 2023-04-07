@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
-import image1 from "../../img/drone1.jpeg";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 
 const Containers = styled.div`
   width: 100%;
@@ -60,27 +59,29 @@ const Td2 = styled.td`
     vertical-align: top;
 `
 
-export default function Main() {
+export default function ProductDetail() {
   const navigate = useNavigate();
   const { bookId } = useParams();
+  const location = useLocation();
+  const { product } = location.state;
 
   return (
     <Containers>
-      <Image1 src={image1} />
+      <Image1 src={product.image} />
       <Excontainer>
-        <Title>[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보</Title>
+        <Title>{product.name}</Title>
         <Explain>
             <Tr>
                 <Td>판매가</Td>
-                <Td2>200,000원</Td2>
+                <Td2>{product.price}</Td2>
             </Tr>
             <Tr>
                 <Td>제조사</Td>
-                <Td2>삼성</Td2>
+                <Td2>{product.companyName}</Td2>
             </Tr>
             <Tr>
                 <Td>제품 설명</Td>
-                <Td2>[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보[DJI] Mavic 3 CINE Premium Combo 매빅 3 시네 프리미엄 콤보</Td2>
+                <Td2>{product.description}</Td2>
             </Tr>
                 
         </Explain>
