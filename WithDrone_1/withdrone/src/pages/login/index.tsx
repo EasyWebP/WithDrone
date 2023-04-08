@@ -33,7 +33,6 @@ const TitleBox = styled.div`
 
 const LoginForm = styled.form`
   width: 55rem;
-  //border: 1px solid red;
   margin-top: 5rem;
   display: flex;
   flex-direction: column;
