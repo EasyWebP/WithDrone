@@ -13,7 +13,7 @@ const Containers = styled.div`
   border: 1px solid transparent;
 `;
 
-const TabMenu = styled.ul`
+const TabContainer = styled.ul`
   width: 60%;
   height: 2rem;
   background-color: #ffffff;
@@ -28,24 +28,17 @@ const TabMenu = styled.ul`
   margin-top: 6.25rem;
   margin-left: 7rem;
   cursor: pointer;
-  .submenu {
-    display: flex;
-    width: calc(100% / 4);
-    padding: 0.625rem;
-    font-size: 1.875rem;
-    transition: 0.5s;
-    //border-radius: 0.625rem 0.625rem 0rem 0rem;
-  }
+`;
 
-  .focused {
-    //background-color: #dcdcdc;
-    color: rgb(21, 20, 20);
-  }
+const TabMenu = styled.div`
+  display: flex;
+  width: calc(100% / 4);
+  padding: 0.625rem;
+  font-size: 1.875rem;
+  transition: 0.5s;
 `;
 
 export default function Sell() {
-  const navigate = useNavigate();
-  const { bookId } = useParams();
   const [selectedTab, setSelectedTab] = useState(1);
 
   const tabs = [
@@ -57,17 +50,17 @@ export default function Sell() {
 
   return (
     <Containers>
-      <TabMenu>
+      <TabContainer>
         {tabs.map((tab) => (
-          <li
-            className={tab.id === selectedTab ? "submenu focused" : "submenu"}
+          <TabMenu
             key={tab.id}
             onClick={() => setSelectedTab(tab.id)}
+            style={{ color: selectedTab === tab.id ? "black" : "#dcdcdc" }}
           >
-            {selectedTab === tab.id ? <b>{tab.label}</b> : tab.label}
-          </li>
+            {tab.label}
+          </TabMenu>
         ))}
-      </TabMenu>
+      </TabContainer>
       <div>{tabs.find((tab) => tab.id === selectedTab)?.content}</div>
     </Containers>
   );
