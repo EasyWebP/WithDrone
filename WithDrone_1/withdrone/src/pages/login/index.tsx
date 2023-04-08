@@ -1,66 +1,106 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
+import COLORS from "../../constants/color";
+import * as S from "../../components/Layout/Header/index.styles";
+import logo from "../../img/drone.png";
 
 const Containers = styled.div`
   width: 100%;
   height: 100%;
-  //gap: 2rem;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: white;
 `;
 
-const Title = styled.h1`
-  font-size: 5rem;
-  font-weight: bold;
-  margin-bottom: 30px;
-`
+const Title = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  div {
+    font-size: 2.3rem;
+  }
+`;
+const TitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: -15rem;
+  gap: 1.4rem;
+`;
 
 const LoginForm = styled.form`
-  width: 35%;
-
+  width: 55rem;
+  //border: 1px solid red;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  gap: 1rem;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #fff;
+  hr {
+    color: black;
+    height: 2px;
+    width: 80%;
+  }
 `;
 
 const LoginBox = styled.div`
-  width: 80%;
+  width: 41rem;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const BoxTitle = styled.h3`
-  font-weight: bold;
-  align: left;
   margin-bottom: 5px;
-`
+  font-size: 1.2rem;
+  color: ${COLORS.GREY[400]};
+`;
 
 const BoxInput = styled.input`
-  width: 100%;
+  width: 41rem;
   height: 30px;
-  background: #D9D9D9;
-  border: none;
+  border: 0.1rem solid ${COLORS.GREY[300]};
   margin-bottom: 15px;
-`
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 2rem 0 2rem 1rem;
+`;
 
 const SubmitButton = styled.button`
   margin-top: 10px;
-  background-color: #D9D9D9;
+  background-color: ${COLORS.MEDIUM_BLUE};
   border: none;
   cursor: pointer;
   font-weight: bold;
-  width: 70px;
-`
+  width: 10rem;
+  padding: 1rem;
+  margin-left: 31rem;
+  color: white;
+  border-radius: 0.5rem;
+  &:hover {
+    background-color: ${COLORS.BLUE};
+  }
+`;
+const Box = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
 
+  margin-left: -22rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  div {
+    &:hover {
+      color: ${COLORS.BLUE};
+    }
+  }
+`;
 
 export default function Login() {
   const navigate = useNavigate();
@@ -68,17 +108,30 @@ export default function Login() {
 
   return (
     <Containers>
-      <Title>withdrone</Title>
+      <TitleBox>
+        <Title>
+          <S.LogoImg src={logo} />
+          <h1>withdrone</h1>
+        </Title>
+        <p>지금 로그인하고 다양한 드론을 즐겨보세요!</p>
+      </TitleBox>
       <LoginForm>
         <LoginBox>
           <BoxTitle>아이디</BoxTitle>
-          <BoxInput></BoxInput>
+          <BoxInput placeholder="아이디를 입력해주세요" />
         </LoginBox>
         <LoginBox>
           <BoxTitle>비밀번호</BoxTitle>
-          <BoxInput></BoxInput>
+          <BoxInput placeholder="비밀번호를 입력해주세요" />
         </LoginBox>
-        <SubmitButton>Submit</SubmitButton>
+        <hr />
+        <Box>
+          <div>회원가입</div>
+          <div>아이디 찾기</div>
+          <div>비밀번호 찾기</div>
+        </Box>
+
+        <SubmitButton>로그인</SubmitButton>
       </LoginForm>
     </Containers>
   );
