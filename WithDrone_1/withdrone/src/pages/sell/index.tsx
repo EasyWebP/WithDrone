@@ -15,7 +15,7 @@ const Containers = styled.div`
   border: 1px solid transparent;
 `;
 
-const TabMenu = styled.ul`
+const TabContainer = styled.ul`
   width: 60%;
   height: 2rem;
   background-color: #ffffff;
@@ -30,25 +30,20 @@ const TabMenu = styled.ul`
   margin-top: 6.25rem;
   margin-left: 7rem;
   cursor: pointer;
-  .submenu {
-    display: flex;
-    width: calc(100% / 4);
-    padding: 0.625rem;
-    font-size: 1.875rem;
-    transition: 0.5s;
-    //border-radius: 0.625rem 0.625rem 0rem 0rem;
-  }
+`;
 
-  .focused {
-    //background-color: #dcdcdc;
-    color: rgb(21, 20, 20);
-  }
+const TabMenu = styled.div`
+  display: flex;
+  width: calc(100% / 4);
+  padding: 0.625rem;
+  font-size: 1.875rem;
+  transition: 0.5s;
 `;
 
 export default function Sell() {
   const { state } = useLocation();
   console.log("state", state);
-  const [selectedTabs, setSelectedTabs] = useState(Number(state));
+  const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
 
   const tabs = [
     { id: 1, label: "상업용", content: <Commercial /> },
@@ -59,17 +54,17 @@ export default function Sell() {
   console.log("넘어온 리덕스값이 여기 보일거임", selectedTabs);
   return (
     <Containers>
-      <TabMenu>
+      <TabContainer>
         {tabs.map((tab) => (
-          <li
-            className={tab.id === selectedTabs ? "submenu focused" : "submenu"}
+          <TabMenu
             key={tab.id}
             onClick={() => setSelectedTabs(tab.id)}
+            style={{ color: selectedTabs === tab.id ? "black" : "#dcdcdc" }}
           >
-            {selectedTabs === tab.id ? <b>{tab.label}</b> : tab.label}
-          </li>
+            {tab.label}
+          </TabMenu>
         ))}
-      </TabMenu>
+      </TabContainer>
       <div>{tabs.find((tab) => tab.id === selectedTabs)?.content}</div>
     </Containers>
   );
