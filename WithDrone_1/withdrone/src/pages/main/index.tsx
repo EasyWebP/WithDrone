@@ -130,50 +130,24 @@ export default function Main() {
         <h3>목적에 맞는 드론을 선택해보세요</h3>
 
         <CategoryWrapper>
-          <Category>
-            <CategoryImg
-              src={hobby}
-              onClick={() => {
-                dispatch(setSelectTab(4));
-                setTimeout(() => {
-                  navigate("/sell", { state: 4 });
-                }, 10);
-              }}
-            />
-          </Category>
-          <Category>
-            <CategoryImg
-              src={photo}
-              onClick={() => {
-                dispatch(setSelectTab(3));
-                setTimeout(() => {
-                  navigate("/sell", { state: 3 });
-                }, 10);
-              }}
-            />
-          </Category>
-          <Category>
-            <CategoryImg
-              src={industry}
-              onClick={() => {
-                dispatch(setSelectTab(1));
-                setTimeout(() => {
-                  navigate("/sell", { state: 1 });
-                }, 10);
-              }}
-            />
-          </Category>
-          <Category>
-            <CategoryImg
-              src={educate}
-              onClick={() => {
-                dispatch(setSelectTab(2));
-                setTimeout(() => {
-                  navigate("/sell", { state: 2 });
-                }, 10);
-              }}
-            />
-          </Category>
+          {[
+            { id: 1, src: industry },
+            { id: 2, src: educate },
+            { id: 3, src: photo },
+            { id: 4, src: hobby },
+          ].map((category) => (
+            <Category key={category.id}>
+              <CategoryImg
+                src={category.src}
+                onClick={() => {
+                  dispatch(setSelectTab(category.id));
+                  setTimeout(() => {
+                    navigate("/sell", { state: category.id });
+                  }, 10);
+                }}
+              />
+            </Category>
+          ))}
         </CategoryWrapper>
       </Bottom>
     </Containers>
