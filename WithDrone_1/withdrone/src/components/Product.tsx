@@ -16,7 +16,7 @@ export const ProductContainer = styled.div`
 
 export const Product = styled.div`
   width: 180px;
-  height: 180px;
+  height: 200px;
   display: block;
   background-color: ${COLORS.GREY[200]};
 `;
@@ -37,9 +37,16 @@ export const ProductTitle = styled.p`
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0.9rem;
-  width: 150px;
-  height: 20px;
+  /* width: 150px;
+  height: 20px; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
+`;
+
+export const ProductPrice = styled.p`
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-align: center;
 `;
