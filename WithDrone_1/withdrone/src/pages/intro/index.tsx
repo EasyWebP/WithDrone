@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import drone from "../../img/drone7.png"
-import logo from "../../img/logo.png"
-import logo2 from "../../img/gamepad.png"
-import logo3 from "../../img/elearning.png"
-
-
+import drone from "../../img/mavic3.jpg";
+import logo from "../../img/logo.png";
+import logo2 from "../../img/gamepad.png";
+import logo3 from "../../img/elearning.png";
 
 const Containers = styled.div`
   width: 100%;
@@ -74,7 +72,7 @@ const Footer = styled.div`
   padding: 2rem;
   background-color: #f5f5f5;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 75%;
 `;
 

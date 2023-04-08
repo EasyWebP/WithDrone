@@ -15,12 +15,12 @@ export default function Commercial() {
     <P.Containers>
       <P.ProductContainer>
         {droneList
-          .filter((product)=> product.category==="상업용")
+          .filter((product) => product.category === "상업용")
           .map((product, index) => (
-            <Link 
-              to={`/detail/${product.keys}`} 
-              state={{product:product}} 
-              style={{ width:"15%", height:"15%", margin:"2% 0% 5% 7%" }}
+            <Link
+              to={`/detail/${product.keys}`}
+              state={{ product: product }}
+              style={{ width: "15%", height: "15%", margin: "2% 0% 5% 7%" }}
             >
               <P.Product>
                 <P.ProductImgDiv>
@@ -29,7 +29,7 @@ export default function Commercial() {
                 <P.ProductTitle>{product.name}</P.ProductTitle>
               </P.Product>
             </Link>
-        ))}
+          ))}
       </P.ProductContainer>
     </P.Containers>
   );

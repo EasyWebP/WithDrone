@@ -57,6 +57,7 @@ const Td = styled.td`
 const Td2 = styled.td`
   width: 15px;
   vertical-align: top;
+  white-space: pre-line;
 `;
 
 export default function ProductDetail() {
