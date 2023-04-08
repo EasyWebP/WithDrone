@@ -74,6 +74,7 @@ const BoxInput = styled.input`
 const SubmitButton = styled.button`
   margin-top: 10px;
   background-color: ${COLORS.MEDIUM_BLUE};
+  //ㅋ
   border: none;
   cursor: pointer;
   font-weight: bold;
