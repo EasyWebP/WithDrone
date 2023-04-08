@@ -41,6 +41,7 @@ const TabMenu = styled.div`
 `;
 
 export default function Sell() {
+  // Use hooks to get the location state and set the selected tab.
   const { state } = useLocation();
   console.log("state", state);
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
@@ -55,6 +56,7 @@ export default function Sell() {
   return (
     <Containers>
       <TabContainer>
+        {/* Map tab data and render tab menu for each tab */}
         {tabs.map((tab) => (
           <TabMenu
             key={tab.id}
@@ -65,6 +67,7 @@ export default function Sell() {
           </TabMenu>
         ))}
       </TabContainer>
+      {/* Render the selected tab content */}
       <div>{tabs.find((tab) => tab.id === selectedTabs)?.content}</div>
     </Containers>
   );

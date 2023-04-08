@@ -1,22 +1,16 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as P from "../../components/Product";
 import droneList from "../../constants/droneList";
 
-import noImg from "../../img/200.png";
-
 export default function Commercial() {
-  const navigate = useNavigate();
-
-  const handleClick = (path: string) => {
-    navigate(path);
-  };
-
   return (
     <P.Containers>
       <P.ProductContainer>
+        {/* Show drones filtered by category(commercial) */}
         {droneList
           .filter((product) => product.category === "상업용")
           .map((product, index) => (
+            // Use 'Link' to show product's detail page with 'project' object as state
             <Link
               to={`/detail/${product.keys}`}
               state={{ product: product }}
