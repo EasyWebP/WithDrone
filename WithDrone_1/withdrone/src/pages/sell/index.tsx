@@ -1,11 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Commercial from "./Commercial";
 import Educational from "./Educational";
 import Filming from "./Filming";
 import Hobby from "./Hobby";
 import COLORS from "../../constants/color";
+import { useDispatch, useSelector } from "react-redux";
+import { Rootstate } from "../../index";
 
 const Containers = styled.div`
   width: 100%;
@@ -13,7 +15,7 @@ const Containers = styled.div`
   border: 1px solid transparent;
 `;
 
-const TabContainer = styled.ul`
+const TabMenu = styled.ul`
   width: 60%;
   height: 2rem;
   background-color: #ffffff;
@@ -28,18 +30,25 @@ const TabContainer = styled.ul`
   margin-top: 6.25rem;
   margin-left: 7rem;
   cursor: pointer;
-`;
+  .submenu {
+    display: flex;
+    width: calc(100% / 4);
+    padding: 0.625rem;
+    font-size: 1.875rem;
+    transition: 0.5s;
+    //border-radius: 0.625rem 0.625rem 0rem 0rem;
+  }
 
-const TabMenu = styled.div`
-  display: flex;
-  width: calc(100% / 4);
-  padding: 0.625rem;
-  font-size: 1.875rem;
-  transition: 0.5s;
+  .focused {
+    //background-color: #dcdcdc;
+    color: rgb(21, 20, 20);
+  }
 `;
 
 export default function Sell() {
-  const [selectedTab, setSelectedTab] = useState(1);
+  const { state } = useLocation();
+  console.log("state", state);
+  const [selectedTabs, setSelectedTabs] = useState(Number(state));
 
   const tabs = [
     { id: 1, label: "상업용", content: <Commercial /> },
@@ -47,21 +56,21 @@ export default function Sell() {
     { id: 3, label: "촬영용", content: <Filming /> },
     { id: 4, label: "취미용", content: <Hobby /> },
   ];
-
+  console.log("넘어온 리덕스값이 여기 보일거임", selectedTabs);
   return (
     <Containers>
-      <TabContainer>
+      <TabMenu>
         {tabs.map((tab) => (
-          <TabMenu
+          <li
+            className={tab.id === selectedTabs ? "submenu focused" : "submenu"}
             key={tab.id}
-            onClick={() => setSelectedTab(tab.id)}
-            style={{ color: selectedTab === tab.id ? "black" : "#dcdcdc" }}
+            onClick={() => setSelectedTabs(tab.id)}
           >
-            {tab.label}
-          </TabMenu>
+            {selectedTabs === tab.id ? <b>{tab.label}</b> : tab.label}
+          </li>
         ))}
-      </TabContainer>
-      <div>{tabs.find((tab) => tab.id === selectedTab)?.content}</div>
+      </TabMenu>
+      <div>{tabs.find((tab) => tab.id === selectedTabs)?.content}</div>
     </Containers>
   );
 }

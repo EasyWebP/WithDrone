@@ -7,6 +7,11 @@ import photo from "../../img/camera.png";
 import industry from "../../img/robotic-arm.png";
 import educate from "../../img/elearning.png";
 import PATH from "../../constants/path";
+import Commercial from "../sell/Commercial";
+import Sell from "../sell";
+import { useDispatch, useSelector } from "react-redux";
+import { Rootstate } from "../../index";
+import { setSelectTab } from "../../store/tabReducer";
 
 const Containers = styled.div`
   width: 100%;
@@ -70,6 +75,13 @@ const CategoryWrapper = styled.div`
   gap: 3rem;
   align-items: center;
   margin-top: 2rem;
+  button {
+    margin-right: 8px;
+  }
+
+  button.focused {
+    font-weight: bold;
+  }
 `;
 const CategoryImg = styled.img`
   width: 60%;
@@ -88,10 +100,18 @@ const Category = styled.div`
   cursor: pointer;
 `;
 
+// @ts-ignore
 export default function Main() {
   const navigate = useNavigate();
-  const { bookId } = useParams();
+  const dispatch = useDispatch();
+  const selectedTab = useSelector((state: Rootstate) => {
+    return state.tabReducer;
+  });
+  console.log("메인에서 누른 tab값", selectedTab);
 
+  if (!selectedTab) {
+    return null;
+  }
   return (
     <Containers>
       <Top>
@@ -111,16 +131,48 @@ export default function Main() {
 
         <CategoryWrapper>
           <Category>
-            <CategoryImg src={hobby} />
+            <CategoryImg
+              src={hobby}
+              onClick={() => {
+                dispatch(setSelectTab(4));
+                setTimeout(() => {
+                  navigate("/sell", { state: 4 });
+                }, 10);
+              }}
+            />
           </Category>
           <Category>
-            <CategoryImg src={photo} />
+            <CategoryImg
+              src={photo}
+              onClick={() => {
+                dispatch(setSelectTab(3));
+                setTimeout(() => {
+                  navigate("/sell", { state: 3 });
+                }, 10);
+              }}
+            />
           </Category>
           <Category>
-            <CategoryImg src={industry} />
+            <CategoryImg
+              src={industry}
+              onClick={() => {
+                dispatch(setSelectTab(1));
+                setTimeout(() => {
+                  navigate("/sell", { state: 1 });
+                }, 10);
+              }}
+            />
           </Category>
           <Category>
-            <CategoryImg src={educate} />
+            <CategoryImg
+              src={educate}
+              onClick={() => {
+                dispatch(setSelectTab(2));
+                setTimeout(() => {
+                  navigate("/sell", { state: 2 });
+                }, 10);
+              }}
+            />
           </Category>
         </CategoryWrapper>
       </Bottom>
