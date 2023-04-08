@@ -10,7 +10,6 @@ export default function Header() {
     { label: "회사 소개", path: PATH.INTRO },
     { label: "대여 제품", path: PATH.RENT },
     { label: "판매 제품", path: PATH.SELL },
-    { label: "커뮤니티", path: PATH.MAIN },
   ];
 
   const handleClick = (path: string) => {
