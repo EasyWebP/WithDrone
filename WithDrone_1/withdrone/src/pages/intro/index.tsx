@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import drone from "../../img/drone7.png"
+import logo from "../../img/logo.png"
+import logo2 from "../../img/gamepad.png"
+import logo3 from "../../img/elearning.png"
+
+
 
 const Containers = styled.div`
   width: 100%;
@@ -132,15 +137,15 @@ export default function Intro() {
       </Main>
       <Footer>
         <Contact>
-          <Icon src="/phone-icon.png" alt="Phone Icon" />
+          <Icon src={logo} alt="Phone Icon" />
           <Info>123-456-7890</Info>
         </Contact>
         <Contact>
-          <Icon src="/location-icon.png" alt="Location Icon" />
+          <Icon src={logo2} alt="Location Icon" />
           <Info>123 Main Street, Anytown USA</Info>
         </Contact>
         <Contact>
-          <Icon src="/email-icon.png" alt="Email Icon" />
+          <Icon src={logo3} alt="Email Icon" />
           <Email href="mailto:info@dronecompany.com">
             info@dronecompany.com
           </Email>
