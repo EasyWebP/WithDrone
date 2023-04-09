@@ -54,7 +54,6 @@ const StartButton = styled.button`
 const Bottom = styled.div`
   width: 100%;
   height: 53%;
-  //border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,6 +106,7 @@ export default function Main() {
   const selectedTab = useSelector((state: Rootstate) => {
     return state.tabReducer;
   });
+
   console.log("메인에서 누른 tab값", selectedTab);
 
   if (!selectedTab) {

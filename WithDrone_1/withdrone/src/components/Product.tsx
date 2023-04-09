@@ -4,7 +4,6 @@ import COLORS from "../constants/color";
 export const Containers = styled.div`
   width: 100%;
   height: 100%;
-  //border: 1px solid black;
 `;
 
 export const ProductContainer = styled.div`
@@ -29,16 +28,12 @@ export const ProductImg = styled.img`
   margin-top: 0.7rem;
   width: 165px;
   height: 130px;
-  // max-width: 95%;
-  // max-height: 100%;
 `;
 
 export const ProductTitle = styled.p`
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0.9rem;
-  /* width: 150px;
-  height: 20px; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -1,13 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Commercial from "./Commercial";
 import Educational from "./Educational";
 import Filming from "./Filming";
 import Hobby from "./Hobby";
 import COLORS from "../../constants/color";
-import { useDispatch, useSelector } from "react-redux";
-import { Rootstate } from "../../index";
 
 const Containers = styled.div`
   width: 100%;
@@ -19,7 +17,6 @@ const TabContainer = styled.ul`
   width: 60%;
   height: 2rem;
   background-color: #ffffff;
-  //color: rgb(232, 234, 237);
   color: ${COLORS.GREY[400]};
   font-weight: bold;
   display: flex;
@@ -42,7 +39,6 @@ const TabMenu = styled.div`
 
 export default function Rent() {
   const { state } = useLocation();
-  console.log("state", state);
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
 
   const tabs = [
@@ -51,7 +47,6 @@ export default function Rent() {
     { id: 3, label: "촬영용", content: <Filming /> },
     { id: 4, label: "취미용", content: <Hobby /> },
   ];
-  console.log("넘어온 리덕스값이 여기 보일거임", selectedTabs);
   return (
     <Containers>
       <TabContainer>

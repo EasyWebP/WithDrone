@@ -9,37 +9,6 @@ import logo3 from "../../img/elearning.png";
 const Containers = styled.div`
   width: 100%;
   height: 100%;
-  //gap: 2rem;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem;
-  border-bottom: 1px solid #ccc;
-`;
-
-const Logo = styled.img`
-  width: 5rem;
-  height: 5rem;
-`;
-
-const Menu = styled.ul`
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-`;
-
-const MenuItem = styled.li`
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #333;
-  cursor: pointer;
-  &:hover {
-    color: blue;
-  }
 `;
 
 const Main = styled.div`
@@ -62,7 +31,7 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-right: 200px;
-`
+`;
 
 const Image = styled.img`
   width: 80%;
@@ -72,8 +41,6 @@ const Image = styled.img`
 `;
 
 const Footer = styled.div`
-  // display: flex;
-  // flex-direction: column;
   align-items: center;
   padding: 2rem;
   background-color: #f5f5f5;
@@ -106,21 +73,7 @@ const Email = styled.a`
   }
 `;
 
-const SNS = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-`;
-
-const SNSIcon = styled.img`
-  width: 3rem;
-  height: 3rem;
-`;
-
 export default function Intro() {
-  const navigate = useNavigate();
-  const { bookId } = useParams();
-
   return (
     <Containers>
       <Main>
@@ -129,18 +82,17 @@ export default function Intro() {
           <Image src={drone} alt="Drone in Flight" />
           <Text>
             We are a leading provider of drone solutions for various industries
-            including agriculture, construction, surveying, and more. Our advanced
-            technology and expertise enable us to deliver high-quality and
-            reliable services to our clients. 
-            <br/>
-            <br/>
+            including agriculture, construction, surveying, and more. Our
+            advanced technology and expertise enable us to deliver high-quality
+            and reliable services to our clients.
+            <br />
+            <br />
             Our services include aerial photography and videography, mapping and
-            surveying, crop scouting, infrastructure inspection, and more. We use
-            state-of-the-art equipment and software to deliver accurate and
+            surveying, crop scouting, infrastructure inspection, and more. We
+            use state-of-the-art equipment and software to deliver accurate and
             detailed results that meet the specific needs of our clients.
           </Text>
         </InfoContainer>
-        
       </Main>
       <Footer>
         <Contact>

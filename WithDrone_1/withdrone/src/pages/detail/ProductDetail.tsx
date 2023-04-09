@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import COLORS from "../../constants/color";
 
 const Containers = styled.div`
   width: 100%;
   height: 100%;
-  //gap: 2rem;
   padding: 4rem;
   display: flex;
   flex-direction: row;
@@ -34,15 +33,12 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 25px;
-  //   line-height: 30px;
-
   color: #000000;
 `;
 
 const Explain = styled.table`
   margin-top: 40px;
   border: none;
-  // align: left;
   border-spacing: 0px 20px;
 `;
 
