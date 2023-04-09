@@ -54,13 +54,19 @@ const Title = styled.h2`
 
 const Text = styled.p`
   font-size: 1.2rem;
-  line-height: 1.5;
+  line-height: 3;
   margin-bottom: 1rem;
 `;
 
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-right: 200px;
+`
+
 const Image = styled.img`
-  width: 10%;
-  height: 10rem;
+  width: 80%;
+  height: 30%;
   object-fit: cover;
   margin-bottom: 2rem;
 `;
@@ -119,19 +125,22 @@ export default function Intro() {
     <Containers>
       <Main>
         <Title>Welcome to Drone Company</Title>
-        <Text>
-          We are a leading provider of drone solutions for various industries
-          including agriculture, construction, surveying, and more. Our advanced
-          technology and expertise enable us to deliver high-quality and
-          reliable services to our clients.
-        </Text>
-        <Image src={drone} alt="Drone in Flight" />
-        <Text>
-          Our services include aerial photography and videography, mapping and
-          surveying, crop scouting, infrastructure inspection, and more. We use
-          state-of-the-art equipment and software to deliver accurate and
-          detailed results that meet the specific needs of our clients.
-        </Text>
+        <InfoContainer>
+          <Image src={drone} alt="Drone in Flight" />
+          <Text>
+            We are a leading provider of drone solutions for various industries
+            including agriculture, construction, surveying, and more. Our advanced
+            technology and expertise enable us to deliver high-quality and
+            reliable services to our clients. 
+            <br/>
+            <br/>
+            Our services include aerial photography and videography, mapping and
+            surveying, crop scouting, infrastructure inspection, and more. We use
+            state-of-the-art equipment and software to deliver accurate and
+            detailed results that meet the specific needs of our clients.
+          </Text>
+        </InfoContainer>
+        
       </Main>
       <Footer>
         <Contact>

@@ -10,7 +10,7 @@ export default function Commercial() {
         {droneList
           .filter((product) => product.category === "상업용")
           .map((product, index) => (
-            // Use 'Link' to show product's detail page with 'project' object as state
+            // Use 'Link' to navigate url, hand over detail information to detail page.
             <Link
               to={`/detail/${product.keys}`}
               state={{ product: product }}
