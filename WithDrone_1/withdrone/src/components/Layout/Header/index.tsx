@@ -12,9 +12,11 @@ export default function Header() {
     { label: "판매 제품", path: PATH.SELL },
   ];
 
+  //Use hook 'useNavigate' to navigate url to move page that clicked label.
   const handleClick = (path: string) => {
     navigate(path);
   };
+
   return (
     <S.Container>
       <S.LogoBox onClick={() => handleClick(PATH.MAIN)}>

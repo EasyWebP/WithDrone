@@ -11,6 +11,7 @@ import Rent from "./pages/rent";
 import Login from "./pages/login";
 import ProductDetail from "./pages/detail/ProductDetail";
 
+// Use BrowserRouter to render a React component that matches the URL of the browser.
 function App() {
   return (
     <Router>

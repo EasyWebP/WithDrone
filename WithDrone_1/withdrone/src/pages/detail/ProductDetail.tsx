@@ -61,8 +61,7 @@ const Td2 = styled.td`
 `;
 
 export default function ProductDetail() {
-  const navigate = useNavigate();
-  const { bookId } = useParams();
+  //Use hook 'useLocation' to get detail information of drone from components that clicked in sell(or rent) page.
   const location = useLocation();
   const { product } = location.state;
 
