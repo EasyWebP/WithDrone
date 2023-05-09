@@ -250,7 +250,7 @@ const droneList = [
   },
   {
     keys: 22,
-    name: "W1 Pro",
+    name: "W1 Pro__",
     price: "250,000￦",
     category: "취미용",
     isSell: true,
