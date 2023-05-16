@@ -3,6 +3,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Layout/Header/index";
 import COLORS from "../../constants/color";
+import Footer from "../Layout/Footer/index";
 
 const Full = styled.div`
   width: 100%;
@@ -11,6 +12,7 @@ const Full = styled.div`
   align-items: center;
   font-size: 1.5rem;
   flex-direction: column;
+  background-color: white;
 `;
 
 const Inner = styled.div`
@@ -29,6 +31,7 @@ export default function MainLayout() {
       <Inner>
         <Outlet />
       </Inner>
+      <Footer />
     </Full>
   );
 }
