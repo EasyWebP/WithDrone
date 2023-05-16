@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Layout/Header/index";
+import Footer from "../Layout/Footer/index";
 import COLORS from "../../constants/color";
 
 const Full = styled.div`
@@ -14,10 +15,12 @@ const Full = styled.div`
 `;
 
 const Inner = styled.div`
+  position: relative;
   width: 75%;
   padding-top: 5.5rem;
   background-color: white;
   height: 100vh;
+  min-height: calc(100vh - 80px);
   border-right: 0.1rem solid ${COLORS.GREY[200]};
   border-left: 0.1rem solid ${COLORS.GREY[200]};
 `;
@@ -29,6 +32,7 @@ export default function MainLayout() {
       <Inner>
         <Outlet />
       </Inner>
+      <Footer />
     </Full>
   );
 }
