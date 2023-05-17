@@ -8,6 +8,7 @@ import Sell from "./pages/sell";
 import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
+import Mypage from "./pages/mypage";
 import ProductDetail from "./pages/detail/ProductDetail";
 
 // Use BrowserRouter to render a React component that matches the URL of the browser.
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path={PATH.DETAIL} element={<MainLayout />}>
           <Route index element={<ProductDetail />} />
+        </Route>
+        <Route path={PATH.MYPAGE} element={<MainLayout />}>
+          <Route index element={<Mypage />} />
         </Route>
       </Routes>
     </Router>
