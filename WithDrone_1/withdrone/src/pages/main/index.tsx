@@ -20,28 +20,32 @@ const Containers = styled.div`
 const Top = styled.div`
   position: relative;
   width: 100%;
-  height: 47%;
+  height: 53rem;
   h1 {
     position: absolute;
     right: 0;
-    margin: 10rem 20rem 0 0;
+    margin: 15rem 0 0 0;
     z-index: 1;
     color: white;
-    font-size: 5rem;
+    font-size: 3.5rem;
     font-weight: bold;
   }
+  overflow: visible;
 `;
 const Img = styled.img`
   position: absolute;
-  left: 0;
-  top: 0;
-  height: 33rem;
-  width: 100%;
+  //left: 0;
+  //top: 0;
+  height: 53rem;
+  //width: 100%;
+  width: 1920px;
+  margin-left: -240px; /* -480px / 2 */
+  margin-right: -240px;
 `;
 const StartButton = styled.button`
   position: absolute;
   right: 0;
-  margin: 20rem 37rem 0 0;
+  margin: 30rem 21.5rem 0 0;
   padding: 1rem;
   z-index: 1;
   border-radius: 10px;
@@ -53,7 +57,7 @@ const StartButton = styled.button`
 
 const Bottom = styled.div`
   width: 100%;
-  height: 53%;
+  height: 60rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,13 +120,16 @@ export default function Main() {
     <Containers>
       <Top>
         <Img src={home} />
-        <h1>withdrone</h1>
+        <h1>
+          withdrone과 함께
+          <br /> 다양한 드론을 만나봐요.
+        </h1>
         <StartButton
           onClick={() => {
             navigate(PATH.LOGIN);
           }}
         >
-          시작하기
+          바로 시작하기 &nbsp;➔
         </StartButton>
       </Top>
       <Bottom>
