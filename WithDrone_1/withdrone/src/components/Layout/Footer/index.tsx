@@ -10,7 +10,6 @@ import styled from 'styled-components';
 const FooterContainer = styled.footer`
   border-top: 0.05rem solid rgba(0, 0, 0, 0.1);
   display: flex;
-  // justify-content: start;
   align-items: center;
   background-color: white;
   padding: 2rem;

@@ -12,6 +12,7 @@ const Full = styled.div`
   align-items: center;
   font-size: 1.5rem;
   flex-direction: column;
+  min-height: 100vh;
 `;
 
 const Inner = styled.div`
@@ -23,6 +24,7 @@ const Inner = styled.div`
   min-height: calc(100vh - 80px);
   border-right: 0.1rem solid ${COLORS.GREY[200]};
   border-left: 0.1rem solid ${COLORS.GREY[200]};
+  overflow-y: auto
 `;
 
 export default function MainLayout() {
