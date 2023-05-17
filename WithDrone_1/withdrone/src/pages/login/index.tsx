@@ -27,8 +27,8 @@ const Title = styled.div`
 const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: -15rem;
   gap: 1.4rem;
+  margin-left: -24rem;
 `;
 
 const LoginForm = styled.form`
@@ -112,7 +112,7 @@ export default function Login() {
           <S.LogoImg src={logo} />
           <h1>withdrone</h1>
         </Title>
-        <p>지금 로그인하고 다양한 드론을 즐겨보세요!</p>
+        <p>로그인</p>
       </TitleBox>
       <LoginForm>
         <LoginBox>

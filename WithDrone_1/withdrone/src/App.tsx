@@ -3,6 +3,8 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PATH from "./constants/path";
 import MainLayout from "./components/Layout/MainLayout";
+import DefaultLayout from "./components/Layout/DefaultLayout";
+
 import Main from "./pages/main";
 import Sell from "./pages/sell";
 import Intro from "./pages/intro";
@@ -27,7 +29,7 @@ function App() {
         <Route path={PATH.RENT} element={<MainLayout />}>
           <Route index element={<Rent />} />
         </Route>
-        <Route path={PATH.LOGIN} element={<MainLayout />}>
+        <Route path={PATH.LOGIN} element={<DefaultLayout />}>
           <Route index element={<Login />} />
         </Route>
         <Route path={PATH.DETAIL} element={<MainLayout />}>
