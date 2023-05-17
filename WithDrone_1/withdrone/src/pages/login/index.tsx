@@ -29,11 +29,15 @@ const TitleBox = styled.div`
   flex-direction: column;
   gap: 1.4rem;
   margin-left: -24rem;
+  p {
+    margin-top: 2rem;
+    font-weight: bold;
+  }
 `;
 
 const LoginForm = styled.form`
   width: 55rem;
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +46,7 @@ const LoginForm = styled.form`
   gap: 1rem;
   border-radius: 5px;
   background-color: #fff;
+  //border: 1px solid red;
   hr {
     color: black;
     height: 2px;
@@ -121,7 +126,7 @@ export default function Login() {
         </LoginBox>
         <LoginBox>
           <BoxTitle>비밀번호</BoxTitle>
-          <BoxInput placeholder="비밀번호를 입력해주세요" />
+          <BoxInput placeholder="비밀번호를 입력해주세요" type={"password"} />
         </LoginBox>
         <hr />
         <Box>
