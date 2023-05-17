@@ -22,6 +22,7 @@ const FooterContainer = styled.footer`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 30%;
 `
 
@@ -34,6 +35,7 @@ const Logo = styled.img`
 
 const CompanyName = styled.span`
   font-weight: bold;
+  font-size: 2rem;
 `;
 
 const MenuContainer = styled.div`
@@ -48,7 +50,7 @@ const Menu = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1.2rem;
 `;
 
 const MenuItem = styled.a`
@@ -57,6 +59,7 @@ const MenuItem = styled.a`
 `;
 
 const CompanyText = styled.li`
+  color: grey;
   list-style-type: none;
 `
 
@@ -67,6 +70,8 @@ const SNSContainer = styled.div`
   align-items: flex-end;
   justify-content: flex-end;
   height: 100%;
+  margin-top: 3rem;
+  // margin-right: 17rem;
 `
 
 const SNS = styled.img`
@@ -89,7 +94,7 @@ export default function Footer() {
           <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">이용약관</MenuItem>
           <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">개인정보처리방침</MenuItem>
         </Menu>
-        <CompanyText>(주)위드드론</CompanyText>
+        <CompanyText>(주) 위드 드론</CompanyText>
       </MenuContainer>
       <SNSContainer>
         <SNS src={insta} alt="insta logo" />
