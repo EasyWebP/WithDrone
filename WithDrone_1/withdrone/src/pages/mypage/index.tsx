@@ -39,7 +39,7 @@ const WelcomeContext = styled.p`
     font-style: normal;
     font-weight: 400;
     font-size: 2.5rem;
-    line-height: 6rem;
+    line-height: 5rem;
     color: white;
     margin-left: 3rem;
 `
@@ -77,7 +77,7 @@ const TabMenu = styled.ul`
 `;
 
 const TabMenuItem = styled.li`
-  padding: 0rem 3rem;
+  padding: 0.5rem 3rem;
   cursor: pointer;
   font-family: 'Inter';
     font-style: normal;
@@ -157,6 +157,14 @@ const TableInfoContent = styled.p`
     font-style: normal;
     font-weight: 700;
     text-align: left;
+`
+
+const TotalContext = styled.p`
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    align-self: flex-end;
+    margin: 5rem 10rem;
 `
 
 export default function Mypage() {
@@ -260,6 +268,7 @@ export default function Mypage() {
                 </TableBody>
             </Table>
         </TableContainer>
+        <TotalContext>총 800,000원</TotalContext>
     </Containers>
   )
 }
