@@ -4,6 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import COLORS from "../../constants/color";
 import * as S from "../../components/Layout/Header/index.styles";
 import logo from "../../img/drone.png";
+import useLogin from "../../hooks/useLogin";
+import PATH from "../../constants/path";
+import toastMsg from "../../components/Toast";
 
 const Containers = styled.div`
   width: 100%;
@@ -27,13 +30,17 @@ const Title = styled.div`
 const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: -15rem;
   gap: 1.4rem;
+  margin-left: -24rem;
+  p {
+    margin-top: 2rem;
+    font-weight: bold;
+  }
 `;
 
 const LoginForm = styled.form`
   width: 55rem;
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +49,7 @@ const LoginForm = styled.form`
   gap: 1rem;
   border-radius: 5px;
   background-color: #fff;
+  //border: 1px solid red;
   hr {
     color: black;
     height: 2px;
@@ -100,28 +108,64 @@ const Box = styled.div`
     }
   }
 `;
+const Message = styled.p`
+  font-size: 1.1rem;
+  padding-top: 1rem;
+  color: ${COLORS.MEDIUM_BLUE};
+`;
 
 export default function Login() {
   const navigate = useNavigate();
-  const { bookId } = useParams();
 
+  const {
+    isValidateEmail,
+    email,
+    onChangeEmail,
+    password,
+    onChangePassword,
+    mutateLogin,
+  } = useLogin();
+  const { memberId } = useParams();
+
+  let message = "";
+  if (!isValidateEmail && email.length > 0) {
+    message = "올바른 이메일 주소를 입력해주세요.";
+  } else {
+    message = "";
+  }
   return (
-    <Containers>
+    <Containers
+      onSubmit={(e) => {
+        e.preventDefault();
+        mutateLogin.mutate({ email, password });
+        // navigate(`${PATH.MAIN}/${memberId}`);
+      }}
+    >
       <TitleBox>
         <Title>
           <S.LogoImg src={logo} />
           <h1>withdrone</h1>
         </Title>
-        <p>지금 로그인하고 다양한 드론을 즐겨보세요!</p>
+        <p>로그인</p>
       </TitleBox>
       <LoginForm>
         <LoginBox>
           <BoxTitle>아이디</BoxTitle>
-          <BoxInput placeholder="아이디를 입력해주세요" />
+          <BoxInput
+            placeholder="아이디를 입력해주세요"
+            value={email}
+            onChange={onChangeEmail}
+          />
+          {message.length > 0 && <Message> {message}</Message>}
         </LoginBox>
         <LoginBox>
           <BoxTitle>비밀번호</BoxTitle>
-          <BoxInput placeholder="비밀번호를 입력해주세요" />
+          <BoxInput
+            placeholder="비밀번호를 입력해주세요"
+            type={"password"}
+            value={password}
+            onChange={onChangePassword}
+          />
         </LoginBox>
         <hr />
         <Box>
@@ -129,8 +173,9 @@ export default function Login() {
           <div>아이디 찾기</div>
           <div>비밀번호 찾기</div>
         </Box>
-
-        <SubmitButton>로그인</SubmitButton>
+        <SubmitButton title="로그인" type="submit">
+          로그인
+        </SubmitButton>
       </LoginForm>
     </Containers>
   );
