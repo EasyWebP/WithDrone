@@ -59,7 +59,6 @@ export default function Signup() {
       onChange: onChangeEmail,
       type: "email",
       placeholder: "",
-      readOnly: true,
       isCertification: {
         title: min < 5 ? "재전송" : "인증",
         size: "small",
