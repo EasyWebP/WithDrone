@@ -105,6 +105,7 @@ const Category = styled.div`
 
 // @ts-ignore
 export default function Main() {
+  const { memberId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedTab = useSelector((state: Rootstate) => {
