@@ -10,6 +10,8 @@ import Sell from "./pages/sell";
 import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
+import Signup from "./pages/signup";
+
 import ProductDetail from "./pages/detail/ProductDetail";
 import StyledContainer from "./components/Toast/container";
 
@@ -51,6 +53,9 @@ function App() {
           </Route>
           <Route path={PATH.LOGIN} element={<DefaultLayout />}>
             <Route index element={<Login />} />
+          </Route>
+          <Route path={PATH.SIGNUP} element={<DefaultLayout />}>
+            <Route index element={<Signup />} />
           </Route>
           <Route path={PATH.DETAIL} element={<MainLayout />}>
             <Route index element={<ProductDetail />} />
