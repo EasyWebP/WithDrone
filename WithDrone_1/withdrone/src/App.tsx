@@ -10,6 +10,7 @@ import Sell from "./pages/sell";
 import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
+import Mypage from "./pages/mypage";
 import ProductDetail from "./pages/detail/ProductDetail";
 import StyledContainer from "./components/Toast/container";
 
@@ -55,7 +56,10 @@ function App() {
           <Route path={PATH.DETAIL} element={<MainLayout />}>
             <Route index element={<ProductDetail />} />
           </Route>
-        </Routes>
+          <Route path={PATH.MYPAGE} element={<MainLayout />}>
+          <Route index element={<Mypage />} />
+        </Route>
+      </Routes>
       </Router>
     </QueryClientProvider>
   );
