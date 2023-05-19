@@ -28,7 +28,7 @@ export default function useSignup() {
   const [showText, setShowText] = useState(false);
   const [match, setMatch] = useState(false);
   const [exist, setExist] = useState(false);
-  const [emailExist, setEmailExist] = useState(false);
+  const [emailExist, setEmailExist] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (event: {
@@ -89,9 +89,7 @@ export default function useSignup() {
   const mutateCheckEmail = useMutation(["checkEmail"], checkEmail, {
     onSuccess: (data) => {
       if (data.result) {
-        console.log("asdfasdfads", data.result);
         setEmailExist(data.result);
-        console.log("gggg", emailExist);
         toastMsg("가입되어 있는 계정이 존재하므로 로그인 페이지로 이동합니다.");
         // navigate(PATH.LOGIN);
       } else {
@@ -125,9 +123,7 @@ export default function useSignup() {
     const onStartTimer = () => {
       // Timer start
       setShowText(true);
-      if (!emailExist) {
-        sendEmailCode();
-      }
+      sendEmailCode();
       intervalRef.current = setInterval(decreaseNum, 1000);
       return () => clearInterval(intervalRef.current as NodeJS.Timeout);
     };

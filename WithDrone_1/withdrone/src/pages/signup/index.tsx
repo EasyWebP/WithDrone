@@ -34,7 +34,11 @@ export default function Signup() {
     mutateCheckEmail,
   } = useSignup();
   const { min, curTime, onStartTimer } = AuthTimer();
-
+  useEffect(() => {
+    if (!emailExist) {
+      onStartTimer();
+    }
+  }, [emailExist]);
   type InputProps = {
     label: string;
     size: number;
@@ -66,8 +70,8 @@ export default function Signup() {
         disabled: false,
         theme: "quaternary",
         onClick: () => {
-          // mutateCheckEmail.mutate(email);
-          handleClick();
+          mutateCheckEmail.mutate(email);
+          // handleClick();
         },
       },
     },
@@ -142,18 +146,6 @@ export default function Signup() {
       },
     },
   ];
-  const handleClick = async () => {
-    const response = await mutateCheckEmail.mutate(email);
-    console.log(response);
-    // if (!response) {
-    //   // 이메일이 서버에 존재하지 않는 경우
-    //   // 이메일을 보내는 로직을 구현
-    // } else {
-    //   // 이메일이 서버에 존재하는 경우
-    //   onStartTimer();
-    // }
-  };
-
   return (
     <S.Wrapper>
       <S.Container>

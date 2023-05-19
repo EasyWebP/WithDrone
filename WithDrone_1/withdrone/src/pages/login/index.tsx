@@ -139,7 +139,6 @@ export default function Login() {
       onSubmit={(e) => {
         e.preventDefault();
         mutateLogin.mutate({ email, password });
-        // navigate(`${PATH.MAIN}/${memberId}`);
       }}
     >
       <TitleBox>
