@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import COLORS from "../../constants/color";
 import * as S from "../../components/Layout/Header/index.styles";
 import logo from "../../img/drone.png";
 import mavic2 from "../../img/mavic2.jpg";
+import { fetchMember, fetchPost } from "../../api/user";
+
 
 const Containers = styled.div`
   width: 100%;
@@ -122,7 +124,6 @@ const TableHeadCell = styled.th`
 
 const TableBody = styled.tbody`
     border-bottom: 0.1rem solid black;
-
 `;
 
 const TableBodyRow = styled.tr`
@@ -139,7 +140,7 @@ const TableBodyFirst = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-`;
+`; 
 
 const TableImg = styled.img`
     alt: "Product";
@@ -168,13 +169,23 @@ const TotalContext = styled.p`
 `
 
 export default function Mypage() {
+    const [data, setData] = useState({username: '김동준', nickname: '김도옹준', email: 'dongjunkim99@icloud.com'}); // 초기값 없으면 비동기라 null 될수있다 에러뜸
+
+  useEffect(() => {
+    fetchMember()
+      .then((fetchedData) => {
+        console.log("유저정보", fetchedData); 
+        setData(fetchedData); // 데이터 상태 업데이트
+      });
+  }, []);
+ 
   return (
     <Containers>
         <WelcomeContainer>
             <LeftContainer>
-                <WelcomeContext>사가정변태남</WelcomeContext>
-                <WelcomeContext>임윤수님의 이번 달 쇼핑 목록입니다</WelcomeContext>
-                <WelcomeContext>limyoonsoo@naver.com</WelcomeContext>
+                <WelcomeContext>{data.nickname}</WelcomeContext>
+                <WelcomeContext>{data.username}님의 이번 달 쇼핑 목록입니다</WelcomeContext>
+                <WelcomeContext>{data.email}</WelcomeContext>
             </LeftContainer>
             <RightContainer>
                 <LogoutButton>로그아웃</LogoutButton>
