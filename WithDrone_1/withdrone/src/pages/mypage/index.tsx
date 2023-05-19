@@ -5,7 +5,7 @@ import COLORS from "../../constants/color";
 import * as S from "../../components/Layout/Header/index.styles";
 import logo from "../../img/drone.png";
 import mavic2 from "../../img/mavic2.jpg";
-import { fetchMember, fetchPost } from "../../api/user";
+import { fetchMember } from "../../api/user";
 
 
 const Containers = styled.div`
@@ -169,13 +169,13 @@ const TotalContext = styled.p`
 `
 
 export default function Mypage() {
-    const [data, setData] = useState({username: '김동준', nickname: '김도옹준', email: 'dongjunkim99@icloud.com'}); // 초기값 없으면 비동기라 null 될수있다 에러뜸
+    const [member, setMember] = useState({username: '김동준', nickname: '김도옹준', email: 'dongjunkim99@icloud.com'}); // 초기값 없으면 비동기라 null 될수있다 에러뜸
 
   useEffect(() => {
     fetchMember()
       .then((fetchedData) => {
         console.log("유저정보", fetchedData); 
-        setData(fetchedData); // 데이터 상태 업데이트
+        setMember(fetchedData); // 데이터 상태 업데이트
       });
   }, []);
  
@@ -183,9 +183,9 @@ export default function Mypage() {
     <Containers>
         <WelcomeContainer>
             <LeftContainer>
-                <WelcomeContext>{data.nickname}</WelcomeContext>
-                <WelcomeContext>{data.username}님의 이번 달 쇼핑 목록입니다</WelcomeContext>
-                <WelcomeContext>{data.email}</WelcomeContext>
+                <WelcomeContext>{member.nickname}</WelcomeContext>
+                <WelcomeContext>{member.username}님의 이번 달 쇼핑 목록입니다</WelcomeContext>
+                <WelcomeContext>{member.email}</WelcomeContext>
             </LeftContainer>
             <RightContainer>
                 <LogoutButton>로그아웃</LogoutButton>
@@ -231,51 +231,7 @@ export default function Mypage() {
                         <TableBodyCell>12345678</TableBodyCell>
                         <TableBodyCell>1개</TableBodyCell>
                     </TableBodyRow>
-                    <TableBodyRow>
-                        <TableBodyCell>
-                            <TableBodyFirst>
-                                <TableImg src={mavic2}/> 
-                                <TableInfoContainer>
-                                    <TableInfoContent>Matrice M600 Matrice M600</TableInfoContent>
-                                    <TableInfoContent>20,000원</TableInfoContent>
-                                    <TableInfoContent>삼성</TableInfoContent>
-                                </TableInfoContainer>
-                            </TableBodyFirst>
-                        </TableBodyCell>
-                        <TableBodyCell>2023-05-17</TableBodyCell>
-                        <TableBodyCell>12345678</TableBodyCell>
-                        <TableBodyCell>1개</TableBodyCell>
-                    </TableBodyRow>
-                    <TableBodyRow>
-                        <TableBodyCell>
-                            <TableBodyFirst>
-                                <TableImg src={mavic2}/> 
-                                <TableInfoContainer>
-                                    <TableInfoContent>Matrice M600 Matrice M600</TableInfoContent>
-                                    <TableInfoContent>20,000원</TableInfoContent>
-                                    <TableInfoContent>삼성</TableInfoContent>
-                                </TableInfoContainer>
-                            </TableBodyFirst>
-                        </TableBodyCell>
-                        <TableBodyCell>2023-05-17</TableBodyCell>
-                        <TableBodyCell>12345678</TableBodyCell>
-                        <TableBodyCell>1개</TableBodyCell>
-                    </TableBodyRow>
-                    <TableBodyRow>
-                        <TableBodyCell>
-                            <TableBodyFirst>
-                                <TableImg src={mavic2}/> 
-                                <TableInfoContainer>
-                                    <TableInfoContent>Matrice M600 Matrice M600</TableInfoContent>
-                                    <TableInfoContent>20,000원</TableInfoContent>
-                                    <TableInfoContent>삼성</TableInfoContent>
-                                </TableInfoContainer>
-                            </TableBodyFirst>
-                        </TableBodyCell>
-                        <TableBodyCell>2023-05-17</TableBodyCell>
-                        <TableBodyCell>12345678</TableBodyCell>
-                        <TableBodyCell>1개</TableBodyCell>
-                    </TableBodyRow>
+                    
                 </TableBody>
             </Table>
         </TableContainer>
