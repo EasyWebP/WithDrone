@@ -10,6 +10,7 @@ import Sell from "./pages/sell";
 import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
+import Mypage from "./pages/mypage";
 import Signup from "./pages/signup";
 
 import ProductDetail from "./pages/detail/ProductDetail";
@@ -35,9 +36,6 @@ function App() {
       />
       <Router>
         <Routes>
-          {/*<Route path={PATH.LANDING} element={<MainLayout />}>*/}
-          {/*  <Route element={<Main />} />*/}
-          {/*</Route>*/}
           <Route path={PATH.MAIN} element={<MainLayout />}>
             <Route path="/" element={<Main />} />
             <Route path="/main/:memberId" element={<Main />} />
@@ -60,7 +58,10 @@ function App() {
           <Route path={PATH.DETAIL} element={<MainLayout />}>
             <Route index element={<ProductDetail />} />
           </Route>
-        </Routes>
+          <Route path={PATH.MYPAGE} element={<MainLayout />}>
+          <Route index element={<Mypage />} />
+        </Route>
+      </Routes>
       </Router>
     </QueryClientProvider>
   );
