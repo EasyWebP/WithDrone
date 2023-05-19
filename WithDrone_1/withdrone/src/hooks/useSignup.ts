@@ -9,6 +9,7 @@ import {
   verifyCode,
   authSignup,
   checkNicknameDuplicate,
+  checkEmail,
 } from "../api/auth";
 import toastMsg from "../components/Toast";
 import PATH from "../constants/path";
@@ -27,6 +28,7 @@ export default function useSignup() {
   const [showText, setShowText] = useState(false);
   const [match, setMatch] = useState(false);
   const [exist, setExist] = useState(false);
+  const [emailExist, setEmailExist] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (event: {
@@ -84,6 +86,27 @@ export default function useSignup() {
       setExist(!data.exists);
     }
   };
+  const mutateCheckEmail = useMutation(["checkEmail"], checkEmail, {
+    onSuccess: (data) => {
+      if (data.result) {
+        console.log("asdfasdfads", data.result);
+        setEmailExist(data.result);
+        console.log("gggg", emailExist);
+        toastMsg("가입되어 있는 계정이 존재하므로 로그인 페이지로 이동합니다.");
+        // navigate(PATH.LOGIN);
+      } else {
+        setEmailExist(false);
+        console.log(emailExist);
+      }
+    },
+    onError: ({
+      response: {
+        data: { message },
+      },
+    }) => {
+      toastMsg(message);
+    },
+  });
   const AuthTimer = () => {
     const VALIDTIME = 300;
     const time = useRef<number>(VALIDTIME);
@@ -102,7 +125,9 @@ export default function useSignup() {
     const onStartTimer = () => {
       // Timer start
       setShowText(true);
-      sendEmailCode();
+      if (!emailExist) {
+        sendEmailCode();
+      }
       intervalRef.current = setInterval(decreaseNum, 1000);
       return () => clearInterval(intervalRef.current as NodeJS.Timeout);
     };
@@ -141,5 +166,7 @@ export default function useSignup() {
     isChecked,
     setIsChecked,
     handleCheckboxChange,
+    mutateCheckEmail,
+    emailExist,
   };
 }

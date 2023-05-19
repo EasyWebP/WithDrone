@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Input from "../../components/Input";
 import useSignup from "../../hooks/useSignup";
@@ -30,9 +30,10 @@ export default function Signup() {
     exist,
     isChecked,
     handleCheckboxChange,
+    emailExist,
+    mutateCheckEmail,
   } = useSignup();
   const { min, curTime, onStartTimer } = AuthTimer();
-  const applicationPassword = "1234";
 
   type InputProps = {
     label: string;
@@ -65,7 +66,8 @@ export default function Signup() {
         disabled: false,
         theme: "quaternary",
         onClick: () => {
-          onStartTimer();
+          // mutateCheckEmail.mutate(email);
+          handleClick();
         },
       },
     },
@@ -140,6 +142,18 @@ export default function Signup() {
       },
     },
   ];
+  const handleClick = async () => {
+    const response = await mutateCheckEmail.mutate(email);
+    console.log(response);
+    // if (!response) {
+    //   // 이메일이 서버에 존재하지 않는 경우
+    //   // 이메일을 보내는 로직을 구현
+    // } else {
+    //   // 이메일이 서버에 존재하는 경우
+    //   onStartTimer();
+    // }
+  };
+
   return (
     <S.Wrapper>
       <S.Container>
@@ -220,7 +234,6 @@ export default function Signup() {
                 password,
                 nickName,
                 userName,
-                applicationPassword,
               });
             }}
             disabled={
