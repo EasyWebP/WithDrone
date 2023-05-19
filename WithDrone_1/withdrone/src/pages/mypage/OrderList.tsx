@@ -71,7 +71,8 @@ const TotalContext = styled.p`
     font-style: normal;
     font-weight: 700;
     align-self: flex-end;
-    margin: 5rem 10rem;
+    text-align: right;
+    margin: 5rem 5.5rem;
 `
 
 
