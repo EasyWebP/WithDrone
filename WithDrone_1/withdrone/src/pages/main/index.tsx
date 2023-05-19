@@ -112,8 +112,6 @@ export default function Main() {
     return state.tabReducer;
   });
 
-  console.log("메인에서 누른 tab값", selectedTab);
-
   if (!selectedTab) {
     return null;
   }
