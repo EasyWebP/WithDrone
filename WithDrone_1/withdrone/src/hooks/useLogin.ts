@@ -20,7 +20,7 @@ export default function useLogin() {
       localStorage.setItem("accessToken", tokenInfo.accessToken);
       localStorage.setItem("created", "true");
       localStorage.setItem("memberInfo", memberInfo.id);
-      navigate(`${PATH.MAIN}/${memberInfo.id}`);
+      navigate(`/main/${memberInfo.id}`);
     },
     onError: ({
       response: {
@@ -32,25 +32,6 @@ export default function useLogin() {
   });
 
   const [landingEmail, onChangeLandingEmail] = useInput("");
-
-  // const mutateCheckEmail = useMutation(["checkEmail"], checkEmail, {
-  //   onSuccess: (data) => {
-  //     if (data.exists) {
-  //       toastMsg("가입되어 있는 계정이 존재하므로 로그인 페이지로 이동합니다.");
-  //       navigate(PATH.LOGIN);
-  //     } else {
-  //       toastMsg("가입되어 있는 계정이 없어 회원가입 페이지로 이동합니다.");
-  //       navigate(PATH.SIGNUP, { state: landingEmail });
-  //     }
-  //   },
-  //   onError: ({
-  //     response: {
-  //       data: { message },
-  //     },
-  //   }) => {
-  //     toastMsg(message);
-  //   },
-  // });
 
   return {
     isValidateEmail,

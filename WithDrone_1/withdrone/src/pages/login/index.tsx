@@ -23,8 +23,9 @@ const Title = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
-  div {
+  h1 {
     font-size: 2.3rem;
+    font-family: GmarketSans;
   }
 `;
 const TitleBox = styled.div`
@@ -138,7 +139,6 @@ export default function Login() {
       onSubmit={(e) => {
         e.preventDefault();
         mutateLogin.mutate({ email, password });
-        // navigate(`${PATH.MAIN}/${memberId}`);
       }}
     >
       <TitleBox>
@@ -169,7 +169,7 @@ export default function Login() {
         </LoginBox>
         <hr />
         <Box>
-          <div>회원가입</div>
+          <div onClick={() => navigate(PATH.SIGNUP)}>회원가입</div>
           <div>아이디 찾기</div>
           <div>비밀번호 찾기</div>
         </Box>

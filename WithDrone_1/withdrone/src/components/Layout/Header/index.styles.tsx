@@ -25,6 +25,7 @@ export const LogoBox = styled.div`
   align-items: center;
   div {
     font-size: 2.3rem;
+    font-family: GmarketSans;
   }
 `;
 

@@ -11,6 +11,8 @@ import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
 import Mypage from "./pages/mypage";
+import Signup from "./pages/signup";
+
 import ProductDetail from "./pages/detail/ProductDetail";
 import StyledContainer from "./components/Toast/container";
 
@@ -34,9 +36,6 @@ function App() {
       />
       <Router>
         <Routes>
-          {/*<Route path={PATH.LANDING} element={<MainLayout />}>*/}
-          {/*  <Route element={<Main />} />*/}
-          {/*</Route>*/}
           <Route path={PATH.MAIN} element={<MainLayout />}>
             <Route path="/" element={<Main />} />
             <Route path="/main/:memberId" element={<Main />} />
@@ -52,6 +51,9 @@ function App() {
           </Route>
           <Route path={PATH.LOGIN} element={<DefaultLayout />}>
             <Route index element={<Login />} />
+          </Route>
+          <Route path={PATH.SIGNUP} element={<DefaultLayout />}>
+            <Route index element={<Signup />} />
           </Route>
           <Route path={PATH.DETAIL} element={<MainLayout />}>
             <Route index element={<ProductDetail />} />
