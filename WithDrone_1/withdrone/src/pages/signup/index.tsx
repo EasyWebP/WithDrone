@@ -71,7 +71,6 @@ export default function Signup() {
         theme: "quaternary",
         onClick: () => {
           mutateCheckEmail.mutate(email);
-          // handleClick();
         },
       },
     },

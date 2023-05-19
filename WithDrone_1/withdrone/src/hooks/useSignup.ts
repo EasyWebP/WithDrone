@@ -16,7 +16,6 @@ import PATH from "../constants/path";
 
 export default function useSignup() {
   const navigate = useNavigate();
-
   const { state } = useLocation();
   const [email, onChangeEmail] = useInput(state);
   const [password, onChangePassword] = useInput("");
@@ -91,7 +90,7 @@ export default function useSignup() {
       if (data.result) {
         setEmailExist(data.result);
         toastMsg("가입되어 있는 계정이 존재하므로 로그인 페이지로 이동합니다.");
-        // navigate(PATH.LOGIN);
+        navigate(PATH.LOGIN);
       } else {
         setEmailExist(false);
         console.log(emailExist);
