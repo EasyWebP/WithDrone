@@ -8,6 +8,9 @@ import { fetchMember } from "../../api/user";
 import OrderList from "./OrderList";
 import LikeList from "./LikeList";
 import CartList from "./CartList";
+import toastMsg from "../../components/Toast";
+import { authLogout } from "../../api/auth";
+
 
 const Containers = styled.div`
   width: 100%;
@@ -105,6 +108,8 @@ const TableContainer = styled.div`
 `;
 
 export default function Mypage() {
+  const navigate = useNavigate();
+
   const [member, setMember] = useState({
     username: "김동준",
     nickname: "김도옹준",
@@ -127,6 +132,17 @@ export default function Mypage() {
     { id: 3, label: "장바구니", content: <CartList /> },
   ];
 
+  const handleLogout = () => {
+    authLogout().then((isLogout) => {
+        console.log(isLogout);
+        if(isLogout.result === 'LOGOUT') {
+            localStorage.clear();
+        }
+    })
+    toastMsg("로그아웃 되었습니다");
+    navigate(`/`);
+}
+
   return (
     <Containers>
       <WelcomeContainer>
@@ -138,7 +154,7 @@ export default function Mypage() {
           <WelcomeContext>{member.email}</WelcomeContext>
         </LeftContainer>
         <RightContainer>
-          <LogoutButton>로그아웃</LogoutButton>
+          <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
         </RightContainer>
       </WelcomeContainer>
 
