@@ -16,6 +16,7 @@ import { setSelectTab } from "../../store/tabReducer";
 const Containers = styled.div`
   width: 100%;
   height: 100%;
+  overflow: visible;
 `;
 const Top = styled.div`
   position: relative;
@@ -30,17 +31,12 @@ const Top = styled.div`
     font-size: 3.5rem;
     font-weight: bold;
   }
-  overflow: visible;
 `;
 const Img = styled.img`
   position: absolute;
-  //left: 0;
-  //top: 0;
   height: 53rem;
-  //width: 100%;
-  width: 1920px;
-  margin-left: -240px; /* -480px / 2 */
-  margin-right: -240px;
+  width: 1440px;
+  margin-left: -180px;
 `;
 const StartButton = styled.button`
   position: absolute;

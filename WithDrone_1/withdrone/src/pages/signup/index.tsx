@@ -22,8 +22,8 @@ export default function Signup() {
     mutateSignup,
     checkEmailCode,
     checkNickname,
-    nickName,
-    userName,
+    nickname,
+    username,
     AuthTimer,
     showText,
     match,
@@ -119,7 +119,7 @@ export default function Signup() {
     {
       label: "이름",
       size: 46.5,
-      value: userName,
+      value: username,
       onChange: onChangeName,
       type: "text",
       placeholder: "",
@@ -128,7 +128,7 @@ export default function Signup() {
     {
       label: "닉네임",
       size: 38.38,
-      value: nickName,
+      value: nickname,
       type: "text",
       onChange: onChangeNickname,
       placeholder: "",
@@ -223,16 +223,16 @@ export default function Signup() {
               mutateSignup.mutate({
                 email,
                 password,
-                nickName,
-                userName,
+                nickname,
+                username,
               });
             }}
             disabled={
               !(
                 isValidate &&
                 password === passwordCheck &&
-                nickName.length > 1 &&
-                userName.length > 0 &&
+                nickname.length > 1 &&
+                username.length > 0 &&
                 match &&
                 exist &&
                 isChecked &&

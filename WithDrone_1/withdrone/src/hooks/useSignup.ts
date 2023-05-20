@@ -19,8 +19,8 @@ export default function useSignup() {
   const { state } = useLocation();
   const [email, onChangeEmail] = useInput(state);
   const [password, onChangePassword] = useInput("");
-  const [userName, onChangeName] = useInput("");
-  const [nickName, onChangeNickname] = useInput("");
+  const [username, onChangeName] = useInput("");
+  const [nickname, onChangeNickname] = useInput("");
   const [passwordCheck, onChangePasswordCheck] = useInput("");
   const [isValidate, setIsValidate] = useState(true);
   const [code, setCode] = useInput("");
@@ -37,9 +37,9 @@ export default function useSignup() {
   };
   useEffect(() => {
     setIsValidate(
-      REGEX.PASSWORD.test(password) || REGEX.PASSWORD.test(nickName)
+      REGEX.PASSWORD.test(password) || REGEX.PASSWORD.test(nickname)
     );
-  }, [password, passwordCheck, nickName]);
+  }, [password, passwordCheck, nickname]);
 
   const mutateSignup = useMutation(["signUp"], authSignup, {
     onSuccess: () => {
@@ -75,7 +75,7 @@ export default function useSignup() {
   };
 
   const checkNickname = async () => {
-    const data = await checkNicknameDuplicate(nickName);
+    const data = await checkNicknameDuplicate(nickname);
 
     if (!data.exists) {
       toastMsg("사용 가능한 닉네임 입니다.");
@@ -144,8 +144,8 @@ export default function useSignup() {
     onChangePasswordCheck,
     code,
     setCode,
-    userName,
-    nickName,
+    username,
+    nickname,
     onChangeName,
     onChangeNickname,
     mutateSignup,
