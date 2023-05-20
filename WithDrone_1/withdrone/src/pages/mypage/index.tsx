@@ -12,6 +12,7 @@ import toastMsg from "../../components/Toast";
 import { authLogout } from "../../api/auth";
 import useLogout from "../../hooks/useLogout";
 import useMypage from "../../hooks/useMypage";
+import NoExist from "../noExist";
 
 const Containers = styled.div`
   width: 100%;
@@ -29,9 +30,7 @@ const WelcomeContainer = styled.div`
   background-color: #0f67ec;
   opacity: 0.77;
   height: 23.75rem;
-  width: 1440px;
-  margin-left: -240px; /* -480px / 2 */
-  margin-right: -240px;
+  width: 100%;
 `;
 
 const LeftContainer = styled.div`
@@ -50,7 +49,7 @@ const WelcomeContext = styled.p`
   font-size: 2.5rem;
   line-height: 5rem;
   color: white;
-  margin-left: 7.5rem;
+  margin-left: 12rem;
 `;
 
 const RightContainer = styled.div`
@@ -69,7 +68,7 @@ const LogoutButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   margin-top: 4rem;
-  margin-right: 7.5rem;
+  margin-right: 12rem;
   &:hover {
     color: ${COLORS.GREY[400]};
   }
@@ -80,6 +79,7 @@ const LogoutButton = styled.button`
 const TabContainer = styled.div`
   display: flex;
   align-self: flex-start;
+  //border: 1px solid red;
 `;
 
 const TabMenu = styled.ul`
@@ -100,7 +100,7 @@ const TabMenuItem = styled.li`
 
 ///////////////////////
 const TableContainer = styled.div`
-  width: 120%;
+  width: 82%;
   height: 50rem;
   //   overflow-x: auto;
   margin-top: 4rem;
@@ -112,9 +112,9 @@ export default function Mypage() {
   const { handleLogout } = useMypage();
 
   const [member, setMember] = useState({
-    username: "김동준",
-    nickname: "김도옹준",
-    email: "dongjunkim99@icloud.com",
+    username: null,
+    nickname: null,
+    email: null,
   }); // 초기값 없으면 비동기라 null 될수있다 에러뜸
 
   useEffect(() => {
@@ -135,43 +135,48 @@ export default function Mypage() {
 
   return (
     <Containers>
-      <WelcomeContainer>
-        <LeftContainer>
-          <WelcomeContext>{member.nickname}</WelcomeContext>
-          <WelcomeContext>
-            {member.username}님의 이번 달 쇼핑 목록입니다
-          </WelcomeContext>
-          <WelcomeContext>{member.email}</WelcomeContext>
-        </LeftContainer>
-        <RightContainer>
-          <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
-        </RightContainer>
-      </WelcomeContainer>
-
-      <TableContainer>
-        <TabContainer>
-          <TabMenu>
-            {tabs.map((tab) => {
-              //탭 이름 - 1) 주문내역 조회에는 마진 주기 2) 클릭한 탭은 색깔 달리 하기
-              let tabstyle: { paddingLeft?: string; color?: string } =
-                tab.id === 1 ? { paddingLeft: "0rem" } : {};
-              if (selectedTabs !== tab.id) {
-                tabstyle = { ...tabstyle, color: "#D9D9D9" };
-              }
-              return (
-                <TabMenuItem
-                  key={tab.id}
-                  onClick={() => setSelectedTabs(tab.id)}
-                  style={tabstyle}
-                >
-                  {tab.label}
-                </TabMenuItem>
-              );
-            })}
-          </TabMenu>
-        </TabContainer>
-        {tabs.find((tab) => tab.id === selectedTabs)?.content}
-      </TableContainer>
+      {member.nickname == null ? (
+        <NoExist />
+      ) : (
+        <>
+          <WelcomeContainer>
+            <LeftContainer>
+              <WelcomeContext>{member.nickname}</WelcomeContext>
+              <WelcomeContext>
+                {member.username}님의 이번 달 쇼핑 목록입니다
+              </WelcomeContext>
+              <WelcomeContext>{member.email}</WelcomeContext>
+            </LeftContainer>
+            <RightContainer>
+              <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
+            </RightContainer>
+          </WelcomeContainer>
+          <TableContainer>
+            <TabContainer>
+              <TabMenu>
+                {tabs.map((tab) => {
+                  //탭 이름 - 1) 주문내역 조회에는 마진 주기 2) 클릭한 탭은 색깔 달리 하기
+                  let tabstyle: { paddingLeft?: string; color?: string } =
+                    tab.id === 1 ? { paddingLeft: "0rem" } : {};
+                  if (selectedTabs !== tab.id) {
+                    tabstyle = { ...tabstyle, color: "#D9D9D9" };
+                  }
+                  return (
+                    <TabMenuItem
+                      key={tab.id}
+                      onClick={() => setSelectedTabs(tab.id)}
+                      style={tabstyle}
+                    >
+                      {tab.label}
+                    </TabMenuItem>
+                  );
+                })}
+              </TabMenu>
+            </TabContainer>
+            {tabs.find((tab) => tab.id === selectedTabs)?.content}
+          </TableContainer>
+        </>
+      )}
     </Containers>
   );
 }
