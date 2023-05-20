@@ -4,6 +4,7 @@ import COLORS from "../constants/color";
 export const Containers = styled.div`
   width: 100%;
   height: 100%;
+  border: 1px solid red;
 `;
 
 export const ProductContainer = styled.div`
@@ -11,6 +12,7 @@ export const ProductContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  border: 1px solid blue;
 `;
 
 export const Product = styled.div`
@@ -18,6 +20,7 @@ export const Product = styled.div`
   height: 200px;
   display: block;
   background-color: ${COLORS.GREY[200]};
+  border: 1px solid black;
 `;
 
 export const ProductImgDiv = styled.div`

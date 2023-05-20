@@ -6,11 +6,11 @@ import Educational from "./Educational";
 import Filming from "./Filming";
 import Hobby from "./Hobby";
 import COLORS from "../../constants/color";
+import Ad from "../../img/Ad.png";
 
 const Containers = styled.div`
   width: 100%;
   height: 100%;
-  border: 1px solid transparent;
 `;
 
 const TabContainer = styled.ul`
@@ -27,6 +27,7 @@ const TabContainer = styled.ul`
   margin-top: 6.25rem;
   margin-left: 7rem;
   cursor: pointer;
+  border: 1px solid blue;
 `;
 
 const TabMenu = styled.div`
@@ -35,6 +36,18 @@ const TabMenu = styled.div`
   padding: 0.625rem;
   font-size: 1.875rem;
   transition: 0.5s;
+`;
+
+const AdContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  opacity: 0.77;
+  img {
+    width: 100%;
+  }
 `;
 
 export default function Sell() {
@@ -47,9 +60,16 @@ export default function Sell() {
     { id: 2, label: "교육용", content: <Educational /> },
     { id: 3, label: "촬영용", content: <Filming /> },
     { id: 4, label: "취미용", content: <Hobby /> },
+    { id: 5, label: "취미용", content: <Hobby /> },
+    { id: 6, label: "취미용", content: <Hobby /> },
+    { id: 7, label: "취미용", content: <Hobby /> },
   ];
   return (
     <Containers>
+      <AdContainer>
+        <img src={Ad} />
+      </AdContainer>
+
       <TabContainer>
         {/* Map tab data and render tab menu for each tab */}
         {tabs.map((tab) => (

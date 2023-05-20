@@ -17,7 +17,7 @@ const Full = styled.div`
 
 const Inner = styled.div`
   position: relative;
-  width: 75%;
+  width: 100%;
   padding-top: 5.5rem;
   background-color: white;
   min-height: calc(100vh - 80px);

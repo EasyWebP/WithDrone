@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 5.5rem;
   background-color: white;
   display: flex;
-  gap: 24rem;
+  gap: 40rem;
   align-items: center;
   justify-content: center;
   border-bottom: 0.1rem solid ${COLORS.GREY[200]};
@@ -18,7 +18,6 @@ export const Container = styled.div`
 export const LogoBox = styled.div`
   //position: absolute;
   //left: 0;
-  //margin-left: -14rem;
   display: flex;
   gap: 10px;
   cursor: pointer;
