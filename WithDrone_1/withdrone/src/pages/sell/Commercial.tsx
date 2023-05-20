@@ -11,11 +11,7 @@ export default function Commercial() {
           .filter((product) => product.category === "상업용")
           .map((product, index) => (
             // Use 'Link' to navigate url, hand over detail information to detail page.
-            <Link
-              to={`/detail/${product.keys}`}
-              state={{ product: product }}
-              style={{ width: "15%", height: "15%", margin: "2% 0% 5% 7%" }}
-            >
+            <Link to={`/detail/${product.keys}`} state={{ product: product }}>
               <P.Product>
                 <P.ProductImgDiv>
                   <P.ProductImg src={product.image} alt={product.name} />
