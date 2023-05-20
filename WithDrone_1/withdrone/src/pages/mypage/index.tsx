@@ -11,6 +11,7 @@ import CartList from "./CartList";
 import toastMsg from "../../components/Toast";
 import { authLogout } from "../../api/auth";
 import useLogout from "../../hooks/useLogout";
+import useMypage from "../../hooks/useMypage";
 
 const Containers = styled.div`
   width: 100%;
@@ -108,10 +109,8 @@ const TableContainer = styled.div`
 `;
 
 export default function Mypage() {
-  const handleLogout = () => {
-    useLogout(); // useLogout 훅을 호출하여 리턴값이 없는 동작 실행
-  };
-  
+  const { handleLogout } = useMypage();
+
   const [member, setMember] = useState({
     username: "김동준",
     nickname: "김도옹준",
