@@ -17,11 +17,7 @@ export default function Filming() {
         {droneList
           .filter((product) => product.category === "촬영용")
           .map((product, index) => (
-            <Link
-              to={`/detail/${product.keys}`}
-              state={{ product: product }}
-              style={{ width: "15%", height: "15%", margin: "2% 0% 5% 7%" }}
-            >
+            <Link to={`/detail/${product.keys}`} state={{ product: product }}>
               <P.Product>
                 <P.ProductImgDiv>
                   <P.ProductImg src={product.image} alt={product.name} />

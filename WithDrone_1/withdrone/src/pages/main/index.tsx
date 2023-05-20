@@ -25,7 +25,7 @@ const Top = styled.div`
   h1 {
     position: absolute;
     right: 0;
-    margin: 15rem 0 0 0;
+    margin: 15rem 10rem 0 0;
     z-index: 1;
     color: white;
     font-size: 3.5rem;
@@ -35,13 +35,12 @@ const Top = styled.div`
 const Img = styled.img`
   position: absolute;
   height: 53rem;
-  width: 1440px;
-  margin-left: -180px;
+  width: 100%;
 `;
 const StartButton = styled.button`
   position: absolute;
   right: 0;
-  margin: 30rem 21.5rem 0 0;
+  margin: 30rem 31.5rem 0 0;
   padding: 1rem;
   z-index: 1;
   border-radius: 10px;
