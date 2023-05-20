@@ -22,10 +22,12 @@ const WelcomeContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   background-color: #0f67ec;
   opacity: 0.77;
   height: 23.75rem;
+  width: 1440px;
+  margin-left: -240px; /* -480px / 2 */
+  margin-right: -240px;
 `;
 
 const LeftContainer = styled.div`
@@ -44,7 +46,7 @@ const WelcomeContext = styled.p`
   font-size: 2.5rem;
   line-height: 5rem;
   color: white;
-  margin-left: 3rem;
+  margin-left: 7.5rem;
 `;
 
 const RightContainer = styled.div`
@@ -56,14 +58,17 @@ const RightContainer = styled.div`
 `;
 
 const LogoutButton = styled.button`
-  background-color: red;
+  background-color: transparent;
   color: white;
   border: none;
   padding: 10px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 2rem;
-  margin-right: 2rem;
+  margin-top: 4rem;
+  margin-right: 7.5rem;
+  &:hover {
+    color: ${COLORS.GREY[400]};
+  }
 `;
 
 ////////////////////////
@@ -91,10 +96,12 @@ const TabMenuItem = styled.li`
 
 ///////////////////////
 const TableContainer = styled.div`
-  width: 90%;
+  width: 120%;
+  height: 50rem;
   //   overflow-x: auto;
   margin-top: 4rem;
-  height: auto;
+  //height: auto; // 50rem을 기본으로 두고 그 이상 부터는 auto로 나중에 추가
+  //border: 1px solid red;
 `;
 
 export default function Mypage() {
@@ -140,15 +147,17 @@ export default function Mypage() {
           <TabMenu>
             {tabs.map((tab) => {
               //탭 이름 - 1) 주문내역 조회에는 마진 주기 2) 클릭한 탭은 색깔 달리 하기
-              let tabstyle : {paddingLeft?: string, color?: string} = tab.id === 1 ? { paddingLeft: "0rem" } : {}; 
-              if(selectedTabs !== tab.id) {
-                tabstyle = {...tabstyle, color: "#D9D9D9"}
+              let tabstyle: { paddingLeft?: string; color?: string } =
+                tab.id === 1 ? { paddingLeft: "0rem" } : {};
+              if (selectedTabs !== tab.id) {
+                tabstyle = { ...tabstyle, color: "#D9D9D9" };
               }
               return (
-                <TabMenuItem 
-                    key={tab.id} 
-                    onClick={()=>setSelectedTabs(tab.id)}
-                    style={tabstyle}>
+                <TabMenuItem
+                  key={tab.id}
+                  onClick={() => setSelectedTabs(tab.id)}
+                  style={tabstyle}
+                >
                   {tab.label}
                 </TabMenuItem>
               );
