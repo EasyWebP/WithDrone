@@ -72,7 +72,7 @@ const SelectContainer = styled.div`
   gap: 10px;
 `;
 const Line = styled.div`
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   justify-content: center;
   height: 1px;
   width: 85%;
