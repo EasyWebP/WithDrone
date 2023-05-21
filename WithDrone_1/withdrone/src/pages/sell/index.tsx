@@ -52,6 +52,10 @@ const AdContainer = styled.div`
     width: 100%;
   }
 `;
+const MidContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export default function Sell() {
   // Use hooks to get the location state and set the selected tab.
@@ -82,7 +86,7 @@ export default function Sell() {
       <AdContainer>
         <img src={Ad} />
       </AdContainer>
-
+      <MidContainer></MidContainer>
       <TabContainer>
         {/* Map tab data and render tab menu for each tab */}
         {tabs.map((tab) => (
