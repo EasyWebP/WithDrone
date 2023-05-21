@@ -19,10 +19,6 @@ export function Normal() {
     />
   );
 }
-
-export function Basic() {
-  return <IconButton title="윤채현님의 가계부" theme="basic" iconName="book" />;
-}
 export function Reverse() {
   return (
     <IconButton reverseIconButton title="작성" theme="normal" iconName="book" />
@@ -50,7 +46,14 @@ export function popular() {
   );
 }
 export function newest() {
-  return <IconButton title="최신순" theme="normal" iconSize="0.8rem" />;
+  return (
+    <IconButton
+      title="최신순"
+      theme="normal"
+      iconName="check"
+      iconSize="0.8rem"
+    />
+  );
 }
 export function OnlyBook() {
   return <IconButton iconOnly iconName="book" />;
