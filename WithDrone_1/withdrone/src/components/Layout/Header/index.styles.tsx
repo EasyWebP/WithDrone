@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import COLORS from "../../../constants/color";
+import { startTransition } from "react";
+import IconButton from "../../IconButton";
 
 export const Container = styled.div`
   width: 100%;
@@ -54,4 +56,8 @@ export const SignButton = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
   width: 11rem;
+`;
+
+export const StyledIconButton = styled(IconButton)`
+  font-size: 1.5rem;
 `;

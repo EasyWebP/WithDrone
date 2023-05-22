@@ -7,6 +7,7 @@ import logo from "../../img/drone.png";
 import useLogin from "../../hooks/useLogin";
 import PATH from "../../constants/path";
 import toastMsg from "../../components/Toast";
+import SNSLogin from "./sns";
 
 const Containers = styled.div`
   width: 100%;
@@ -50,7 +51,6 @@ const LoginForm = styled.form`
   gap: 1rem;
   border-radius: 5px;
   background-color: #fff;
-  //border: 1px solid red;
   hr {
     color: black;
     height: 2px;
@@ -177,6 +177,7 @@ export default function Login() {
           로그인
         </SubmitButton>
       </LoginForm>
+      <SNSLogin />
     </Containers>
   );
 }
