@@ -44,22 +44,13 @@ const BuyContainer = styled.div`
   display: flex;
   margin-right: 3.7rem;
   margin-top: 2rem;
+  height: 5rem;
 `;
 
-const BuyInput = styled.input`
-  margin-right: 3.7rem;
-  height: 5rem;
-  // flex: 0 0 2;
-  width: 8rem;
-  text-align: center;
-  font-size: 2rem;
-  
-`
-
 const BuyButton = styled.button`
-  flex:1;
+  flex: 1;
   margin-right: 3rem;
-  background-color: #3583F7;
+  background-color: #3583f7;
   color: white;
   border: none;
   border-radius: 4rem;
@@ -68,6 +59,63 @@ const BuyButton = styled.button`
   height: 5rem;
   font-size: 2rem;
 `;
+
+///////
+
+const InputContainer = styled.div`
+  display: flex;
+  margin-right: 3.7rem;
+  height: 5rem;
+  flex: 0 0;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+`;
+
+const NumberInput = styled.input`
+  height: 4.6rem; //
+  padding-right: 0;
+  width: 7rem;
+  text-align: center;
+  font-size: 2rem;
+  box-sizing: border-box;
+  border: none;
+`;
+
+const InputButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 4rem;
+  height: 100%;
+
+  & button {
+    width: 100%;
+    height: 50%;
+    // border: none;
+    background-color: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+`;
+
+const IncrementButton = styled.button`
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 0.1rem;
+`;
+
+const DecrementButton = styled.button`
+  border: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 0.1rem;
+`;
+
+//////
 
 const Excontainer = styled.div`
   display: flex;
@@ -114,7 +162,6 @@ const Td2 = styled.td`
   font-style: normal;
   font-weight: 400;
   font-size: 1.7rem;
-
 `;
 
 const BottomContainer = styled.div`
@@ -133,13 +180,12 @@ const DetailTitle = styled.div`
   color: #000000;
   margin-top: 3rem;
   margin-bottom: 3rem;
-`
+`;
 
 const BottomImage = styled.img`
   width: 100%;
   // height: 40rem;
 `;
-
 
 export default function ProductDetail() {
   //Use hook 'useLocation' to get detail information of drone from components that clicked in sell(or rent) page.
@@ -173,8 +219,13 @@ export default function ProductDetail() {
             <Button1>장바구니 담기</Button1>
           </ButtonContainer>
           <BuyContainer>
-            <BuyInput type="number" placeholder="1"/>
-            
+            <InputContainer>
+              <NumberInput placeholder="1" />
+              <InputButtonContainer>
+                <IncrementButton>ᐱ</IncrementButton>
+                <DecrementButton>ᐯ</DecrementButton>
+              </InputButtonContainer>
+            </InputContainer>
             <BuyButton>구매하기</BuyButton>
           </BuyContainer>
         </RightContainer>
@@ -182,8 +233,8 @@ export default function ProductDetail() {
       <BottomContainer>
         <Title>{product.name}</Title>
         <DetailTitle>제품 상세 정보</DetailTitle>
-        <BottomImage src={product.image}/>
-        <BottomImage src={product.image}/>
+        <BottomImage src={product.image} />
+        <BottomImage src={product.image} />
       </BottomContainer>
     </Containers>
   );
