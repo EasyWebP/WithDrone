@@ -4,56 +4,134 @@ import { useLocation } from "react-router-dom";
 import COLORS from "../../constants/color";
 
 const Containers = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  padding: 4rem;
+`;
+
+const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  width: 85%;
 `;
 
 const Image1 = styled.img`
-  width: 480px;
-  height: 460px;
-  border: 1px solid ${COLORS.GREY[200]};
+  width: 47%;
+  height: 40rem;
   margin-right: 2rem;
+`;
+
+const RightContainer = styled.div`
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  margin-top: 2rem;
+`;
+
+const Button1 = styled.button`
+  margin-right: 3.7rem;
+  height: 5rem;
+`;
+
+const BuyContainer = styled.div`
+  display: flex;
+  margin-right: 3.7rem;
+  margin-top: 2rem;
+`;
+
+const BuyInput = styled.input`
+  margin-right: 3.7rem;
+  height: 5rem;
+  // flex: 0 0 2;
+  width: 8rem;
+  text-align: center;
+`;
+
+const BuyButton = styled.button`
+  flex:1;
+  margin-right: 3rem;
+  background-color: #3583F7;
+  color: white;
+  border: none;
+  border-radius: 4rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  height: 5rem;
+  font-size: 2rem;
 `;
 
 const Excontainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 480px;
-  margin-left: 20px;
-  margin-top: 40px;
+  border: 1px solid ${COLORS.GREY[200]};
+  padding: 3rem;
+  height: 32rem;
+  justify-self: flex-start;
+  width: 87%;
 `;
 
 const Title = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 2.5rem;
   color: #000000;
 `;
 
 const Explain = styled.table`
-  margin-top: 40px;
+  margin-top: 4rem;
   border: none;
-  border-spacing: 0px 20px;
+  border-spacing: 0px 2rem;
 `;
 
 const Tr = styled.tr``;
 
 const Td = styled.td`
-  width: 15px;
+  width: 1.5rem;
   vertical-align: top;
-  color: #a5a3a3;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  margin-right: 6rem;
 `;
 
 const Td2 = styled.td`
-  width: 15px;
+  width: 1.5rem;
   vertical-align: top;
   white-space: pre-line;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+`;
+
+const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  margin-top: 5rem;
+  width: 85%;
+`;
+
+const DetailTitle = styled.div`
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #000000;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+`
+
+const BottomImage = styled.img`
+  width: 100%;
+  // height: 40rem;
 `;
 
 export default function ProductDetail() {
@@ -63,24 +141,42 @@ export default function ProductDetail() {
 
   return (
     <Containers>
-      <Image1 src={product.image} />
-      <Excontainer>
+      <FlexContainer>
+        <Image1 src={product.image} />
+        <RightContainer>
+          <Excontainer>
+            <Title>{product.name}</Title>
+            <Explain>
+              <Tr>
+                <Td>판매가</Td>
+                <Td2>{product.price}</Td2>
+              </Tr>
+              <Tr>
+                <Td>제조사</Td>
+                <Td2>{product.companyName}</Td2>
+              </Tr>
+              <Tr>
+                <Td>배송비</Td>
+                <Td2>3000원</Td2>
+              </Tr>
+            </Explain>
+          </Excontainer>
+          <ButtonContainer>
+            <Button1>찜 하기</Button1>
+            <Button1>장바구니 담기</Button1>
+          </ButtonContainer>
+          <BuyContainer>
+            <BuyInput type="number" placeholder="1"/>
+            <BuyButton>구매하기</BuyButton>
+          </BuyContainer>
+        </RightContainer>
+      </FlexContainer>
+      <BottomContainer>
         <Title>{product.name}</Title>
-        <Explain>
-          <Tr>
-            <Td>판매가</Td>
-            <Td2>{product.price}</Td2>
-          </Tr>
-          <Tr>
-            <Td>제조사</Td>
-            <Td2>{product.companyName}</Td2>
-          </Tr>
-          <Tr>
-            <Td>제품 설명</Td>
-            <Td2>{product.description}</Td2>
-          </Tr>
-        </Explain>
-      </Excontainer>
+        <DetailTitle>제품 상세 정보</DetailTitle>
+        <BottomImage src={product.image}/>
+        <BottomImage src={product.image}/>
+      </BottomContainer>
     </Containers>
   );
 }
