@@ -14,14 +14,15 @@ import internal from "stream";
 
 export default function Social() {
   const {
-    onChangeEmail,
-    onChangeName,
     onChangeNickname,
     checkNickname,
     nickname,
+    email,
+    loginType,
+    username,
     exist,
     handleCheckboxChange,
-    mutateUpdateNickname,
+    mutateSocialLogin,
     isChecked,
   } = useSocialSignup();
   // const applicationPassword = "1234";
@@ -33,11 +34,6 @@ export default function Social() {
     email: "string";
   }
 
-  const { data } = useQuery<IUserInfo | undefined>([QUERYKEYS.LOAD_ME], loadMe);
-
-  if (!data) {
-    return null;
-  }
   type InputProps = {
     label: string;
     size: number;
@@ -59,8 +55,7 @@ export default function Social() {
     {
       label: "이메일 주소",
       size: 38.38,
-      value: data.email,
-      onChange: onChangeEmail,
+      value: email,
       type: "email",
       placeholder: "",
       readOnly: true,
@@ -74,11 +69,10 @@ export default function Social() {
     {
       label: "이름",
       size: 46.5,
-      value: data.username,
-      onChange: onChangeName,
+      value: username,
       type: "text",
       placeholder: "",
-      readOnly: false,
+      readOnly: true,
     },
     {
       label: "닉네임",
@@ -143,11 +137,12 @@ export default function Social() {
             title="계정 만들기"
             width="13.5rem"
             onClick={() => {
-              mutateUpdateNickname.mutate({
+              mutateSocialLogin.mutate({
+                email,
+                username,
                 nickname,
+                loginType,
               });
-              localStorage.setItem("created", "false");
-              navigate(`/main/${data.id}`);
             }}
             disabled={!(nickname.length > 1 && exist && isChecked)}
           />

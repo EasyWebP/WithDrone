@@ -56,34 +56,23 @@ export default function SNSLogin() {
   const GOOGLE_AUTH_URL = `http://ec2-43-201-28-128.ap-northeast-2.compute.amazonaws.com/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`;
   const navigate = useNavigate();
 
-  const loadData = async () => {
-    try {
-      await loadMe();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log("sdjfawoejfweoijfweojif");
   useEffect(() => {
-    // URL에서 인가 코드 값을 추출합니다.
+    // URL에서 인가 코드 값을 추출.
     const searchParams = new URLSearchParams(window.location.search);
     const authCode = searchParams.get("token");
     const authCreate = searchParams.get("created");
-    const authNick = searchParams.get("nickname");
+    const username = searchParams.get("username");
+    const loginType = searchParams.get("loginType");
+    const email = searchParams.get("email");
 
-    console.log(authCreate);
-    console.log("token", authCode);
-    console.log("nick", authNick);
-
-    if (typeof authCode === "string" && typeof authCreate === "string") {
-      console.log(authCreate);
-      localStorage.setItem("accessToken", authCode);
-      loadData();
+    if (typeof authCreate === "string") {
       if (authCreate === "false") {
+        if (typeof authCode === "string") {
+          localStorage.setItem("accessToken", authCode);
+        }
         localStorage.setItem("created", authCreate);
-        loadData();
       } else {
-        navigate(PATH.SOCIAL);
+        navigate(PATH.SOCIAL, { state: { username, loginType, email } });
       }
     }
   }, []);

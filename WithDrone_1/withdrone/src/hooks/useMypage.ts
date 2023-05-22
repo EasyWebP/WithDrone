@@ -9,11 +9,11 @@ export default function useMypage() {
       console.log(isLogout);
       if (isLogout.result === "LOGOUT") {
         localStorage.clear();
+        navigate(`/`);
       }
     });
 
-    toastMsg("로그아웃 되었습니다");
-    navigate(`/`);
+    toastMsg("로그아웃");
   };
 
   return { handleLogout };
