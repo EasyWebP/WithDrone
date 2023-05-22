@@ -52,7 +52,9 @@ const BuyInput = styled.input`
   // flex: 0 0 2;
   width: 8rem;
   text-align: center;
-`;
+  font-size: 2rem;
+  
+`
 
 const BuyButton = styled.button`
   flex:1;
@@ -70,11 +72,12 @@ const BuyButton = styled.button`
 const Excontainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid ${COLORS.GREY[200]};
   padding: 3rem;
-  height: 32rem;
+  // height: 32rem;
   justify-self: flex-start;
   width: 87%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 `;
 
 const Title = styled.div`
@@ -88,18 +91,19 @@ const Title = styled.div`
 const Explain = styled.table`
   margin-top: 4rem;
   border: none;
-  border-spacing: 0px 2rem;
+  border-spacing: 0 2rem;
 `;
 
 const Tr = styled.tr``;
 
 const Td = styled.td`
-  width: 1.5rem;
+  width: 2.4rem;
   vertical-align: top;
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   margin-right: 6rem;
+  font-size: 1.7rem;
 `;
 
 const Td2 = styled.td`
@@ -109,6 +113,8 @@ const Td2 = styled.td`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
+  font-size: 1.7rem;
+
 `;
 
 const BottomContainer = styled.div`
@@ -133,6 +139,7 @@ const BottomImage = styled.img`
   width: 100%;
   // height: 40rem;
 `;
+
 
 export default function ProductDetail() {
   //Use hook 'useLocation' to get detail information of drone from components that clicked in sell(or rent) page.
@@ -167,6 +174,7 @@ export default function ProductDetail() {
           </ButtonContainer>
           <BuyContainer>
             <BuyInput type="number" placeholder="1"/>
+            
             <BuyButton>구매하기</BuyButton>
           </BuyContainer>
         </RightContainer>
