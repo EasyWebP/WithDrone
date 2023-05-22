@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import * as P from "../../components/Product";
 import droneList from "../../constants/droneList";
+import { fetchProduct } from "../../api/product";
+import { useEffect } from "react";
 
 export default function Drone() {
+  // useEffect(() => {
+  //   fetchProduct("true").then((fetchedData) => {
+  //     console.log("상품 정보", fetchedData);
+  //   });
+  // }, []);
+  
   return (
     <P.Containers>
       <P.ProductContainer>

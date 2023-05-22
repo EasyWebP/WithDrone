@@ -12,6 +12,7 @@ const KAKAO = "social_login/kakao";
 const ASSET = "asset";
 const ITEM = "item";
 const LOGOUT = "/logout";
+const PRODUCT = "/products"
 
 const API = {
   BASE_URL: `${BASE_URL}`,
@@ -30,5 +31,7 @@ const API = {
   LOGOUT: `${LOGOUT}`,
   REISSUE: `${AUTH}reissue`,
   SOCIAL_LOGIN: `${AUTH}social-login`,
+  PRODUCT: `${PRODUCT}`,
 };
+
 export default API;
