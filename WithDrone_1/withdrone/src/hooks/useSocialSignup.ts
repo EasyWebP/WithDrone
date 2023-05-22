@@ -12,8 +12,8 @@ import QUERYKEYS from "../constants/querykey";
 export default function useSocialSignup() {
   const { state } = useLocation();
   const [email, onChangeEmail] = useInput(state);
-  const [userName, onChangeName] = useInput("");
-  const [nickName, onChangeNickname] = useInput("");
+  const [username, onChangeName] = useInput("");
+  const [nickname, onChangeNickname] = useInput("");
   const [isValidate, setIsValidate] = useState(true);
   const [code, setCode] = useInput("");
   const [match, setMatch] = useState(false);
@@ -27,11 +27,11 @@ export default function useSocialSignup() {
     setIsChecked(event.target.checked);
   };
   useEffect(() => {
-    setIsValidate(REGEX.PASSWORD.test(nickName));
-  }, [nickName]);
+    setIsValidate(REGEX.PASSWORD.test(nickname));
+  }, [nickname]);
 
   const checkNickname = async () => {
-    const data = await checkNicknameDuplicate(nickName);
+    const data = await checkNicknameDuplicate(nickname);
 
     if (!data.exists) {
       toastMsg("사용 가능한 닉네임 입니다.");
@@ -61,8 +61,8 @@ export default function useSocialSignup() {
     onChangeEmail,
     code,
     setCode,
-    userName,
-    nickName,
+    username,
+    nickname,
     onChangeName,
     onChangeNickname,
     checkNickname,
