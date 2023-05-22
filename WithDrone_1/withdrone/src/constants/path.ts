@@ -6,7 +6,9 @@ const PATH = {
   DETAIL: `/detail/:productId`,
   RENT: "/rent",
   INTRO: "/intro",
-  MYPAGE: "/mypage"
+  MYPAGE: "/mypage",
+  SOCIAL: "/social",
+  USER_MAIN: "/main",
 } as const;
 
 export default PATH;

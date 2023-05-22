@@ -12,6 +12,7 @@ import Rent from "./pages/rent";
 import Login from "./pages/login";
 import Mypage from "./pages/mypage";
 import Signup from "./pages/signup";
+import Social from "./pages/social";
 
 import ProductDetail from "./pages/detail/ProductDetail";
 import StyledContainer from "./components/Toast/container";
@@ -40,6 +41,9 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/main/:memberId" element={<Main />} />
           </Route>
+          <Route path={PATH.SOCIAL} element={<DefaultLayout />}>
+            <Route index element={<Social />} />
+          </Route>
           <Route path={PATH.SELL} element={<MainLayout />}>
             <Route index element={<Sell />} />
           </Route>
@@ -59,9 +63,9 @@ function App() {
             <Route index element={<ProductDetail />} />
           </Route>
           <Route path={PATH.MYPAGE} element={<MainLayout />}>
-          <Route index element={<Mypage />} />
-        </Route>
-      </Routes>
+            <Route index element={<Mypage />} />
+          </Route>
+        </Routes>
       </Router>
     </QueryClientProvider>
   );

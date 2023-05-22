@@ -12,6 +12,8 @@ import Sell from "../sell";
 import { useDispatch, useSelector } from "react-redux";
 import { Rootstate } from "../../index";
 import { setSelectTab } from "../../store/tabReducer";
+import IconButton from "../../components/IconButton";
+import Icon from "../../components/Icon";
 
 const Containers = styled.div`
   width: 100%;
@@ -129,7 +131,7 @@ export default function Main() {
       <Bottom>
         <h1>나에게 필요한 드론을 선택할 수 있어요</h1>
         <h3>목적에 맞는 드론을 선택해보세요</h3>
-
+        <Icon iconName="book" />
         <CategoryWrapper>
           {[
             { id: 1, src: industry },

@@ -29,5 +29,6 @@ const API = {
   KAKAO: `${AUTH}${KAKAO}`,
   LOGOUT: `${LOGOUT}`,
   REISSUE: `${AUTH}reissue`,
+  SOCIAL_LOGIN: `${AUTH}social-login`,
 };
 export default API;
