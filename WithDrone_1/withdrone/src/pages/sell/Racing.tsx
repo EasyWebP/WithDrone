@@ -11,10 +11,10 @@ interface Product {
   imagePath: string;
 }
 
-export default function Hobby() {
+export default function Racing() {
   const [droneLists, setDroneLists] = useState<Product[]>([])
   useEffect(() => {
-    fetchProductList("취미용").then((fetchedData) => {
+    fetchProductList("경기용").then((fetchedData) => {
       setDroneLists(fetchedData.content);
     });
   }, []);

@@ -1,25 +1,37 @@
 import { Link } from "react-router-dom";
 import * as P from "../../components/Product";
-import droneList from "../../constants/droneList";
+import { fetchProductList } from "../../api/product";
+import { useEffect, useState } from "react";
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  manufacturer: string;
+  imagePath: string;
+}
 
 export default function Commercial() {
+  const [droneLists, setDroneLists] = useState<Product[]>([])
+  useEffect(() => {
+    fetchProductList("상업용").then((fetchedData) => {
+      setDroneLists(fetchedData.content);
+    });
+  }, []);
+
   return (
     <P.Containers>
       <P.ProductContainer>
-        {/* Show drones filtered by category(commercial) */}
-        {droneList
-          .filter((product) => product.category === "상업용")
-          .map((product, index) => (
-            // Use 'Link' to navigate url, hand over detail information to detail page.
-            <Link to={`/detail/${product.keys}`} state={{ product: product }}>
-              <P.Product>
-                <P.ProductImgDiv>
-                  <P.ProductImg src={product.image} alt={product.name} />
-                </P.ProductImgDiv>
-                <P.ProductTitle>{product.name}</P.ProductTitle>
-                <P.ProductPrice>{product.price}</P.ProductPrice>
-              </P.Product>
-            </Link>
+        {droneLists.map((product: Product, index) => (
+            <Link to={`/detail/${product.id}`}>
+            <P.Product>
+              <P.ProductImgDiv>
+                <P.ProductImg src={product.imagePath} alt={product.name} />
+              </P.ProductImgDiv>
+              <P.ProductTitle>{product.name}</P.ProductTitle>
+              <P.ProductPrice>{product.price}</P.ProductPrice>
+            </P.Product>
+          </Link>
           ))}
       </P.ProductContainer>
     </P.Containers>
