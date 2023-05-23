@@ -17,7 +17,7 @@ export const fetchProductList = async (category?: string, like?: boolean, price?
       if (like !== undefined) {
         url += `like=${like}&`;
       }
-  
+
       if (price !== undefined) {
         url += `price=${price}&`;
       }

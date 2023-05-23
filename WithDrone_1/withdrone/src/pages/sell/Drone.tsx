@@ -19,11 +19,6 @@ export default function Drone() {
       setDroneLists(fetchedData.content);
     });
   }, []);
-  
-  console.log("상품 정보", droneLists);
-  droneLists.map(product => {
-    console.log("17", product)
-  })
 
   return (
     <P.Containers>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Commercial from "./Commercial";
 import Educational from "./Educational";
 import Filming from "./Filming";
@@ -11,6 +11,7 @@ import Drone from "./Drone";
 import IconButton from "../../components/IconButton";
 import { StyledIcon } from "../../components/IconButton/index.styles";
 import Icon from "../../components/Icon";
+import PATH from "../../constants/path";
 
 const Containers = styled.div`
   width: 100%;
@@ -80,7 +81,8 @@ const Line = styled.div`
 `;
 
 export default function Sell() {
-  // Use hooks to get the location state and set the selected tab.
+  const navigate = useNavigate();
+
   const { state } = useLocation();
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
 
@@ -103,6 +105,15 @@ export default function Sell() {
     { id: 5, label: "어린이용 👦🏻", content: <Hobby />, color: "#DEFCF6" },
     { id: 6, label: "경기용 🏎️", content: <Hobby />, color: "#FBEFDD" },
   ];
+
+  const handleLikeOrder = () => {
+    
+  }
+  
+  const handlePriceOrder = () => {
+    
+  }
+
   return (
     <Containers>
       <AdContainer>
@@ -110,7 +121,6 @@ export default function Sell() {
         <Line />
       </AdContainer>
       <TabContainer>
-        {/* Map tab data and render tab menu for each tab */}
         {tabs.map((tab) => (
           <TabMenu
             key={tab.id}
@@ -130,6 +140,10 @@ export default function Sell() {
           iconName="heart"
           iconSize="1rem"
           color={"red"}
+          onClick={() => {
+            console.log(PATH.MYPAGE)
+            navigate(PATH.MYPAGE);
+          }}
         />
         <SelectContainer>
           <IconButton
@@ -137,12 +151,14 @@ export default function Sell() {
             title="인기순"
             iconSize="1rem"
             theme="normal"
+            onClick={handleLikeOrder}
           />
           <IconButton
             iconName="check"
-            title="최신순"
+            title="가격순"
             iconSize="1rem"
             theme="normal"
+            onClick={handlePriceOrder}
           />
         </SelectContainer>
       </MidContainer>
