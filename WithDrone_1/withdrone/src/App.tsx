@@ -14,7 +14,7 @@ import Mypage from "./pages/mypage";
 import Signup from "./pages/signup";
 import Social from "./pages/social";
 
-import ProductDetail from "./pages/detail/ProductDetail";
+import ProductDetail from "./pages/detail/productDetail";
 import StyledContainer from "./components/Toast/container";
 
 const queryClient = new QueryClient({

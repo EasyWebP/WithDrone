@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import COLORS from "../../constants/color";
+import { fetchProduct } from "../../api/product";
 
 const Containers = styled.div`
   display: flex;
@@ -188,9 +189,19 @@ const BottomImage = styled.img`
 `;
 
 export default function ProductDetail() {
-  //Use hook 'useLocation' to get detail information of drone from components that clicked in sell(or rent) page.
   const location = useLocation();
   const { product } = location.state;
+
+  const path = location.pathname;
+  const splitPath = path.split('/');
+  const value = Number(splitPath[splitPath.length - 1]); 
+  console.log("!!", value)
+  
+  useEffect(() => {
+    fetchProduct(7).then((fetchedData) => {
+      console.log("상품 정보", fetchedData);
+    });
+  }, []);
 
   return (
     <Containers>
