@@ -10,7 +10,6 @@ import LikeList from "./LikeList";
 import CartList from "./CartList";
 import toastMsg from "../../components/Toast";
 import { authLogout } from "../../api/auth";
-import useLogout from "../../hooks/useLogout";
 import useMypage from "../../hooks/useMypage";
 import NoExist from "../noExist";
 

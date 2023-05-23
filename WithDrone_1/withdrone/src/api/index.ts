@@ -134,6 +134,7 @@ const unAuthorizationClient = axios.create({
   withCredentials: true,
 });
 
+
 unAuthorizationClient.interceptors.response.use(
   (response) => {
     //특정 도메인에 대한 접근 허용, 로그인을 하지 않은 인증되지 않은 사용자니까
