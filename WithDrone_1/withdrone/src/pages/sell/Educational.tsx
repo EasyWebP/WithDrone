@@ -22,17 +22,17 @@ export default function Educational() {
   const like = useSelector((state)=>state.likeReducer.like);
   let likeState : any;
   //@ts-ignore
-  const price = useSelector((state)=>state.likeReducer.like);
+  const price = useSelector((state)=>state.priceReducer.price);
   let priceState : any;
 
-  // if(like===false) likeState=undefined; //false면 und 이고, true면 true
-  // else likeState=like;
-  
-  // if(price===false) priceState=undefined;
-  // else priceState = price;
+  if(like===false) likeState=undefined; //false면 und 이고, true면 true
+  else likeState=like;
+
+  if(price===false) priceState=undefined;
+  else priceState = price;
 
   const [droneLists, setDroneLists] = useState<Product[]>([])
-  // console.log("state", likeState, priceState)
+  console.log("state", likeState, priceState)
   console.log("real", like, price)
 
 
