@@ -1,8 +1,11 @@
 import React from "react";
 import * as S from "./index.style";
 import { text } from "@storybook/addon-knobs";
+import { useNavigate } from "react-router-dom";
+import PATH from "../../constants/path";
 
 export default function Purchase() {
+  const navigate = useNavigate();
   const description = (
     <div style={{ fontWeight: "bold" }}>
       예금주: 함민혁 (withdrone) <br />
@@ -61,7 +64,13 @@ export default function Purchase() {
           </S.Wrapper>
         ))}
       </S.BoxWrapper>
-      <S.PayButton>결제하기</S.PayButton>
+      <S.PayButton
+        onClick={() => {
+          navigate(PATH.PURCHASE_CONFIRM);
+        }}
+      >
+        결제하기
+      </S.PayButton>
     </S.Container>
   );
 }
