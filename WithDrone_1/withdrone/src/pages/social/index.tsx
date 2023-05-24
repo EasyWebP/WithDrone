@@ -6,11 +6,6 @@ import * as S from "./index.styles";
 import PATH from "../../constants/path";
 import TopSection from "../../pages/signup/TopSection";
 import useSocialSignup from "../../hooks/useSocialSignup";
-// import { IUserInfo } from "../../interfaces/user";
-import QUERYKEYS from "../../constants/querykey";
-import { loadMe } from "../../api/user";
-import { type } from "os";
-import internal from "stream";
 
 export default function Social() {
   const {

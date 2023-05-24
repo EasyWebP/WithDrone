@@ -37,7 +37,6 @@ export default function Header() {
       });
     }
   }, []);
-  console.log("로컬", localStorage.getItem("accessToken"));
   return (
     <S.Container>
       <S.LogoBox onClick={() => handleClick(PATH.MAIN)}>

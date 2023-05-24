@@ -38,7 +38,7 @@ export function heart() {
 export function popular() {
   return (
     <IconButton
-      title="인기순"
+      title="가격순"
       theme="normal"
       iconName="check"
       iconSize="0.8rem"

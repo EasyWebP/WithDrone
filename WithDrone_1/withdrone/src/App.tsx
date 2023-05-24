@@ -14,7 +14,7 @@ import Mypage from "./pages/mypage";
 import Signup from "./pages/signup";
 import Social from "./pages/social";
 
-import ProductDetail from "./pages/detail/productDetail";
+import Index from "./pages/detail";
 import StyledContainer from "./components/Toast/container";
 
 const queryClient = new QueryClient({
@@ -60,7 +60,7 @@ function App() {
             <Route index element={<Signup />} />
           </Route>
           <Route path={PATH.DETAIL} element={<MainLayout />}>
-            <Route index element={<ProductDetail />} />
+            <Route index element={<Index />} />
           </Route>
           <Route path={PATH.MYPAGE} element={<MainLayout />}>
             <Route index element={<Mypage />} />
