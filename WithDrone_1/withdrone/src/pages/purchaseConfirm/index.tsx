@@ -3,13 +3,8 @@ import * as S from "./index.style";
 import { text } from "@storybook/addon-knobs";
 
 export default function PurchaseConfirm() {
-  // const inputList = [
-  //   { label: "받는 사람", value: data.name },
-  //   { label: "연락처", value: data.number },
-  //   { label: "받는 주소", value: data.address },
-  // ];
   const inputList = [
-    { label: "받는사람", value: "함민" },
+    { label: "받는사람", value: "함민혁" },
     { label: "연락처", value: "010-3009-2255" },
     {
       label: "받는주소",

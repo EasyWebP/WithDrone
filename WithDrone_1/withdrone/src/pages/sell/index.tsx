@@ -11,6 +11,8 @@ import Drone from "./Drone";
 import IconButton from "../../components/IconButton";
 import { StyledIcon } from "../../components/IconButton/index.styles";
 import Icon from "../../components/Icon";
+import { useSelector } from "react-redux";
+import { Rootstate } from "../../index";
 
 const Containers = styled.div`
   width: 100%;
@@ -82,8 +84,12 @@ const Line = styled.div`
 export default function Sell() {
   // Use hooks to get the location state and set the selected tab.
   const { state } = useLocation();
+  console.log("state", state);
+  // const selectedTab = useSelector((state: Rootstate) => {
+  //   return state.tabReducer;
+  // });
+  // console.log("이게 찐인거같은데", selectedTab);
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
-
   const tabs = [
     { id: 0, label: "전체 🔗", content: <Drone />, color: COLORS.GREY[200] },
     {
@@ -103,6 +109,8 @@ export default function Sell() {
     { id: 5, label: "어린이용 👦🏻", content: <Hobby />, color: "#DEFCF6" },
     { id: 6, label: "경기용 🏎️", content: <Hobby />, color: "#FBEFDD" },
   ];
+  console.log("여기선느", selectedTabs);
+
   return (
     <Containers>
       <AdContainer>

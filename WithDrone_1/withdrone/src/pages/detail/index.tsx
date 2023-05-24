@@ -26,6 +26,7 @@ export default function Detail() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [num, setNum] = useState(3);
   const { product } = location.state;
   const path = location.pathname;
   const splitPath = path.split("/");
@@ -36,6 +37,9 @@ export default function Detail() {
   }, []);
   useEffect(() => {
     setLike(detailData?.liked);
+    if (detailData?.status === "RENTAL") {
+      setNum(6);
+    }
   }, [detailData]);
   if (!detailData) {
     return null;
@@ -64,7 +68,7 @@ export default function Detail() {
           visible
           cancellable
           onCancel={() => {
-            closeDialog();
+            navigate(PATH.MYPAGE, { state: num });
           }}
           onConfirm={() => {
             closeDialog();
