@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import exp from "constants";
 import COLORS from "../../constants/color";
+import { useMutation } from "@tanstack/react-query";
+import { getLike, getLikeList } from "../../api/product";
+import toastMsg from "../../components/Toast";
+import { useEffect, useState } from "react";
+import useMypage from "../../hooks/useMypage";
 
 export const Containers = styled.div`
   display: flex;
@@ -22,6 +27,7 @@ export const Box = styled.div`
   align-items: center;
   gap: 8rem;
   margin-top: 1rem;
+
   h4 {
     //border: 1px solid red;
     width: 23rem;
@@ -54,18 +60,28 @@ export const DeleteButton = styled.button`
 `;
 
 export default function LikeList() {
+  const { mutateLikeList, getLikelist, likeData } = useMypage();
+  const [likeCount, setLikeCount] = useState(0);
+
+  useEffect(() => {
+    getLikelist();
+  }, []);
+
+  console.log("likeData", likeData?.content);
   return (
     <>
       <Containers>
         <Line />
         <h1>상품 정보</h1>
-        <Box>
-          <ProductImg />
-          <h4>Matrice M600 Matrice M600</h4>
-          <p>20000원</p>
-          <p>삼성</p>
-          <DeleteButton>삭제하기</DeleteButton>
-        </Box>
+        {likeData?.content.map((data, index) => (
+          <Box key={index}>
+            <ProductImg src={data.imagePath} />
+            <h4>{data.name}</h4>
+            <p>{data.price}</p>
+            <p>{data.manufacturer}</p>
+            <DeleteButton>삭제하기</DeleteButton>
+          </Box>
+        ))}
       </Containers>
     </>
   );

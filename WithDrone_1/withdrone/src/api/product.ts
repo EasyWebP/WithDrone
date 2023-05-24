@@ -22,3 +22,7 @@ export const addCart = async (product: object) => {
   const { data } = await authorizationClient.post(`${API.CART}`, product);
   return data;
 };
+export const getLikeList = async () => {
+  const { data } = await authorizationClient.get(`${API.LIKE}`);
+  return data;
+};
