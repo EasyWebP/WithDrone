@@ -7,6 +7,8 @@ const ICONS: IconProps = {
   heart: "bi bi-heart-fill",
   person: "bi bi-person",
   check: "bi bi-check-lg",
+  cart: "bi bi-cart",
+  zzim: "bi bi-heart",
 };
 
 export default ICONS;
