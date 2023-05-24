@@ -16,6 +16,7 @@ import Social from "./pages/social";
 
 import Index from "./pages/detail";
 import StyledContainer from "./components/Toast/container";
+import Purchase from "./pages/purchase";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -64,6 +65,9 @@ function App() {
           </Route>
           <Route path={PATH.MYPAGE} element={<MainLayout />}>
             <Route index element={<Mypage />} />
+          </Route>
+          <Route path={PATH.PURCHASE} element={<MainLayout />}>
+            <Route index element={<Purchase />} />
           </Route>
         </Routes>
       </Router>

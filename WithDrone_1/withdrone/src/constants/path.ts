@@ -9,6 +9,7 @@ const PATH = {
   MYPAGE: "/mypage",
   SOCIAL: "/social",
   USER_MAIN: "/main",
+  PURCHASE: "/purchase",
 } as const;
 
 export default PATH;

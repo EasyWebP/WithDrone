@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { fetchProduct } from "../../api/product";
 import useDetail from "../../hooks/useDetail";
 import * as S from "./index.style";
 import { text } from "@storybook/addon-knobs";
 import Dialog from "../../components/Dialog";
+import PATH from "../../constants/path";
 
 export default function Detail() {
   const {
@@ -24,6 +25,7 @@ export default function Detail() {
   } = useDetail();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { product } = location.state;
   const path = location.pathname;
   const splitPath = path.split("/");
@@ -144,7 +146,13 @@ export default function Detail() {
                   </S.DecrementButton>
                 </S.InputButtonContainer>
               </S.InputContainer>
-              <S.BuyButton>구매하기</S.BuyButton>
+              <S.BuyButton
+                onClick={() => {
+                  navigate(PATH.PURCHASE);
+                }}
+              >
+                구매하기
+              </S.BuyButton>
             </S.BuyContainer>
           </S.RightContainer>
         </S.FlexContainer>
