@@ -16,6 +16,8 @@ import { fetchProductList } from "../../api/product";
 import { useDispatch, useSelector } from "react-redux";
 import { setLikeOrder } from "../../store/likeReducer";
 import { setPriceOrder } from "../../store/priceReducer";
+import Child from "./Child";
+import Racing from "./Racing";
 
 const Containers = styled.div`
   width: 100%;
@@ -115,8 +117,8 @@ export default function Sell() {
     },
     { id: 3, label: "촬영용 📸", content: <Filming />, color: "#E9D5FA" },
     { id: 4, label: "취미용 🎮", content: <Hobby />, color: "#FBDDDE" },
-    { id: 5, label: "어린이용 👦🏻", content: <Hobby />, color: "#DEFCF6" },
-    { id: 6, label: "경기용 🏎️", content: <Hobby />, color: "#FBEFDD" },
+    { id: 5, label: "어린이용 👦🏻", content: <Child />, color: "#DEFCF6" },
+    { id: 6, label: "경기용 🏎️", content: <Racing />, color: "#FBEFDD" },
   ];
 
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import * as P from "../../components/Product";
-import droneList from "../../constants/droneList";
 import { fetchProductList } from "../../api/product";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 interface Product {
   id: number;
@@ -13,12 +13,25 @@ interface Product {
 }
 
 export default function Drone() {
-  const [droneLists, setDroneLists] = useState<Product[]>([])
+  // @ts-ignore
+  const like = useSelector((state) => state.likeReducer.like);
+  let likeState: any;
+  // @ts-ignore
+  const price = useSelector((state) => state.priceReducer.price);
+  let priceState: any;
+
+  if (like === false) likeState = undefined;
+  else likeState = like;
+  if (price === false) priceState = undefined;
+  else priceState = price;
+
+  const [droneLists, setDroneLists] = useState<Product[]>([]);
+
   useEffect(() => {
-    fetchProductList().then((fetchedData) => {
+    fetchProductList(undefined, likeState, priceState).then((fetchedData) => {
       setDroneLists(fetchedData.content);
     });
-  }, []);
+  }, [like, price]);
 
   return (
     <P.Containers>

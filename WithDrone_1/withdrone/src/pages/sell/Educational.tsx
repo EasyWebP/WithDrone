@@ -3,7 +3,6 @@ import * as P from "../../components/Product";
 import { fetchProductList } from "../../api/product";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import LikeState from "../../store/likeReducer"
 
 interface Product {
   id: number;
@@ -13,32 +12,23 @@ interface Product {
   imagePath: string;
 }
 
-interface LikeState {
-  like: boolean;
-}
-
 export default function Educational() {
-  //@ts-ignore
-  const like = useSelector((state)=>state.likeReducer.like);
-  let likeState : any;
-  //@ts-ignore
-  const price = useSelector((state)=>state.priceReducer.price);
-  let priceState : any;
+  // @ts-ignore
+  const like = useSelector((state) => state.likeReducer.like);
+  let likeState: any;
+  // @ts-ignore
+  const price = useSelector((state) => state.priceReducer.price);
+  let priceState: any;
 
-  if(like===false) likeState=undefined; //false면 und 이고, true면 true
-  else likeState=like;
-
-  if(price===false) priceState=undefined;
+  if (like === false) likeState = undefined;
+  else likeState = like;
+  if (price === false) priceState = undefined;
   else priceState = price;
 
-  const [droneLists, setDroneLists] = useState<Product[]>([])
-  console.log("state", likeState, priceState)
-  console.log("real", like, price)
-
+  const [droneLists, setDroneLists] = useState<Product[]>([]);
 
   useEffect(() => {
     fetchProductList("교육용", likeState, priceState).then((fetchedData) => {
-      console.log(fetchedData)
       setDroneLists(fetchedData.content);
     });
   }, [like, price]);
@@ -47,7 +37,7 @@ export default function Educational() {
     <P.Containers>
       <P.ProductContainer>
         {droneLists.map((product: Product, index) => (
-            <Link to={`/detail/${product.id}`}>
+          <Link to={`/detail/${product.id}`}>
             <P.Product>
               <P.ProductImgDiv>
                 <P.ProductImg src={product.imagePath} alt={product.name} />
@@ -56,7 +46,7 @@ export default function Educational() {
               <P.ProductPrice>{product.price}</P.ProductPrice>
             </P.Product>
           </Link>
-          ))}
+        ))}
       </P.ProductContainer>
     </P.Containers>
   );
