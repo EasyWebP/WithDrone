@@ -12,6 +12,10 @@ import IconButton from "../../components/IconButton";
 import { StyledIcon } from "../../components/IconButton/index.styles";
 import Icon from "../../components/Icon";
 import PATH from "../../constants/path";
+import { fetchProductList } from "../../api/product";
+import { useDispatch, useSelector } from "react-redux";
+import { setLikeOrder } from "../../store/likeReducer";
+import { setPriceOrder } from "../../store/priceReducer";
 
 const Containers = styled.div`
   width: 100%;
@@ -80,8 +84,17 @@ const Line = styled.div`
   background-color: ${COLORS.GREY[300]};
 `;
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  manufacturer: string;
+  imagePath: string;
+}
+
 export default function Sell() {
   const navigate = useNavigate();
+  const [droneLists, setDroneLists] = useState<Product[]>([]);
 
   const { state } = useLocation();
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
@@ -106,13 +119,17 @@ export default function Sell() {
     { id: 6, label: "경기용 🏎️", content: <Hobby />, color: "#FBEFDD" },
   ];
 
+  const dispatch = useDispatch();
+
   const handleLikeOrder = () => {
-    
-  }
-  
+    dispatch(setLikeOrder(true));
+    dispatch(setPriceOrder(false));
+  };
+
   const handlePriceOrder = () => {
-    
-  }
+    dispatch(setPriceOrder(true));
+    dispatch(setLikeOrder(false));
+  };
 
   return (
     <Containers>
@@ -141,7 +158,7 @@ export default function Sell() {
           iconSize="1rem"
           color={"red"}
           onClick={() => {
-            console.log(PATH.MYPAGE)
+            console.log(PATH.MYPAGE);
             navigate(PATH.MYPAGE);
           }}
         />

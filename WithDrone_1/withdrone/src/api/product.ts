@@ -5,10 +5,10 @@ import API from "./config";
 export const fetchProductList = async (category?: string, like?: boolean, price?: boolean, status?: string, pageable?: { page: number, size: number, sort: string[] }) => {
     const { page, size, sort } = pageable ?? {};
   
-    let url = `${API.PRODUCT}`;
+    let url = `${API.PRODUCT}?`;
   
     if (category !== undefined || like !== undefined || price !== undefined || status !== undefined) {
-      url += "?";
+      // url += "?";
   
       if (category !== undefined) {
         url += `category=${category}&`;
