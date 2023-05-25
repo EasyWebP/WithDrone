@@ -78,8 +78,6 @@ export default function Purchase() {
     });
   }
 
-  console.log("is", isInputFilled())
-
   return (
     <S.Container>
       <S.BoxWrapper>

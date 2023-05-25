@@ -89,4 +89,10 @@ export const PayButton = styled.button`
   margin-right: 16.5rem;
   margin-bottom: 14rem;
   cursor: pointer;
+
+  /* disabled 상태일 때의 스타일 */
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
