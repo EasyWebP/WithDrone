@@ -15,7 +15,6 @@ export default function useLogin() {
   const [password, onChangePassword] = useInput("");
   const mutateLogin = useMutation(["login"], authLogin, {
     onSuccess: ({ memberInfo, tokenInfo }) => {
-      console.log("data,", memberInfo.id);
       toastMsg("로그인 성공 👏");
       localStorage.setItem("accessToken", tokenInfo.accessToken);
       localStorage.setItem("created", "true");

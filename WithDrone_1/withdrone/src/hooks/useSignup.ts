@@ -93,7 +93,6 @@ export default function useSignup() {
         navigate(PATH.LOGIN);
       } else {
         setEmailExist(false);
-        console.log(emailExist);
       }
     },
     onError: ({

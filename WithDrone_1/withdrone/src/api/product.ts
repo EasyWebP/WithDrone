@@ -54,8 +54,6 @@ export const fetchProductList = async (
     url = url.slice(0, -1);
   }
 
-  console.log("!!", url);
-
   const response = await unAuthorizationClient.get(url);
   return response.data;
 };
@@ -63,7 +61,6 @@ export const fetchProductList = async (
 // export const fetchProductList = async (category?: string, like?: boolean, price?: boolean, status?: string, pageable?: { page: number, size: number, sort: string[] }) => {
 //     const { page, size, sort } = pageable ?? {};
 //     const url = `${API.PRODUCT}?category=${category}&like=${like}&price=${price}&status=${status}`;
-//     console.log("!!", url)
 //   const response = await unAuthorizationClient.get(url);
 //   return response.data;
 // };

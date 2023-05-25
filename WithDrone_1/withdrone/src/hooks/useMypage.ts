@@ -55,7 +55,6 @@ export default function useMypage() {
 
   const handleLogout = () => {
     authLogout().then((isLogout) => {
-      console.log(isLogout);
       if (isLogout.result === "LOGOUT") {
         localStorage.clear();
         navigate(`/`);
@@ -69,18 +68,15 @@ export default function useMypage() {
   };
   const getOrderlist = async () => {
     const data = await getOrderList();
-    console.log("주문내역조회", data);
     setOrderData(data);
   };
   const getCartlist = async () => {
     const data = await getCartList();
-    console.log("장바구니 내역 조회", data);
     setCartData(data);
   };
 
   const mutateDeleteLike = useMutation(["getLike"], getLike, {
     onSuccess: (data) => {
-      console.log("data", data);
       if (data.like) {
         toastMsg("찜 목록에 추가 되었습니다! 👏");
         queryClient.invalidateQueries([QUERYKEYS.GET_LIKE_LIST]);

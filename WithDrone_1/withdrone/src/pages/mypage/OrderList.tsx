@@ -99,16 +99,13 @@ export const Line = styled.div`
   border: 1px solid grey;
 `;
 export default function OrderList(props: any) {
-  console.log(props.props);
   const { getOrderlist, likeData, orderData } = useMypage();
   useEffect(() => {
     getOrderlist();
   }, []);
   const filterValue =
     props.props === 1 ? "SALE" : props.props === 4 ? "RENTAL" : "";
-  console.log("orderData", orderData);
 
-  console.log();
   return (
     <>
       <Containers>

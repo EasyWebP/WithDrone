@@ -66,12 +66,9 @@ export const DeleteButton = styled.button`
 `;
 
 export default function LikeList(props: any) {
-  console.log(props.props);
-
   const { getLikelist, likeData, mutateDeleteLike } = useMypage();
   const filterValue =
-    props.props === 2 ? "SALE" : props.props === 5 ? "RENT" : "";
-  console.log(filterValue);
+    props.props === 2 ? "SALE" : props.props === 5 ? "RENTAL" : "";
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [id, setId] = useState(0);
   const openDialog = () => {
@@ -92,7 +89,6 @@ export default function LikeList(props: any) {
     } catch (error) {}
   };
 
-  // console.log("왜안돼", likeData);
   return (
     <>
       <Containers>

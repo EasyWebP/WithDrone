@@ -20,15 +20,12 @@ interface dataInfo {
 
 export default function useDetail() {
   const navigate = useNavigate();
-  // const { id } = useParams();
   const { state } = useLocation();
-  console.log("state", state);
   const [detailData, setDetailData] = useState<dataInfo | null>(null);
   const [productId, setProductId] = useState<number>(state);
   const [quantity, setQuantity] = useState(1);
   const [like, setLike] = useState<boolean | undefined>(undefined);
   const payload = { productId: productId };
-  // console.log("ididiidid", id);
 
   const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(e.target.value);
@@ -44,7 +41,6 @@ export default function useDetail() {
   };
   const mutateLike = useMutation(["getLike"], getLike, {
     onSuccess: (data) => {
-      console.log("data", data);
       setLike(data.like);
       if (data.like) {
         toastMsg("찜 목록에 추가 되었습니다! 👏");
@@ -66,7 +62,6 @@ export default function useDetail() {
   };
   const addToCart = async () => {
     const data = await addCart({ productId, count: quantity });
-    console.log("장바구니 확인", data);
   };
 
   return {

@@ -110,14 +110,12 @@ export default function CartList(props: any) {
   const navigate = useNavigate();
   const [cartId, setCartId] = useState(0);
   const [itemId, setItemId] = useState(0);
-  console.log(props.props);
   const { getCartlist, cartData, mutateDeleteCarts } = useMypage();
   useEffect(() => {
     getCartlist();
   }, [cartId]);
   const filterValue =
     props.props === 3 ? "SALE" : props.props === 6 ? "RENTAL" : "";
-  console.log("cartData", cartData);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const openDialog = () => {
