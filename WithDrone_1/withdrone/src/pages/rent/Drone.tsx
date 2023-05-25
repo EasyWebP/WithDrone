@@ -14,7 +14,7 @@ interface Product {
   imagePath: string;
 }
 
-export default function Hobby() {
+export default function Drone() {
   const [totalProduct, setTotalProduct] = useState(0);
   const [activePage, setActivePage] = useState<number>(1);
 
@@ -33,15 +33,15 @@ export default function Hobby() {
   const [droneLists, setDroneLists] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchProductList("취미용", undefined).then(
+    fetchProductList().then(
       (fetchedData) => {
-        setTotalProduct(fetchedData.numberOfElements); //해당 카테고리 개수 할당 위함
+        setTotalProduct(fetchedData.totalElements); //해당 카테고리 개수 할당 위함
       }
     );
   }, []);
 
   useEffect(() => {
-    fetchProductList("취미용", likeState, priceState, undefined, {page:activePage-1,size:PAGENUM}).then(
+    fetchProductList(undefined, likeState, priceState, undefined, {page:activePage-1,size:PAGENUM}).then(
       (fetchedData) => {
         setDroneLists(fetchedData.content);
       }
@@ -50,7 +50,9 @@ export default function Hobby() {
 
   const handlePageChange = (pageNumber: number) => {
     setActivePage(pageNumber);
-    fetchProductList("취미용", likeState, priceState, undefined, {page:pageNumber-1,size:PAGENUM}).then(
+    // 해당 페이지를 로드하는 로직을 구현합니다.
+    console.log("pageNumber", pageNumber)
+    fetchProductList(undefined, likeState, priceState, undefined, {page:pageNumber-1,size:PAGENUM}).then(
       (fetchedData) => {
         setDroneLists(fetchedData.content);
       }
