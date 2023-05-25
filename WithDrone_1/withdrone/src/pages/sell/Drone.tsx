@@ -51,7 +51,6 @@ export default function Drone() {
   const handlePageChange = (pageNumber: number) => {
     setActivePage(pageNumber);
     // 해당 페이지를 로드하는 로직을 구현합니다.
-    console.log("pageNumber", pageNumber);
     fetchProductList(undefined, likeState, priceState, undefined, {
       page: pageNumber - 1,
       size: PAGENUM,

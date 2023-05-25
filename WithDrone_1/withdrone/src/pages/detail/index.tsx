@@ -54,7 +54,7 @@ export default function Detail() {
 
   const description = text(
     "description",
-    "상품이 장바구니에 담겼습니다. \n 쇼핑을 계속하시겠습니까? "
+    "상품이 장바구니에 담겼습니다. \n 장바구니로 이동하시겠습니까? "
   );
 
   const handlePurchase = () => {
@@ -77,10 +77,10 @@ export default function Detail() {
           visible
           cancellable
           onCancel={() => {
-            navigate(PATH.MYPAGE, { state: num });
+            closeDialog();
           }}
           onConfirm={() => {
-            closeDialog();
+            navigate(PATH.MYPAGE, { state: num });
           }}
         />
       )}
@@ -189,20 +189,46 @@ export default function Detail() {
               </S.Explain>
             </S.Excontainer>
             <S.ButtonContainer>
-              <S.ZzimButton
-                iconName="zzim"
-                theme="basic"
-                title="찜 하기"
-                color="black"
-                iconSize="1rem"
-              />
+              {like ? (
+                <S.AlreadyZzimButton
+                  iconName="heart"
+                  theme="basic"
+                  title="찜 하기"
+                  color="red"
+                  iconSize="1rem"
+                  onClick={() => {
+                    mutateLike.mutate(payload);
+                  }}
+                />
+              ) : (
+                <S.ZzimButton
+                  iconName="zzim"
+                  theme="basic"
+                  title="찜 하기"
+                  color="black"
+                  iconSize="1rem"
+                  onClick={() => {
+                    mutateLike.mutate(payload);
+                  }}
+                />
+              )}
               <S.CartButton
                 iconName="cart"
                 theme="basic"
                 title="장바구니 담기"
                 iconSize="1.5rem"
+                onClick={() => {
+                  addToCart();
+                  openDialog();
+                }}
               />
-              <S.RentButton>대여하기</S.RentButton>
+              <S.BuyButton
+                onClick={() => {
+                  navigate(PATH.PURCHASE);
+                }}
+              >
+                대여하기
+              </S.BuyButton>
             </S.ButtonContainer>
           </S.RightContainer>
         </S.FlexContainer>
