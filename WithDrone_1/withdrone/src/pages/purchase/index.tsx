@@ -4,13 +4,10 @@ import { text } from "@storybook/addon-knobs";
 import { useLocation, useNavigate } from "react-router-dom";
 import PATH from "../../constants/path";
 import { loadMe } from "../../api/user";
+import { makeOneOrder } from "../../api/order";
 
 export default function Purchase() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const receivedData = location.state;
-
-  console.log("receivedData", receivedData)
 
   const description = (
     <div style={{ fontWeight: "bold" }}>
@@ -55,8 +52,25 @@ export default function Purchase() {
       })
   }, [])
 
-  const handlePurchaseClick = () => {
-    //order post 보내기
+  const location = useLocation();
+  const receivedData = location.state;
+
+  console.log("receivedData", receivedData)
+  const productId = receivedData.id;
+
+  const orderInfo = {
+    "phoneNumber": inputList[1].data[0].value,
+    "address": inputList[1].data[1].value, 
+    "count": receivedData.quantity,
+  }
+
+  console.log("orderInfo", orderInfo)
+
+  const handlePurchaseClick = () => {  //order post 보내고 확정페이지로 
+    makeOneOrder(orderInfo, productId)
+      .then((fetchedData)=>{
+        console.log(fetchedData)
+      })
     navigate(PATH.PURCHASE_CONFIRM)
   }
 
