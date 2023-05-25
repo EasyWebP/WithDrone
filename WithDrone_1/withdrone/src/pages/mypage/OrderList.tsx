@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import useMypage from "../../hooks/useMypage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Containers = styled.div`
   display: flex;
-  height: 80rem;
   flex-direction: column;
+  min-height: 40rem;
+  height: auto;
   align-items: center;
   width: 100%;
+  position: relative;
 `;
 
 export const Head = styled.div`
@@ -60,17 +62,19 @@ export const InfoBox = styled.div`
 `;
 export const InfoBox2 = styled.div`
   display: flex;
-  gap: 18rem;
+  gap: 10rem;
   margin-top: 1rem;
   position: relative;
   //margin-left: 20rem;
-  margin-right: 4rem;
+  //border: 1px solid red;
+  //margin-right: 4rem;
   h3 {
-    width: 8rem;
+    width: 15rem;
+    //border: 1px solid red;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: right;
-    padding-right: 1rem;
+    padding-right: 4rem;
     padding-left: 2rem;
   }
 `;
@@ -101,7 +105,7 @@ export default function OrderList(props: any) {
     getOrderlist();
   }, []);
   const filterValue =
-    props.props === 1 ? "SALE" : props.props === 4 ? "RENT" : "";
+    props.props === 1 ? "SALE" : props.props === 4 ? "RENTAL" : "";
   console.log("orderData", orderData);
 
   console.log();
@@ -115,25 +119,27 @@ export default function OrderList(props: any) {
           <h1>주문 번호</h1>
           <h1>수량</h1>
         </Head>
-        {/*{orderData*/}
-        {/*  ?.filter((item) => item.status === filterValue)*/}
-        {/*  .map((data, index) => (*/}
-        {/*    <Box key={index}>*/}
-        {/*      <InfoBox>*/}
-        {/*        <ProductImg src={data.imagePath} />*/}
-        {/*        <Info>*/}
-        {/*          <h4>이름</h4>*/}
-        {/*          <p>제조사제조사제조사제조사</p>*/}
-        {/*          <p>가격</p>*/}
-        {/*        </Info>*/}
-        {/*      </InfoBox>*/}
-        {/*      <InfoBox2>*/}
-        {/*        <h3>2023.05.04</h3>*/}
-        {/*        <h3>7849573894</h3>*/}
-        {/*        <h3>2개</h3>*/}
-        {/*      </InfoBox2>*/}
-        {/*    </Box>*/}
-        {/*  ))}*/}
+        {orderData &&
+          Array.isArray(orderData) &&
+          orderData
+            .filter((item) => item.status === filterValue)
+            .map((data, index) => (
+              <Box key={index}>
+                <InfoBox>
+                  <ProductImg src={data.imagePath} />
+                  <Info>
+                    <h4>{data.productName}</h4>
+                    <p>{data.manufacturer}</p>
+                    <p>{data.price}</p>
+                  </Info>
+                </InfoBox>
+                <InfoBox2>
+                  <h3>{data.orderDate}</h3>
+                  <h3>{data.orderNumber}</h3>
+                  <h3>{data.count}개</h3>
+                </InfoBox2>
+              </Box>
+            ))}
       </Containers>
     </>
   );

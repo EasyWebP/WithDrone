@@ -48,7 +48,7 @@ export default function Detail() {
   };
   const description = text(
     "description",
-    "상품이 장바구니에 담겼습니다. \n 쇼핑을 계속하시겠습니까? "
+    "상품이 장바구니에 담겼습니다. \n 장바구니로 이동하시겠습니까? "
   );
 
   return (
@@ -60,10 +60,10 @@ export default function Detail() {
           visible
           cancellable
           onCancel={() => {
-            navigate(PATH.MYPAGE, { state: num });
+            closeDialog();
           }}
           onConfirm={() => {
-            closeDialog();
+            navigate(PATH.MYPAGE, { state: num });
           }}
         />
       )}
