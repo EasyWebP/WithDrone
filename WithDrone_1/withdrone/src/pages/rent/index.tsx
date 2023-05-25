@@ -133,7 +133,7 @@ export default function Rent() {
   };
 
   const handleGoToLikeList = () => {
-    navigate(PATH.MYPAGE, {state:2});
+    navigate(PATH.MYPAGE, {state:5});
   }
 
   return (
