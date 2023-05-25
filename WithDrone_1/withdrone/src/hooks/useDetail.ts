@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import toastMsg from "../components/Toast";
 import { addCart, fetchProduct, getLike } from "../api/product";
 import { ChangeEvent, useState } from "react";
@@ -18,13 +18,17 @@ interface dataInfo {
   liked: boolean;
 }
 
-export default function useLogin() {
+export default function useDetail() {
   const navigate = useNavigate();
+  // const { id } = useParams();
+  const { state } = useLocation();
+  console.log("state", state);
   const [detailData, setDetailData] = useState<dataInfo | null>(null);
-  const [productId, setProductId] = useState<number>(10);
+  const [productId, setProductId] = useState<number>(state);
   const [quantity, setQuantity] = useState(1);
   const [like, setLike] = useState<boolean | undefined>(undefined);
   const payload = { productId: productId };
+  // console.log("ididiidid", id);
 
   const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(e.target.value);

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchProduct } from "../../api/product";
 import useDetail from "../../hooks/useDetail";
 import * as S from "./index.style";
@@ -27,11 +27,6 @@ export default function Detail() {
   const location = useLocation();
   const navigate = useNavigate();
   const [num, setNum] = useState(3);
-  const { product } = location.state;
-  const path = location.pathname;
-  const splitPath = path.split("/");
-  const value = Number(splitPath[splitPath.length - 1]);
-  console.log("!!", value);
   useEffect(() => {
     getDetailData();
   }, []);
@@ -44,9 +39,6 @@ export default function Detail() {
   if (!detailData) {
     return null;
   }
-  console.log(detailData);
-  console.log("like", like);
-  console.log("likeeeee", detailData?.liked);
   const openDialog = () => {
     setIsDialogOpen(true);
   };

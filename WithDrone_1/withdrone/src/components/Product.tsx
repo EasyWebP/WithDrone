@@ -12,10 +12,10 @@ export const Containers = styled.div`
 export const ProductContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
   flex-wrap: wrap;
+  gap: 4.7rem;
   width: 85%;
-  //border: 1px solid red;
 `;
 
 export const Product = styled.div`
@@ -54,6 +54,7 @@ export const ProductPrice = styled.p`
 `;
 
 export const PageNumberContainer = styled.div`
+  margin-bottom: 5rem;
   .pagination {
     display: flex;
     justify-content: center;

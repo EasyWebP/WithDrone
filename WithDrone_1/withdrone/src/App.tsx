@@ -14,7 +14,7 @@ import Mypage from "./pages/mypage";
 import Signup from "./pages/signup";
 import Social from "./pages/social";
 
-import Index from "./pages/detail";
+import Detail from "./pages/detail";
 import StyledContainer from "./components/Toast/container";
 import Purchase from "./pages/purchase";
 import PurchaseConfirm from "./pages/purchaseConfirm";
@@ -62,7 +62,7 @@ function App() {
             <Route index element={<Signup />} />
           </Route>
           <Route path={PATH.DETAIL} element={<MainLayout />}>
-            <Route index element={<Index />} />
+            <Route index element={<Detail />} />
           </Route>
           <Route path={PATH.MYPAGE} element={<MainLayout />}>
             <Route index element={<Mypage />} />

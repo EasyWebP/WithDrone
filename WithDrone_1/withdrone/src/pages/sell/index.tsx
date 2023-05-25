@@ -97,7 +97,6 @@ interface Product {
 export default function Sell() {
   const navigate = useNavigate();
   const [droneLists, setDroneLists] = useState<Product[]>([]);
-
   const { state } = useLocation();
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
 
