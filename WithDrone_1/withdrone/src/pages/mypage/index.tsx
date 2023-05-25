@@ -18,8 +18,15 @@ const Containers = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* 변경된 부분 */
   background-color: white;
+`;
+const Head = styled.div`
+  align-self: flex-start;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 5rem;
+  margin-left: 13rem;
 `;
 
 const WelcomeContainer = styled.div`
@@ -100,11 +107,9 @@ const TabMenuItem = styled.li`
 ///////////////////////
 const TableContainer = styled.div`
   width: 82%;
-  height: 50rem;
-  //   overflow-x: auto;
+  overflow-x: auto;
   margin-top: 4rem;
-  //height: auto; // 50rem을 기본으로 두고 그 이상 부터는 auto로 나중에 추가
-  //border: 1px solid red;
+  height: auto; // 50rem을 기본으로 두고 그 이상 부터는 auto로 나중에 추가
 `;
 
 export default function Mypage() {
@@ -118,18 +123,22 @@ export default function Mypage() {
 
   useEffect(() => {
     fetchMember().then((fetchedData) => {
-      console.log("유저정보", fetchedData);
       setMember(fetchedData); // 데이터 상태 업데이트
     });
   }, []);
 
   const { state } = useLocation();
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
-
+  const [rentSelectedTabs, setRentSelectedTabs] = useState(Number(state) || 4);
   const tabs = [
-    { id: 1, label: "주문 내역 조회", content: <OrderList /> },
-    { id: 2, label: "찜 목록", content: <LikeList /> },
-    { id: 3, label: "장바구니", content: <CartList /> },
+    { id: 1, label: "주문 내역 조회", content: <OrderList props={1} /> },
+    { id: 2, label: "찜 목록", content: <LikeList props={2} /> },
+    { id: 3, label: "장바구니", content: <CartList props={3} /> },
+  ];
+  const rentTabs = [
+    { id: 4, label: "주문 내역 조회", content: <OrderList props={1} /> },
+    { id: 5, label: "찜 목록", content: <LikeList props={5} /> },
+    { id: 6, label: "장바구니", content: <CartList props={6} /> },
   ];
 
   return (
@@ -150,6 +159,7 @@ export default function Mypage() {
               <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
             </RightContainer>
           </WelcomeContainer>
+          <Head>구매</Head>
           <TableContainer>
             <TabContainer>
               <TabMenu>
@@ -173,6 +183,31 @@ export default function Mypage() {
               </TabMenu>
             </TabContainer>
             {tabs.find((tab) => tab.id === selectedTabs)?.content}
+          </TableContainer>
+          <Head>대여</Head>
+          <TableContainer>
+            <TabContainer>
+              <TabMenu>
+                {rentTabs.map((tab) => {
+                  //탭 이름 - 1) 주문내역 조회에는 마진 주기 2) 클릭한 탭은 색깔 달리 하기
+                  let tabstyle: { paddingLeft?: string; color?: string } =
+                    tab.id === 4 ? { paddingLeft: "0rem" } : {};
+                  if (rentSelectedTabs !== tab.id) {
+                    tabstyle = { ...tabstyle, color: "#D9D9D9" };
+                  }
+                  return (
+                    <TabMenuItem
+                      key={tab.id}
+                      onClick={() => setRentSelectedTabs(tab.id)}
+                      style={tabstyle}
+                    >
+                      {tab.label}
+                    </TabMenuItem>
+                  );
+                })}
+              </TabMenu>
+            </TabContainer>
+            {rentTabs.find((tab) => tab.id === rentSelectedTabs)?.content}
           </TableContainer>
         </>
       )}

@@ -105,13 +105,14 @@ export default function Main() {
   const { memberId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedTab = useSelector((state: Rootstate) => {
-    return state.tabReducer;
-  });
-
-  if (!selectedTab) {
-    return null;
-  }
+  // const selectedTab = useSelector((state: Rootstate) => {
+  //   return state.tabReducer;
+  // });
+  //
+  // if (!selectedTab) {
+  //   return null;
+  // }
+  // console.log("텝 확인", selectedTab);
   return (
     <Containers>
       <Top>
@@ -143,7 +144,7 @@ export default function Main() {
               <CategoryImg
                 src={category.src}
                 onClick={() => {
-                  dispatch(setSelectTab(category.id));
+                  // dispatch(setSelectTab(category.id));
                   setTimeout(() => {
                     navigate("/sell", { state: category.id });
                   }, 10);

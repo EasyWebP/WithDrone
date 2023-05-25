@@ -1,118 +1,140 @@
 import styled from "styled-components";
-import mavic2 from "../../img/mavic2.jpg";
+import useMypage from "../../hooks/useMypage";
+import { useEffect } from "react";
 
-
-const Table = styled.table`
+export const Containers = styled.div`
+  display: flex;
+  height: 80rem;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  border-collapse: collapse;
-  border: 
 `;
 
-const ColumnGroup = styled.colgroup``;
-
-const Column = styled.col`
-  width: ${props => props.width};
+export const Head = styled.div`
+  display: flex;
+  gap: 20rem;
+  width: 100%;
+  justify-content: center;
+  h2 {
+    //padding-right: 15rem;
+    width: 40rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    //padding-left: 12rem;
+    margin-top: 0.8rem;
+  }
+  h1 {
+    width: 8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.8rem;
+  }
 `;
 
-const TableHead = styled.thead`
-  background-color: white;
+export const Box = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10rem;
+  margin-top: 1rem;
+
+  h4 {
+    //border: 1px solid red;
+    width: 23rem;
+    font-weight: bold;
+  }
+  p {
+    font-weight: bold;
+  }
 `;
-
-const TableHeadRow = styled.tr`
+export const InfoBox = styled.div`
+  display: flex;
+  // ;
+  width: 40rem;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  margin-right: 5rem;
+  position: relative;
 `;
-
-const TableHeadCell = styled.th`
-  padding: 1rem;
-  text-align: center;
-  font-weight: bold;
-  border-top: 0.1rem solid black;
-`;
-
-const TableBody = styled.tbody`
-    border-bottom: 0.1rem solid black;
-`;
-
-const TableBodyRow = styled.tr`
-
-`;
-
-const TableBodyCell = styled.td`
-  padding: 10px;
-  text-align: center;
-`;
-
-const TableBodyFirst = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-`; 
-
-const TableImg = styled.img`
-    alt: "Product";
-    width: 20rem;
-    heigh: 20rem;
-`
-
-const TableInfoContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-
-const TableInfoContent = styled.p`
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    text-align: left;
-`
-
-const TotalContext = styled.p`
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    align-self: flex-end;
+export const InfoBox2 = styled.div`
+  display: flex;
+  gap: 18rem;
+  margin-top: 1rem;
+  position: relative;
+  //margin-left: 20rem;
+  margin-right: 4rem;
+  h3 {
+    width: 8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
     text-align: right;
-    margin: 5rem 5.5rem;
-`
+    padding-right: 1rem;
+    padding-left: 2rem;
+  }
+`;
+export const Info = styled.div`
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  margin-left: 22rem;
+  justify-content: left;
+  flex-direction: column;
+  gap: 2rem;
+`;
+export const ProductImg = styled.img`
+  //border: 1px solid red;
+  width: 20rem;
+  height: 15rem;
+`;
+export const Line = styled.div`
+  width: 100%;
+  color: grey;
+  border: 1px solid grey;
+`;
+export default function OrderList(props: any) {
+  console.log(props.props);
+  const { getOrderlist, likeData, orderData } = useMypage();
+  useEffect(() => {
+    getOrderlist();
+  }, []);
+  const filterValue =
+    props.props === 1 ? "SALE" : props.props === 4 ? "RENT" : "";
+  console.log("orderData", orderData);
 
-
-export default function OrderList() {
+  console.log();
   return (
     <>
-    <Table>
-      <ColumnGroup>
-        <Column width="40%" />
-        <Column width="20%" />
-        <Column width="20%" />
-        <Column width="20%" />
-      </ColumnGroup>
-      <TableHead>
-        <TableHeadRow>
-          <TableHeadCell>상품 정보</TableHeadCell>
-          <TableHeadCell>주문일자</TableHeadCell>
-          <TableHeadCell>주문번호</TableHeadCell>
-          <TableHeadCell>수량</TableHeadCell>
-        </TableHeadRow>
-      </TableHead>
-      <TableBody>
-        <TableBodyRow>
-          <TableBodyCell>
-            <TableBodyFirst>
-              <TableImg src={mavic2} />
-              <TableInfoContainer>
-                <TableInfoContent>Matrice M600 Matrice M600</TableInfoContent>
-                <TableInfoContent>20,000원</TableInfoContent>
-                <TableInfoContent>삼성</TableInfoContent>
-              </TableInfoContainer>
-            </TableBodyFirst>
-          </TableBodyCell>
-          <TableBodyCell>2023-05-17</TableBodyCell>
-          <TableBodyCell>12345678</TableBodyCell>
-          <TableBodyCell>1개</TableBodyCell>
-        </TableBodyRow>
-      </TableBody>
-    </Table>
-    <TotalContext>총 800,000원</TotalContext>
+      <Containers>
+        <Line />
+        <Head>
+          <h2>상품 정보</h2>
+          <h1>주문 일자</h1>
+          <h1>주문 번호</h1>
+          <h1>수량</h1>
+        </Head>
+        {/*{orderData*/}
+        {/*  ?.filter((item) => item.status === filterValue)*/}
+        {/*  .map((data, index) => (*/}
+        {/*    <Box key={index}>*/}
+        {/*      <InfoBox>*/}
+        {/*        <ProductImg src={data.imagePath} />*/}
+        {/*        <Info>*/}
+        {/*          <h4>이름</h4>*/}
+        {/*          <p>제조사제조사제조사제조사</p>*/}
+        {/*          <p>가격</p>*/}
+        {/*        </Info>*/}
+        {/*      </InfoBox>*/}
+        {/*      <InfoBox2>*/}
+        {/*        <h3>2023.05.04</h3>*/}
+        {/*        <h3>7849573894</h3>*/}
+        {/*        <h3>2개</h3>*/}
+        {/*      </InfoBox2>*/}
+        {/*    </Box>*/}
+        {/*  ))}*/}
+      </Containers>
     </>
   );
 }

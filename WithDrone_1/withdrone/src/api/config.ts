@@ -12,7 +12,9 @@ const KAKAO = "social_login/kakao";
 const ASSET = "asset";
 const ITEM = "item";
 const LOGOUT = "/logout";
-const PRODUCT = "/products"
+const PRODUCT = "/products";
+const CART = "/carts";
+const ORDER = "/orders";
 
 const API = {
   BASE_URL: `${BASE_URL}`,
@@ -32,6 +34,9 @@ const API = {
   REISSUE: `${AUTH}reissue`,
   SOCIAL_LOGIN: `${AUTH}social-login`,
   PRODUCT: `${PRODUCT}`,
+  LIKE: `${PRODUCT}/like`,
+  CART: `${CART}`,
+  ORDER: `${ORDER}`,
 };
 
 export default API;

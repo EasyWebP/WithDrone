@@ -14,8 +14,10 @@ import Mypage from "./pages/mypage";
 import Signup from "./pages/signup";
 import Social from "./pages/social";
 
-import ProductDetail from "./pages/detail/ProductDetail";
+import Detail from "./pages/detail";
 import StyledContainer from "./components/Toast/container";
+import Purchase from "./pages/purchase";
+import PurchaseConfirm from "./pages/purchaseConfirm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,10 +62,16 @@ function App() {
             <Route index element={<Signup />} />
           </Route>
           <Route path={PATH.DETAIL} element={<MainLayout />}>
-            <Route index element={<ProductDetail />} />
+            <Route index element={<Detail />} />
           </Route>
           <Route path={PATH.MYPAGE} element={<MainLayout />}>
             <Route index element={<Mypage />} />
+          </Route>
+          <Route path={PATH.PURCHASE} element={<MainLayout />}>
+            <Route index element={<Purchase />} />
+          </Route>
+          <Route path={PATH.PURCHASE_CONFIRM} element={<MainLayout />}>
+            <Route index element={<PurchaseConfirm />} />
           </Route>
         </Routes>
       </Router>
