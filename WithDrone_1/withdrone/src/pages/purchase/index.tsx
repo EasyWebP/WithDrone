@@ -70,8 +70,8 @@ export default function Purchase() {
     makeOneOrder(orderInfo, productId)
       .then((fetchedData)=>{
         console.log(fetchedData)
+        navigate(PATH.PURCHASE_CONFIRM, {state:fetchedData})
       })
-    navigate(PATH.PURCHASE_CONFIRM)
   }
 
   const isInputFilled = () => {

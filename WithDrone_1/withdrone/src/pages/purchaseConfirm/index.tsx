@@ -1,8 +1,12 @@
 import React from "react";
 import * as S from "./index.style";
 import { text } from "@storybook/addon-knobs";
+import { useLocation } from "react-router-dom";
 
 export default function PurchaseConfirm() {
+  const location = useLocation();
+  const receivedData = location.state;
+  
   const inputList = [
     { label: "받는사람", value: "함민혁" },
     { label: "연락처", value: "010-3009-2255" },
