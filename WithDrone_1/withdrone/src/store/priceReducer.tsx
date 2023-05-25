@@ -5,31 +5,27 @@
  */
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-interface Tab {
-  selectedTab: number;
+interface Price {
+  price: boolean;
 }
-const initialState: Tab = {
-  selectedTab: 1,
+const initialState: Price = {
+    price: false,
 };
 
 //state는 이 상태의 현재 상태 값을 의미한다
 //action은 실제 페이지 컴포넌트에서 전달해준 값을 의미한다
 
-const tabInfoSlice = createSlice({
-  name: "tabInfo",
+const priceSlice = createSlice({
+  name: "price",
   initialState: initialState,
   reducers: {
-    setSelectTab(state, action) {
-      state.selectedTab = action.payload;
-    },
-    deleteSelectTab(state) {
-      return initialState;
+    setPriceOrder: (state, action: PayloadAction<boolean>) => {
+        state.price = action.payload;
     },
   },
 });
 
-
 //위에서 선언해준 counterSlice의 reducer를 export해준다
-export default tabInfoSlice.reducer;
-export const { setSelectTab, deleteSelectTab } = tabInfoSlice.actions;
+export const { setPriceOrder } = priceSlice.actions;
+export default priceSlice.reducer;
 //이제 이걸다른 컴포턴트에서 dispatch로 사용한다.

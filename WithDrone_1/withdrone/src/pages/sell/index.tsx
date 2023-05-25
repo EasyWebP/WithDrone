@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Commercial from "./Commercial";
 import Educational from "./Educational";
 import Filming from "./Filming";
@@ -11,8 +11,13 @@ import Drone from "./Drone";
 import IconButton from "../../components/IconButton";
 import { StyledIcon } from "../../components/IconButton/index.styles";
 import Icon from "../../components/Icon";
-import { useSelector } from "react-redux";
-import { Rootstate } from "../../index";
+import PATH from "../../constants/path";
+import { fetchProductList } from "../../api/product";
+import { useDispatch, useSelector } from "react-redux";
+import { setLikeOrder } from "../../store/likeReducer";
+import { setPriceOrder } from "../../store/priceReducer";
+import Child from "./Child";
+import Racing from "./Racing";
 
 const Containers = styled.div`
   width: 100%;
@@ -81,15 +86,21 @@ const Line = styled.div`
   background-color: ${COLORS.GREY[300]};
 `;
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  manufacturer: string;
+  imagePath: string;
+}
+
 export default function Sell() {
-  // Use hooks to get the location state and set the selected tab.
+  const navigate = useNavigate();
+  const [droneLists, setDroneLists] = useState<Product[]>([]);
+
   const { state } = useLocation();
-  console.log("state", state);
-  // const selectedTab = useSelector((state: Rootstate) => {
-  //   return state.tabReducer;
-  // });
-  // console.log("이게 찐인거같은데", selectedTab);
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
+
   const tabs = [
     { id: 0, label: "전체 🔗", content: <Drone />, color: COLORS.GREY[200] },
     {
@@ -106,10 +117,21 @@ export default function Sell() {
     },
     { id: 3, label: "촬영용 📸", content: <Filming />, color: "#E9D5FA" },
     { id: 4, label: "취미용 🎮", content: <Hobby />, color: "#FBDDDE" },
-    { id: 5, label: "어린이용 👦🏻", content: <Hobby />, color: "#DEFCF6" },
-    { id: 6, label: "경기용 🏎️", content: <Hobby />, color: "#FBEFDD" },
+    { id: 5, label: "어린이용 👦🏻", content: <Child />, color: "#DEFCF6" },
+    { id: 6, label: "경기용 🏎️", content: <Racing />, color: "#FBEFDD" },
   ];
-  console.log("여기선느", selectedTabs);
+
+  const dispatch = useDispatch();
+
+  const handleLikeOrder = () => {
+    dispatch(setLikeOrder(true));
+    dispatch(setPriceOrder(false));
+  };
+
+  const handlePriceOrder = () => {
+    dispatch(setPriceOrder(true));
+    dispatch(setLikeOrder(false));
+  };
 
   return (
     <Containers>
@@ -118,7 +140,6 @@ export default function Sell() {
         <Line />
       </AdContainer>
       <TabContainer>
-        {/* Map tab data and render tab menu for each tab */}
         {tabs.map((tab) => (
           <TabMenu
             key={tab.id}
@@ -138,6 +159,10 @@ export default function Sell() {
           iconName="heart"
           iconSize="1rem"
           color={"red"}
+          onClick={() => {
+            console.log(PATH.MYPAGE);
+            navigate(PATH.MYPAGE);
+          }}
         />
         <SelectContainer>
           <IconButton
@@ -145,12 +170,14 @@ export default function Sell() {
             title="인기순"
             iconSize="1rem"
             theme="normal"
+            onClick={handleLikeOrder}
           />
           <IconButton
             iconName="check"
-            title="최신순"
+            title="가격순"
             iconSize="1rem"
             theme="normal"
+            onClick={handlePriceOrder}
           />
         </SelectContainer>
       </MidContainer>
