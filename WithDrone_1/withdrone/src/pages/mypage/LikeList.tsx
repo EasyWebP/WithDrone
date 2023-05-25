@@ -54,12 +54,13 @@ export const DeleteButton = styled.button`
   border: none;
   background-color: transparent;
   height: 4rem;
+  color: ${COLORS.GREY[400]};
   cursor: pointer;
   position: absolute;
   right: 0;
   margin-left: 14rem;
   &:hover {
-    background-color: ${COLORS.BLUE};
+    color: ${COLORS.GREY[300]};
   }
 `;
 
@@ -81,9 +82,14 @@ export default function LikeList(props: any) {
   const description = text("description", "찜 목록에서 제거하시겠습니까? ");
   useEffect(() => {
     getLikelist();
-  }, [likeData]);
-
+  }, []);
+  // useEffect(() => {
+  //   if (likeData) {
+  //     getLikelist();
+  //   }
+  // }, [likeData]);
   console.log("likeData", likeData?.content);
+  console.log("likeData");
 
   return (
     <>
