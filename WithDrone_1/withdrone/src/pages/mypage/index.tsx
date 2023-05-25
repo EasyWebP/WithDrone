@@ -136,7 +136,7 @@ export default function Mypage() {
     { id: 3, label: "장바구니", content: <CartList props={3} /> },
   ];
   const rentTabs = [
-    { id: 4, label: "주문 내역 조회", content: <OrderList props={1} /> },
+    { id: 4, label: "주문 내역 조회", content: <OrderList props={4} /> },
     { id: 5, label: "찜 목록", content: <LikeList props={5} /> },
     { id: 6, label: "장바구니", content: <CartList props={6} /> },
   ];

@@ -91,3 +91,7 @@ export const getOrderList = async () => {
   const { data } = await authorizationClient.get(`${API.ORDER}`);
   return data;
 };
+export const getCartList = async () => {
+  const { data } = await authorizationClient.get(`${API.CART}`);
+  return data;
+};
