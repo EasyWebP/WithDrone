@@ -23,22 +23,27 @@ export default function Detail() {
     addToCart,
     setLike,
   } = useDetail();
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const [num, setNum] = useState(3);
+
   useEffect(() => {
     getDetailData();
   }, []);
+
   useEffect(() => {
     setLike(detailData?.liked);
     if (detailData?.status === "RENTAL") {
       setNum(6);
     }
   }, [detailData]);
+
   if (!detailData) {
     return null;
   }
+
   const openDialog = () => {
     setIsDialogOpen(true);
   };
@@ -46,10 +51,16 @@ export default function Detail() {
   const closeDialog = () => {
     setIsDialogOpen(false);
   };
+
   const description = text(
     "description",
     "상품이 장바구니에 담겼습니다. \n 쇼핑을 계속하시겠습니까? "
   );
+
+  const handlePurchase = () => {
+    //나중에 뭐샀는지, 수량, 총결제액 구매페이지에 띄울거면 state로 전달
+    navigate(PATH.PURCHASE);
+  }
 
   return (
     <S.Containers>
@@ -143,9 +154,7 @@ export default function Detail() {
                 </S.InputButtonContainer>
               </S.InputContainer>
               <S.BuyButton
-                onClick={() => {
-                  navigate(PATH.PURCHASE);
-                }}
+                onClick={handlePurchase}
               >
                 구매하기
               </S.BuyButton>
