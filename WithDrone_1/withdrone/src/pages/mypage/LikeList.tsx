@@ -5,6 +5,7 @@ import useMypage from "../../hooks/useMypage";
 import { text } from "@storybook/addon-knobs";
 import Dialog from "../../components/Dialog";
 import PATH from "../../constants/path";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const Containers = styled.div`
   display: flex;
@@ -66,6 +67,7 @@ export const DeleteButton = styled.button`
 
 export default function LikeList(props: any) {
   console.log(props.props);
+
   const { getLikelist, likeData, mutateDeleteLike } = useMypage();
   const filterValue =
     props.props === 2 ? "SALE" : props.props === 5 ? "RENT" : "";
@@ -83,14 +85,14 @@ export default function LikeList(props: any) {
   useEffect(() => {
     getLikelist();
   }, []);
-  // useEffect(() => {
-  //   if (likeData) {
-  //     getLikelist();
-  //   }
-  // }, [likeData]);
-  console.log("likeData", likeData?.content);
-  console.log("likeData");
+  const handleDeleteLike = async (id: number) => {
+    try {
+      await mutateDeleteLike.mutateAsync({ productId: id });
+      await getLikelist();
+    } catch (error) {}
+  };
 
+  // console.log("왜안돼", likeData);
   return (
     <>
       <Containers>
@@ -104,7 +106,7 @@ export default function LikeList(props: any) {
               closeDialog();
             }}
             onConfirm={() => {
-              mutateDeleteLike.mutate({ productId: id });
+              handleDeleteLike(id);
               closeDialog();
             }}
           />
