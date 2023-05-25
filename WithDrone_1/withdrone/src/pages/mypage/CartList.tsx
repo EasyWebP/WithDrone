@@ -143,10 +143,8 @@ export default function CartList(props: any) {
             }}
             onConfirm={() => {
               mutateDeleteCarts.mutate({
-                data: {
-                  itemId: itemId,
-                  cartId: cartId,
-                },
+                itemId: itemId,
+                cartId: cartId,
               });
               closeDialog();
             }}
