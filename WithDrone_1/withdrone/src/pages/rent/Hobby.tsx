@@ -72,7 +72,6 @@ export default function Hobby() {
               <P.ProductImg src={product.imagePath} alt={product.name} />
             </P.ProductImgDiv>
             <P.ProductTitle>{product.name}</P.ProductTitle>
-            <P.ProductPrice>{product.price}</P.ProductPrice>
           </P.Product>
         ))}
       </P.ProductContainer>

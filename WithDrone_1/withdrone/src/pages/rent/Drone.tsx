@@ -50,8 +50,6 @@ export default function Drone() {
 
   const handlePageChange = (pageNumber: number) => {
     setActivePage(pageNumber);
-    // 해당 페이지를 로드하는 로직을 구현합니다.
-    console.log("pageNumber", pageNumber);
     fetchProductList(undefined, likeState, priceState, "RENTAL", {
       page: pageNumber - 1,
       size: PAGENUM,
@@ -73,7 +71,6 @@ export default function Drone() {
               <P.ProductImg src={product.imagePath} alt={product.name} />
             </P.ProductImgDiv>
             <P.ProductTitle>{product.name}</P.ProductTitle>
-            <P.ProductPrice>{product.price}</P.ProductPrice>
           </P.Product>
         ))}
       </P.ProductContainer>
