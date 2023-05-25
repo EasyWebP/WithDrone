@@ -8,11 +8,11 @@ export default function PurchaseConfirm() {
   const receivedData = location.state;
   
   const inputList = [
-    { label: "받는사람", value: "함민혁" },
-    { label: "연락처", value: "010-3009-2255" },
+    { label: "받는사람", value: receivedData.memberName },
+    { label: "연락처", value: receivedData.phoneNumber },
     {
       label: "받는주소",
-      value: "서울특별시 송파구 오금로 44길 21 상상프리 401호",
+      value: receivedData.address,
     },
   ];
   return (
@@ -24,8 +24,8 @@ export default function PurchaseConfirm() {
         <p>주문상세</p>
 
         <S.OrderInfo>
-          <S.Date>2023.05.08 주문</S.Date>
-          <S.OrderNum>주문번호 787833940</S.OrderNum>
+          <S.Date>{receivedData.orderDate} 주문</S.Date>
+          <S.OrderNum>주문번호 {receivedData.orderNumber}</S.OrderNum>
         </S.OrderInfo>
         <S.ReceiverInfo>
           <h4>받는사람 정보</h4>
