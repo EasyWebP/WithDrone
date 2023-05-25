@@ -44,8 +44,6 @@ interface CartProps {
   status: string;
 }
 export default function useMypage() {
-  // const queryClient = useQueryClient();
-
   const navigate = useNavigate();
   const [likeData, setLikeData] = useState<LikeProps>();
   const [orderData, setOrderData] = useState<OrderProps>();
@@ -78,13 +76,15 @@ export default function useMypage() {
     setCartData(data);
   };
 
+  const queryClient = useQueryClient();
   const mutateDeleteLike = useMutation(["getLike"], getLike, {
     onSuccess: (data) => {
       console.log("data", data);
-      // queryClient.invalidateQueries([QUERYKEYS.GET_LIKE_LIST]);
+      queryClient.invalidateQueries([QUERYKEYS.GET_LIKE_LIST]);
       if (data.like) {
         toastMsg("찜 목록에 추가 되었습니다! 👏");
       } else {
+        queryClient.invalidateQueries([QUERYKEYS.GET_LIKE_LIST]);
         toastMsg("찜 목록에서 삭제 되었습니다! 👏");
       }
     },

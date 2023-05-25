@@ -79,7 +79,7 @@ export default function LikeList(props: any) {
   const closeDialog = () => {
     setIsDialogOpen(false);
   };
-  const description = text("description", "찜 목록에서 제거하시겠습니까? ");
+  const description = text("des", "찜 목록에서 제거하시겠습니까? ");
   useEffect(() => {
     getLikelist();
   }, []);

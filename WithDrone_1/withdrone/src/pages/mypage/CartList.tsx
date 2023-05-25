@@ -127,7 +127,7 @@ export default function CartList(props: any) {
   const closeDialog = () => {
     setIsDialogOpen(false);
   };
-  const description = text("description", "장바구니에서 제거하시겠습니까? ");
+  const description = text("descrip", "장바구니에서 제거하시겠습니까? ");
 
   return (
     <>
