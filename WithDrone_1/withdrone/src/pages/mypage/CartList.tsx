@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import useMypage from "../../hooks/useMypage";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import COLORS from "../../constants/color";
 import * as S from "../detail/index.style";
 import PATH from "../../constants/path";
 import { useNavigate } from "react-router-dom";
+import Dialog from "../../components/Dialog";
+import { text } from "@storybook/addon-knobs";
 
 export const Containers = styled.div`
   display: flex;
@@ -98,7 +100,7 @@ export const BuyButton = styled.button`
   cursor: pointer;
   height: 4rem;
   font-size: 1.5rem;
-  margin-left: 112rem;
+  margin-left: 95rem;
   &:hover {
     color: ${COLORS.GREY[200]};
     background-color: ${COLORS.BLUE};
@@ -106,19 +108,48 @@ export const BuyButton = styled.button`
 `;
 export default function CartList(props: any) {
   const navigate = useNavigate();
+  const [cartId, setCartId] = useState(0);
+  const [itemId, setItemId] = useState(0);
   console.log(props.props);
-  const { getCartlist, cartData } = useMypage();
+  const { getCartlist, cartData, mutateDeleteCarts } = useMypage();
   useEffect(() => {
     getCartlist();
-  }, []);
+  }, [cartId]);
   const filterValue =
     props.props === 3 ? "SALE" : props.props === 6 ? "RENTAL" : "";
   console.log("cartData", cartData);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  console.log();
+  const openDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+  const description = text("description", "장바구니에서 제거하시겠습니까? ");
+
   return (
     <>
       <Containers>
+        {isDialogOpen && (
+          <Dialog
+            size={37}
+            description={description}
+            visible
+            cancellable
+            onCancel={() => {
+              closeDialog();
+            }}
+            onConfirm={() => {
+              mutateDeleteCarts.mutate({
+                itemId: itemId,
+                cartId: cartId,
+              });
+              closeDialog();
+            }}
+          />
+        )}
         <Line />
         {cartData &&
           Array.isArray(cartData) &&
@@ -140,7 +171,9 @@ export default function CartList(props: any) {
                 </PurchaseButton>
                 <DeleteButton
                   onClick={() => {
-                    // getOrderlist();
+                    setCartId(data.cartItemId);
+                    setItemId(data.productId);
+                    openDialog();
                   }}
                 >
                   삭제하기

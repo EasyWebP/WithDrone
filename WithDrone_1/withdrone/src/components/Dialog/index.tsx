@@ -110,7 +110,7 @@ function Dialog({
   children,
   onCancel,
   onConfirm,
-  confirmTitle = "쇼핑 계속하기",
+  confirmTitle = "확인",
   confirmWidth = "12rem",
 }: DialogProps) {
   return (
@@ -128,7 +128,7 @@ function Dialog({
                 {cancellable && (
                   <StyledCancelButton
                     theme="unfocus"
-                    title="장바구니로 이동하기"
+                    title="취소"
                     width="14rem"
                     onClick={onCancel}
                   />

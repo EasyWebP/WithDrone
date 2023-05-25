@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import useMypage from "../../hooks/useMypage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Containers = styled.div`
   display: flex;

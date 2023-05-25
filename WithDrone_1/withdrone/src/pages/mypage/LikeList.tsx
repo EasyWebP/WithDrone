@@ -112,7 +112,6 @@ export default function LikeList(props: any) {
               <h4>{data.name}</h4>
               <p>{data.price}원</p>
               <p>{data.manufacturer}</p>
-
               <DeleteButton
                 onClick={() => {
                   setId(data.id);

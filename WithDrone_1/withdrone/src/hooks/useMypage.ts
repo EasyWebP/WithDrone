@@ -3,6 +3,7 @@ import { authLogout } from "../api/auth";
 import { useNavigate } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
+  deleteCarts,
   fetchProduct,
   getCartList,
   getLike,
@@ -32,13 +33,24 @@ interface OrderProps {
   price: number;
   status: string;
 }
+interface CartProps {
+  cartItemId: number;
+  productId: number;
+  count: number;
+  imagePath: string;
+  manufacturer: string;
+  productName: string;
+  price: number;
+  status: string;
+}
 export default function useMypage() {
   // const queryClient = useQueryClient();
 
   const navigate = useNavigate();
   const [likeData, setLikeData] = useState<LikeProps>();
   const [orderData, setOrderData] = useState<OrderProps>();
-  const [cartData, setCartData] = useState<OrderProps>();
+  const [cartData, setCartData] = useState<CartProps>();
+
   // const payload = { productId: productId };
 
   const handleLogout = () => {
@@ -84,6 +96,18 @@ export default function useMypage() {
       toastMsg(`${errorCode} / ${message}`);
     },
   });
+  const mutateDeleteCarts = useMutation(["deleteCarts"], deleteCarts, {
+    onSuccess: () => {
+      toastMsg("장바구니에서 해당 제품이 삭제 되었습니다! 👏");
+    },
+    onError: ({
+      response: {
+        data: { errorCode, message },
+      },
+    }) => {
+      toastMsg(`${errorCode} / ${message}`);
+    },
+  });
   return {
     handleLogout,
     getLikelist,
@@ -93,5 +117,6 @@ export default function useMypage() {
     getCartlist,
     cartData,
     mutateDeleteLike,
+    mutateDeleteCarts,
   };
 }
