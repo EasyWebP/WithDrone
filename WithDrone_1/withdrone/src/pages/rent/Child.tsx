@@ -15,7 +15,7 @@ interface Product {
   imagePath: string;
 }
 
-export default function Educational() {
+export default function Child() {
   const [totalProduct, setTotalProduct] = useState(0);
   const [activePage, setActivePage] = useState<number>(1);
   const navigate = useNavigate();
@@ -35,13 +35,13 @@ export default function Educational() {
   const [droneLists, setDroneLists] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchProductList("교육용", undefined, undefined, "RENTAL").then((fetchedData) => {
+    fetchProductList("어린이용", undefined, undefined, "RENTAL").then((fetchedData) => {
       setTotalProduct(fetchedData.numberOfElements); //해당 카테고리 개수 할당 위함
     });
   }, []);
 
   useEffect(() => {
-    fetchProductList("교육용", likeState, priceState, "RENTAL", {
+    fetchProductList("어린이용", likeState, priceState, "RENTAL", {
       page: activePage - 1,
       size: PAGENUM,
     }).then((fetchedData) => {
@@ -51,7 +51,7 @@ export default function Educational() {
 
   const handlePageChange = (pageNumber: number) => {
     setActivePage(pageNumber);
-    fetchProductList("교육용", likeState, priceState, "RENTAL", {
+    fetchProductList("어린이용", likeState, priceState, "RENTAL", {
       page: pageNumber - 1,
       size: PAGENUM,
     }).then((fetchedData) => {

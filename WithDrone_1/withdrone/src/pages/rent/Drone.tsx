@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as P from "../../components/Product";
 import { fetchProductList } from "../../api/product";
 import { useEffect, useState } from "react";
@@ -15,11 +15,10 @@ interface Product {
   imagePath: string;
 }
 
-export default function Educational() {
+export default function Drone() {
   const [totalProduct, setTotalProduct] = useState(0);
   const [activePage, setActivePage] = useState<number>(1);
   const navigate = useNavigate();
-
   // @ts-ignore
   const like = useSelector((state) => state.likeReducer.like);
   let likeState: any;
@@ -35,13 +34,13 @@ export default function Educational() {
   const [droneLists, setDroneLists] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchProductList("교육용", undefined, undefined, "RENTAL").then((fetchedData) => {
-      setTotalProduct(fetchedData.numberOfElements); //해당 카테고리 개수 할당 위함
+    fetchProductList(undefined, undefined, undefined, "RENTAL").then((fetchedData) => {
+      setTotalProduct(fetchedData.totalElements); //해당 카테고리 개수 할당 위함
     });
   }, []);
 
   useEffect(() => {
-    fetchProductList("교육용", likeState, priceState, "RENTAL", {
+    fetchProductList(undefined, likeState, priceState, "RENTAL", {
       page: activePage - 1,
       size: PAGENUM,
     }).then((fetchedData) => {
@@ -51,7 +50,7 @@ export default function Educational() {
 
   const handlePageChange = (pageNumber: number) => {
     setActivePage(pageNumber);
-    fetchProductList("교육용", likeState, priceState, "RENTAL", {
+    fetchProductList(undefined, likeState, priceState, "RENTAL", {
       page: pageNumber - 1,
       size: PAGENUM,
     }).then((fetchedData) => {
