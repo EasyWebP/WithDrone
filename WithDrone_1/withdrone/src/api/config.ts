@@ -14,6 +14,7 @@ const ITEM = "item";
 const LOGOUT = "/logout";
 const PRODUCT = "/products";
 const CART = "/carts";
+const ORDER = "/orders";
 
 const API = {
   BASE_URL: `${BASE_URL}`,
@@ -35,6 +36,7 @@ const API = {
   PRODUCT: `${PRODUCT}`,
   LIKE: `${PRODUCT}/like`,
   CART: `${CART}`,
+  ORDER: `${ORDER}`,
 };
 
 export default API;

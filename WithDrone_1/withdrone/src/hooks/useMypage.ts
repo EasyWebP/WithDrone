@@ -2,7 +2,7 @@ import toastMsg from "../components/Toast";
 import { authLogout } from "../api/auth";
 import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
-import { fetchProduct, getLikeList } from "../api/product";
+import { fetchProduct, getLikeList, getOrderList } from "../api/product";
 import { useEffect, useState } from "react";
 
 interface LikeProps {
@@ -15,9 +15,20 @@ interface LikeProps {
     status: string;
   }[];
 }
+interface OrderProps {
+  count: number;
+  imagePath: string;
+  manufacturer: string;
+  orderDate: string;
+  orderNumber: string;
+  productName: string;
+  price: number;
+  status: string;
+}
 export default function useMypage() {
   const navigate = useNavigate();
   const [likeData, setLikeData] = useState<LikeProps>();
+  const [orderData, setOrderData] = useState<OrderProps>();
 
   const handleLogout = () => {
     authLogout().then((isLogout) => {
@@ -33,6 +44,10 @@ export default function useMypage() {
     const data = await getLikeList();
     setLikeData(data);
   };
-
-  return { handleLogout, getLikelist, likeData };
+  const getOrderlist = async () => {
+    const data = await getOrderList();
+    console.log("주문내역조회", data);
+    setOrderData(data);
+  };
+  return { handleLogout, getLikelist, likeData, getOrderlist, orderData };
 }

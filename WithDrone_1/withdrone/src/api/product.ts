@@ -12,7 +12,13 @@ export const fetchProductList = async (
 
   let url = `${API.PRODUCT}?`;
 
-  if (category !== undefined || like !== undefined || price !== undefined || status !== undefined || pageable !== undefined) {
+  if (
+    category !== undefined ||
+    like !== undefined ||
+    price !== undefined ||
+    status !== undefined ||
+    pageable !== undefined
+  ) {
     if (category !== undefined) {
       url += `category=${category}&`;
     }
@@ -39,7 +45,7 @@ export const fetchProductList = async (
       }
 
       if (sort !== undefined && sort.length > 0) {
-        const sortParams = sort.map((s) => `sort=${s}`).join('&');
+        const sortParams = sort.map((s) => `sort=${s}`).join("&");
         url += `${sortParams}&`;
       }
     }
@@ -54,7 +60,6 @@ export const fetchProductList = async (
   return response.data;
 };
 
-  
 // export const fetchProductList = async (category?: string, like?: boolean, price?: boolean, status?: string, pageable?: { page: number, size: number, sort: string[] }) => {
 //     const { page, size, sort } = pageable ?? {};
 //     const url = `${API.PRODUCT}?category=${category}&like=${like}&price=${price}&status=${status}`;
@@ -80,5 +85,9 @@ export const addCart = async (product: object) => {
 };
 export const getLikeList = async () => {
   const { data } = await authorizationClient.get(`${API.LIKE}`);
+  return data;
+};
+export const getOrderList = async () => {
+  const { data } = await authorizationClient.get(`${API.ORDER}`);
   return data;
 };

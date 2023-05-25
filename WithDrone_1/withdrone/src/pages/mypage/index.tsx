@@ -131,14 +131,14 @@ export default function Mypage() {
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
   const [rentSelectedTabs, setRentSelectedTabs] = useState(Number(state) || 4);
   const tabs = [
-    { id: 1, label: "주문 내역 조회", content: <OrderList /> },
+    { id: 1, label: "주문 내역 조회", content: <OrderList props={1} /> },
     { id: 2, label: "찜 목록", content: <LikeList props={2} /> },
-    { id: 3, label: "장바구니", content: <CartList /> },
+    { id: 3, label: "장바구니", content: <CartList props={3} /> },
   ];
   const rentTabs = [
-    { id: 4, label: "주문 내역 조회", content: <OrderList /> },
+    { id: 4, label: "주문 내역 조회", content: <OrderList props={1} /> },
     { id: 5, label: "찜 목록", content: <LikeList props={5} /> },
-    { id: 6, label: "장바구니", content: <CartList /> },
+    { id: 6, label: "장바구니", content: <CartList props={6} /> },
   ];
 
   return (

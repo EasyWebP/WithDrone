@@ -82,7 +82,13 @@ export default function LikeList(props: any) {
               <h4>{data.name}</h4>
               <p>{data.price}</p>
               <p>{data.manufacturer}</p>
-              <DeleteButton>삭제하기</DeleteButton>
+              <DeleteButton
+                onClick={() => {
+                  // getOrderlist();
+                }}
+              >
+                삭제하기
+              </DeleteButton>
             </Box>
           ))}
       </Containers>
