@@ -29,6 +29,7 @@ export default function Drone() {
 
   useEffect(() => {
     fetchProductList(undefined, likeState, priceState).then((fetchedData) => {
+      // console.log("1", fetchedData)
       setDroneLists(fetchedData.content);
     });
   }, [like, price]);
