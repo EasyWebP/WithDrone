@@ -91,11 +91,11 @@ export default function Purchase() {
             {section.data.map((item, itemIndex) => (
               <>
                 <S.Box key={itemIndex}>
-                  <S.Index>{item.label}</S.Index>            
+                  <S.Index>{item.label}</S.Index>           
                   {item.value&&index===0 || index===2&&itemIndex===1 ? (
                     <S.Info>{item.value}</S.Info>
-                  ) : ( //@ts-ignore
-                    <S.Input type={item.type} value={item.value} onChange={(event) => handleChange(event, index, itemIndex)}></S.Input>
+                  ) : ( 
+                    <S.Input type={item.type} value={item.value as string} onChange={(event) => handleChange(event, index, itemIndex)}></S.Input>
                   )}
                 </S.Box>
                 <S.ThinLine />
