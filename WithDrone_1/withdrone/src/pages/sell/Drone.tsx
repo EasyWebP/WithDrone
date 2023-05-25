@@ -4,6 +4,7 @@ import { fetchProductList } from "../../api/product";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Pagination from "react-js-pagination";
+import PAGENUM from "../../constants/PageNumber";
 
 interface Product {
   id: number;
@@ -34,14 +35,13 @@ export default function Drone() {
   useEffect(() => {
     fetchProductList().then(
       (fetchedData) => {
-        setTotalProduct(fetchedData.numberOfElements); //해당 카테고리 개수 할당 위함
-        console.log("totalProduct", totalProduct)
+        setTotalProduct(fetchedData.totalElements); //해당 카테고리 개수 할당 위함
       }
     );
   }, []);
 
   useEffect(() => {
-    fetchProductList(undefined, likeState, priceState, undefined, {page:activePage-1,size:8}).then(
+    fetchProductList(undefined, likeState, priceState, undefined, {page:activePage-1,size:PAGENUM}).then(
       (fetchedData) => {
         setDroneLists(fetchedData.content);
       }
@@ -52,7 +52,7 @@ export default function Drone() {
     setActivePage(pageNumber);
     // 해당 페이지를 로드하는 로직을 구현합니다.
     console.log("pageNumber", pageNumber)
-    fetchProductList(undefined, likeState, priceState, undefined, {page:pageNumber-1,size:8}).then(
+    fetchProductList(undefined, likeState, priceState, undefined, {page:pageNumber-1,size:PAGENUM}).then(
       (fetchedData) => {
         setDroneLists(fetchedData.content);
       }
@@ -77,9 +77,9 @@ export default function Drone() {
       <P.PageNumberContainer>
           <Pagination
             activePage={activePage}
-            itemsCountPerPage={8} // 페이지당 아이템 개수
+            itemsCountPerPage={PAGENUM} // 페이지당 아이템 개수
             totalItemsCount={totalProduct} // 전체 아이템 개수
-            pageRangeDisplayed={Math.ceil(totalProduct/8)} // 표시할 페이지 범위의 개수
+            pageRangeDisplayed={Math.ceil(totalProduct/PAGENUM)} // 표시할 페이지 범위의 개수
             onChange={handlePageChange} // 페이지 변경 이벤트 핸들러
           />
       </P.PageNumberContainer>

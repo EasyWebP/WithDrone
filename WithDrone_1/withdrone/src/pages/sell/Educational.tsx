@@ -50,8 +50,6 @@ export default function Educational() {
 
   const handlePageChange = (pageNumber: number) => {
     setActivePage(pageNumber);
-    // 해당 페이지를 로드하는 로직을 구현합니다.
-    console.log("pageNumber", pageNumber)
     fetchProductList("교육용", likeState, priceState, undefined, {page:pageNumber-1,size:PAGENUM}).then(
       (fetchedData) => {
         setDroneLists(fetchedData.content);
