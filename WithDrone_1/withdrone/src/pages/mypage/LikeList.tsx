@@ -1,12 +1,7 @@
 import styled from "styled-components";
-import exp from "constants";
 import COLORS from "../../constants/color";
-import { useMutation } from "@tanstack/react-query";
-import { getLike, getLikeList } from "../../api/product";
-import toastMsg from "../../components/Toast";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useMypage from "../../hooks/useMypage";
-import { useLocation } from "react-router-dom";
 
 export const Containers = styled.div`
   display: flex;

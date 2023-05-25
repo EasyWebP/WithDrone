@@ -12,7 +12,7 @@ interface LikeProps {
     price: number;
     manufacturer: string;
     imagePath: string;
-    status: string; // imagePath의 타입을 string으로 수정
+    status: string;
   }[];
 }
 export default function useMypage() {

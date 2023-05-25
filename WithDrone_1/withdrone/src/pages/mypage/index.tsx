@@ -107,11 +107,9 @@ const TabMenuItem = styled.li`
 ///////////////////////
 const TableContainer = styled.div`
   width: 82%;
-  //height: 50rem;
   overflow-x: auto;
   margin-top: 4rem;
   height: auto; // 50rem을 기본으로 두고 그 이상 부터는 auto로 나중에 추가
-  //border: 1px solid red;
 `;
 
 export default function Mypage() {
@@ -125,18 +123,13 @@ export default function Mypage() {
 
   useEffect(() => {
     fetchMember().then((fetchedData) => {
-      console.log("유저정보", fetchedData);
       setMember(fetchedData); // 데이터 상태 업데이트
     });
   }, []);
 
   const { state } = useLocation();
-  console.log("eifheifheifhiehfiehfi", Number(state));
-
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
   const [rentSelectedTabs, setRentSelectedTabs] = useState(Number(state) || 4);
-  console.log("selectedTabs", selectedTabs);
-  console.log("rentSelectedTabs", rentSelectedTabs);
   const tabs = [
     { id: 1, label: "주문 내역 조회", content: <OrderList /> },
     { id: 2, label: "찜 목록", content: <LikeList props={2} /> },
