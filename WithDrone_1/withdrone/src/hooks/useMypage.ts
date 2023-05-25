@@ -1,14 +1,16 @@
 import toastMsg from "../components/Toast";
 import { authLogout } from "../api/auth";
 import { useNavigate } from "react-router";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   fetchProduct,
   getCartList,
+  getLike,
   getLikeList,
   getOrderList,
 } from "../api/product";
 import { useEffect, useState } from "react";
+import QUERYKEYS from "../constants/querykey";
 
 interface LikeProps {
   content: {
@@ -31,10 +33,13 @@ interface OrderProps {
   status: string;
 }
 export default function useMypage() {
+  // const queryClient = useQueryClient();
+
   const navigate = useNavigate();
   const [likeData, setLikeData] = useState<LikeProps>();
   const [orderData, setOrderData] = useState<OrderProps>();
   const [cartData, setCartData] = useState<OrderProps>();
+  // const payload = { productId: productId };
 
   const handleLogout = () => {
     authLogout().then((isLogout) => {
@@ -60,6 +65,25 @@ export default function useMypage() {
     console.log("장바구니 내역 조회", data);
     setCartData(data);
   };
+
+  const mutateDeleteLike = useMutation(["getLike"], getLike, {
+    onSuccess: (data) => {
+      console.log("data", data);
+      // queryClient.invalidateQueries([QUERYKEYS.GET_LIKE_LIST]);
+      if (data.like) {
+        toastMsg("찜 목록에 추가 되었습니다! 👏");
+      } else {
+        toastMsg("찜 목록에서 삭제 되었습니다! 👏");
+      }
+    },
+    onError: ({
+      response: {
+        data: { errorCode, message },
+      },
+    }) => {
+      toastMsg(`${errorCode} / ${message}`);
+    },
+  });
   return {
     handleLogout,
     getLikelist,
@@ -68,5 +92,6 @@ export default function useMypage() {
     orderData,
     getCartlist,
     cartData,
+    mutateDeleteLike,
   };
 }

@@ -4,10 +4,12 @@ import { useEffect } from "react";
 
 export const Containers = styled.div`
   display: flex;
-  height: 80rem;
   flex-direction: column;
+  min-height: 40rem;
+  height: auto;
   align-items: center;
   width: 100%;
+  position: relative;
 `;
 
 export const Head = styled.div`
