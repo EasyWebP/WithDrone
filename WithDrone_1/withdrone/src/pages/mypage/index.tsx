@@ -135,15 +135,16 @@ export default function Mypage() {
 
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
   const [rentSelectedTabs, setRentSelectedTabs] = useState(Number(state) || 4);
-
+  console.log("selectedTabs", selectedTabs);
+  console.log("rentSelectedTabs", rentSelectedTabs);
   const tabs = [
     { id: 1, label: "주문 내역 조회", content: <OrderList /> },
-    { id: 2, label: "찜 목록", content: <LikeList /> },
+    { id: 2, label: "찜 목록", content: <LikeList props={2} /> },
     { id: 3, label: "장바구니", content: <CartList /> },
   ];
   const rentTabs = [
     { id: 4, label: "주문 내역 조회", content: <OrderList /> },
-    { id: 5, label: "찜 목록", content: <LikeList /> },
+    { id: 5, label: "찜 목록", content: <LikeList props={5} /> },
     { id: 6, label: "장바구니", content: <CartList /> },
   ];
 
@@ -213,7 +214,7 @@ export default function Mypage() {
                 })}
               </TabMenu>
             </TabContainer>
-            {tabs.find((tab) => tab.id === selectedTabs)?.content}
+            {rentTabs.find((tab) => tab.id === rentSelectedTabs)?.content}
           </TableContainer>
         </>
       )}

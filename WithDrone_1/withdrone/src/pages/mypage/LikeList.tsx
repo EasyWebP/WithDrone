@@ -6,6 +6,7 @@ import { getLike, getLikeList } from "../../api/product";
 import toastMsg from "../../components/Toast";
 import { useEffect, useState } from "react";
 import useMypage from "../../hooks/useMypage";
+import { useLocation } from "react-router-dom";
 
 export const Containers = styled.div`
   display: flex;
@@ -59,29 +60,36 @@ export const DeleteButton = styled.button`
   }
 `;
 
-export default function LikeList() {
-  const { mutateLikeList, getLikelist, likeData } = useMypage();
-  const [likeCount, setLikeCount] = useState(0);
+export default function LikeList(props: any) {
+  console.log(props.props);
+  const { getLikelist, likeData } = useMypage();
+  const filterValue =
+    props.props === 2 ? "SALE" : props.props === 5 ? "RENT" : "";
+  console.log(filterValue);
 
   useEffect(() => {
     getLikelist();
   }, []);
 
   console.log("likeData", likeData?.content);
+  console.log("대여니?");
+
   return (
     <>
       <Containers>
         <Line />
         <h1>상품 정보</h1>
-        {likeData?.content.map((data, index) => (
-          <Box key={index}>
-            <ProductImg src={data.imagePath} />
-            <h4>{data.name}</h4>
-            <p>{data.price}</p>
-            <p>{data.manufacturer}</p>
-            <DeleteButton>삭제하기</DeleteButton>
-          </Box>
-        ))}
+        {likeData?.content
+          .filter((item) => item.status === filterValue)
+          .map((data, index) => (
+            <Box key={index}>
+              <ProductImg src={data.imagePath} />
+              <h4>{data.name}</h4>
+              <p>{data.price}</p>
+              <p>{data.manufacturer}</p>
+              <DeleteButton>삭제하기</DeleteButton>
+            </Box>
+          ))}
       </Containers>
     </>
   );

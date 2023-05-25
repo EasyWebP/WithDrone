@@ -3,7 +3,7 @@ import { authLogout } from "../api/auth";
 import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { fetchProduct, getLikeList } from "../api/product";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface LikeProps {
   content: {
@@ -11,7 +11,8 @@ interface LikeProps {
     name: string;
     price: number;
     manufacturer: string;
-    imagePath: string; // imagePath의 타입을 string으로 수정
+    imagePath: string;
+    status: string; // imagePath의 타입을 string으로 수정
   }[];
 }
 export default function useMypage() {
@@ -26,24 +27,12 @@ export default function useMypage() {
         navigate(`/`);
       }
     });
-
     toastMsg("로그아웃");
   };
-  const mutateLikeList = useMutation(["getLikeList"], getLikeList, {
-    onSuccess: (data) => {
-      console.log("dataewjfiowjeofjweof", data);
-      setLikeData(data);
-    },
-    onError: ({
-      response: {
-        data: { errorCode, message },
-      },
-    }) => {},
-  });
   const getLikelist = async () => {
     const data = await getLikeList();
     setLikeData(data);
   };
 
-  return { handleLogout, mutateLikeList, getLikelist, likeData };
+  return { handleLogout, getLikelist, likeData };
 }
