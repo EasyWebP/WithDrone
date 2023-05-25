@@ -89,7 +89,7 @@ export const PurchaseButton = styled.button`
   }
 `;
 export const BuyButton = styled.button`
-  flex: 1;
+  //flex: 1;
   background-color: #3583f7;
   color: white;
   border: none;
