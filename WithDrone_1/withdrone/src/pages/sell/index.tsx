@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import Commercial from "./Commercial";
@@ -132,6 +132,10 @@ export default function Sell() {
     dispatch(setLikeOrder(false));
   };
 
+  const handleGoToLikeList = () => {
+    navigate(PATH.MYPAGE, {state:2});
+  }
+
   return (
     <Containers>
       <AdContainer>
@@ -158,10 +162,7 @@ export default function Sell() {
           iconName="heart"
           iconSize="1rem"
           color={"red"}
-          onClick={() => {
-            console.log(PATH.MYPAGE);
-            navigate(PATH.MYPAGE);
-          }}
+          onClick={handleGoToLikeList}
         />
         <SelectContainer>
           <IconButton
