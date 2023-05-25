@@ -126,7 +126,18 @@ export default function CartList(props: any) {
     setIsDialogOpen(false);
   };
   const description = text("descrip", "장바구니에서 제거하시겠습니까? ");
+  
+  let totalPrice = 0;
+  cartData && Array.isArray(cartData) && cartData.filter((item) => item.status === filterValue).forEach(e=>{
+    totalPrice+=(e.price*e.count)
+  })
+  console.log("총액", totalPrice)
 
+  const handlePurchase = () => {
+    //나중에 뭐샀는지, 수량, 총결제액 구매페이지에 띄울거면 state로 전달
+    navigate(PATH.PURCHASE, { state: {totalPrice: totalPrice} });
+  }
+  
   return (
     <>
       <Containers>
@@ -185,9 +196,7 @@ export default function CartList(props: any) {
           cartData.filter((item) => item.status === filterValue).length === 0
         ) && (
           <BuyButton
-            onClick={() => {
-              navigate(PATH.PURCHASE);
-            }}
+            onClick={handlePurchase}
           >
             구매하기
           </BuyButton>

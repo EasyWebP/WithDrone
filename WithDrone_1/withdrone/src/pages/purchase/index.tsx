@@ -54,8 +54,14 @@ export default function Purchase() {
 
   const location = useLocation();
   const receivedData = location.state;
-
+  const count = Object.keys(receivedData).length;
   console.log("receivedData", receivedData)
+
+  if(count===1) { //카트에서 옴
+    
+  } else { //개별 구매에서 옴
+
+  }
   const productId = receivedData.id;
 
   const orderInfo = {
