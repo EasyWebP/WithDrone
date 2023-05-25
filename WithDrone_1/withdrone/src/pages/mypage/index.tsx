@@ -130,6 +130,7 @@ export default function Mypage() {
   const { state } = useLocation();
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
   const [rentSelectedTabs, setRentSelectedTabs] = useState(Number(state) || 4);
+  
   const tabs = [
     { id: 1, label: "주문 내역 조회", content: <OrderList props={1} /> },
     { id: 2, label: "찜 목록", content: <LikeList props={2} /> },

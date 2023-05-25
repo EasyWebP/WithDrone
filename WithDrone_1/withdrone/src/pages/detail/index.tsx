@@ -59,7 +59,13 @@ export default function Detail() {
 
   const handlePurchase = () => {
     //나중에 뭐샀는지, 수량, 총결제액 구매페이지에 띄울거면 state로 전달
-    navigate(PATH.PURCHASE);
+    const data = {
+      name: detailData.name,
+      price: detailData.price,
+      quantity: quantity,
+      id: detailData.id,
+    }
+    navigate(PATH.PURCHASE, { state: data });
   }
 
   return (

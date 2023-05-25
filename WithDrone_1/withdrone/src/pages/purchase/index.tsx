@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./index.style";
 import { text } from "@storybook/addon-knobs";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import PATH from "../../constants/path";
 import { loadMe } from "../../api/user";
 
 export default function Purchase() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const receivedData = location.state;
+
+  console.log("receivedData", receivedData)
 
   const description = (
     <div style={{ fontWeight: "bold" }}>
