@@ -12,6 +12,8 @@ import toastMsg from "../../components/Toast";
 import { authLogout } from "../../api/auth";
 import useMypage from "../../hooks/useMypage";
 import NoExist from "../noExist";
+import Icon from "../../components/Icon";
+import icon from "../../components/Icon";
 
 const Containers = styled.div`
   width: 100%;
@@ -38,6 +40,10 @@ const WelcomeContainer = styled.div`
   height: 23.75rem;
   width: 100%;
 `;
+const StyledIcon = styled(icon)`
+  //border: 1px solid red;
+  height: 4rem;
+`;
 
 const LeftContainer = styled.div`
   display: flex;
@@ -49,13 +55,18 @@ const LeftContainer = styled.div`
 `;
 
 const WelcomeContext = styled.p`
+  display: flex;
+  gap: 2rem;
+  //border: 1px solid red;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 2.5rem;
-  line-height: 5rem;
+  font-size: 2.3rem;
+  //line-height: 5rem;
   color: white;
-  margin-left: 12rem;
+  //padding-top: 1rem;
+  height: 4rem;
+  margin-left: 13rem;
 `;
 
 const RightContainer = styled.div`
@@ -130,7 +141,7 @@ export default function Mypage() {
   const { state } = useLocation();
   const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
   const [rentSelectedTabs, setRentSelectedTabs] = useState(Number(state) || 4);
-  
+
   const tabs = [
     { id: 1, label: "주문 내역 조회", content: <OrderList props={1} /> },
     { id: 2, label: "찜 목록", content: <LikeList props={2} /> },
@@ -150,11 +161,18 @@ export default function Mypage() {
         <>
           <WelcomeContainer>
             <LeftContainer>
-              <WelcomeContext>{member.nickname}</WelcomeContext>
               <WelcomeContext>
-                {member.username}님의 이번 달 쇼핑 목록입니다
+                <StyledIcon iconName="nick" size="2rem" />
+                <p>{member.nickname}</p>
               </WelcomeContext>
-              <WelcomeContext>{member.email}</WelcomeContext>
+              <WelcomeContext>
+                <StyledIcon iconName="bag" size="2rem" />
+                <p>{member.username}님의 이번 달 쇼핑 목록입니다</p>
+              </WelcomeContext>
+              <WelcomeContext>
+                <StyledIcon iconName="email" size="2rem" />
+                <p>{member.email}</p>
+              </WelcomeContext>
             </LeftContainer>
             <RightContainer>
               <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
