@@ -6,7 +6,7 @@ import Educational from "./Educational";
 import Filming from "./Filming";
 import Hobby from "./Hobby";
 import COLORS from "../../constants/color";
-import Ad from "../../img/Ad.png";
+import Ad2 from "../../img/Ad2.png";
 import Drone from "./Drone";
 import IconButton from "../../components/IconButton";
 import { StyledIcon } from "../../components/IconButton/index.styles";
@@ -133,13 +133,13 @@ export default function Rent() {
   };
 
   const handleGoToLikeList = () => {
-    navigate(PATH.MYPAGE, {state:5});
-  }
+    navigate(PATH.MYPAGE, { state: 5 });
+  };
 
   return (
     <Containers>
       <AdContainer>
-        <img src={Ad} />
+        <img src={Ad2} />
         <Line />
       </AdContainer>
       <TabContainer>
