@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 5.5rem;
   background-color: white;
   display: flex;
-  gap: 40rem;
+  gap: 60rem;
   align-items: center;
   justify-content: center;
   border-bottom: 0.1rem solid ${COLORS.GREY[200]};

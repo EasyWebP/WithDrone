@@ -7,7 +7,6 @@ import DefaultLayout from "./components/Layout/DefaultLayout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Main from "./pages/main";
 import Sell from "./pages/sell";
-import Intro from "./pages/intro";
 import Rent from "./pages/rent";
 import Login from "./pages/login";
 import Mypage from "./pages/mypage";
@@ -48,9 +47,6 @@ function App() {
           </Route>
           <Route path={PATH.SELL} element={<MainLayout />}>
             <Route index element={<Sell />} />
-          </Route>
-          <Route path={PATH.INTRO} element={<MainLayout />}>
-            <Route index element={<Intro />} />
           </Route>
           <Route path={PATH.RENT} element={<MainLayout />}>
             <Route index element={<Rent />} />

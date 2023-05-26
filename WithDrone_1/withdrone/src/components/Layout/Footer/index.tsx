@@ -5,7 +5,7 @@ import insta from "../../../img/insta.png";
 import kakao from "../../../img/kakao.png";
 import youtbe from "../../../img/youtube.png";
 import PATH from "../../../constants/path";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   border-top: 0.05rem solid rgba(0, 0, 0, 0.1);
@@ -23,44 +23,46 @@ const LogoContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 30%;
-`
+  margin-bottom: 4rem;
+`;
 
 const Logo = styled.img`
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   margin-right: 1rem;
   font-weight: bold;
 `;
 
 const CompanyName = styled.span`
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 25%;
-`
+  //width: 25%;
+`;
 
 const Menu = styled.ul`
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   list-style-type: none;
-  margin: 0;
   padding: 0;
   margin-bottom: 1.2rem;
+  gap: 2rem;
 `;
 
 const MenuItem = styled.a`
-  margin-right: 1rem;
   text-decoration: underline;
+  //border: 1px solid red;
 `;
 
 const CompanyText = styled.li`
   color: grey;
+  margin-top: 1rem;
   list-style-type: none;
-`
+`;
 
 const SNSContainer = styled.div`
   background-color: white;
@@ -71,7 +73,7 @@ const SNSContainer = styled.div`
   height: 100%;
   margin-top: 3rem;
   // margin-right: 17rem;
-`
+`;
 
 const SNS = styled.img`
   width: 2rem;
@@ -89,9 +91,15 @@ export default function Footer() {
       </LogoContainer>
       <MenuContainer>
         <Menu>
-          <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">회사소개</MenuItem>
-          <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">이용약관</MenuItem>
-          <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">개인정보처리방침</MenuItem>
+          <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">
+            회사소개
+          </MenuItem>
+          <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">
+            이용약관
+          </MenuItem>
+          <MenuItem href="https://www.youtube.com/watch?v=tF58zRciLaw&list=LL&index=11">
+            개인정보처리방침
+          </MenuItem>
         </Menu>
         <CompanyText>(주) 위드 드론</CompanyText>
       </MenuContainer>

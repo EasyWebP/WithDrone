@@ -18,7 +18,6 @@ interface IUserInfo {
 export default function Header() {
   const navigate = useNavigate();
   const buttonList = [
-    { label: "회사 소개", path: PATH.INTRO },
     { label: "대여 제품", path: PATH.RENT },
     { label: "판매 제품", path: PATH.SELL },
   ];
