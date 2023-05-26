@@ -58,6 +58,11 @@ export default function Purchase() {
   const count = Object.keys(receivedData).length;
   console.log("receivedData", receivedData)
 
+  let totalPrice;
+  if(count===1) totalPrice = receivedData.totalPrice;
+  else totalPrice = receivedData.price * receivedData.quantity;
+  totalPrice = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
   const orderInfo = {
     "phoneNumber": inputList[1].data[0].value,
     "address": inputList[1].data[1].value, 
@@ -130,6 +135,10 @@ export default function Purchase() {
             ))}
           </S.Wrapper>
         ))}
+        <S.TotalWrapper>
+          <p>총 결제 금액</p>
+          <S.TotalText>{totalPrice}원</S.TotalText>
+        </S.TotalWrapper>
       </S.BoxWrapper>
       <S.PayButton
         onClick={handlePurchaseClick}
