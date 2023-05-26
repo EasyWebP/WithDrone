@@ -4,7 +4,8 @@ import { text } from "@storybook/addon-knobs";
 import { useLocation, useNavigate } from "react-router-dom";
 import PATH from "../../constants/path";
 import { loadMe } from "../../api/user";
-import { makeOneOrder } from "../../api/order";
+import { makeOneOrder, makeCartOrder } from "../../api/order";
+
 
 export default function Purchase() {
   const navigate = useNavigate();
@@ -57,13 +58,6 @@ export default function Purchase() {
   const count = Object.keys(receivedData).length;
   console.log("receivedData", receivedData)
 
-  if(count===1) { //카트에서 옴
-    
-  } else { //개별 구매에서 옴
-
-  }
-  const productId = receivedData.id;
-
   const orderInfo = {
     "phoneNumber": inputList[1].data[0].value,
     "address": inputList[1].data[1].value, 
@@ -73,11 +67,20 @@ export default function Purchase() {
   console.log("orderInfo", orderInfo)
 
   const handlePurchaseClick = () => {  //order post 보내고 확정페이지로 
-    makeOneOrder(orderInfo, productId)
-      .then((fetchedData)=>{
-        console.log(fetchedData)
-        navigate(PATH.PURCHASE_CONFIRM, {state:fetchedData})
-      })
+    if(count===1) { //장바구니
+      makeCartOrder(orderInfo)
+        .then((fetchedData)=>{
+          console.log(fetchedData)
+          navigate(PATH.PURCHASE_CONFIRM, {state:fetchedData})
+        })
+    } else { //개별구매
+      const productId = receivedData.id;
+      makeOneOrder(orderInfo, productId)
+        .then((fetchedData)=>{
+          console.log(fetchedData)
+          navigate(PATH.PURCHASE_CONFIRM, {state:fetchedData})
+        })
+    }
   }
 
   const isInputFilled = () => {
