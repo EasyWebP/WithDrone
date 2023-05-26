@@ -149,7 +149,7 @@ export default function CartList(props: any) {
   })
   console.log("총액", totalPrice)
 
-  const handlePurchase = () => {
+  const handleAllPurchase = () => {
     //나중에 뭐샀는지, 수량, 총결제액 구매페이지에 띄울거면 state로 전달
     navigate(PATH.PURCHASE, { state: {totalPrice: totalPrice} });
   }
@@ -186,7 +186,7 @@ export default function CartList(props: any) {
                 <p>{data.count}개</p>
                 <PurchaseButton
                   onClick={() => {
-                    navigate(PATH.PURCHASE);
+                    navigate(PATH.PURCHASE, { state: {totalPrice: (data.price * data.count) } });
                   }}
                 >
                   구매하기
@@ -208,7 +208,7 @@ export default function CartList(props: any) {
           cartData.filter((item) => item.status === filterValue).length === 0
         ) && (
           <BuyButton
-            onClick={handlePurchase}
+            onClick={handleAllPurchase}
           >
             구매하기
           </BuyButton>
