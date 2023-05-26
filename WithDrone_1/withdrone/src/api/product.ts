@@ -93,9 +93,9 @@ export const getCartList = async () => {
   return data;
 };
 
-export const deleteCarts = async (data: object) => {
-  const { data: response } = await authorizationClient.delete(`${API.CART}`, {
-    data,
-  });
-  return response;
+export const deleteCarts = async (cartItemId: number) => {
+  const { data } = await authorizationClient.delete(
+    `${API.CART}/${cartItemId}`
+  );
+  return data;
 };

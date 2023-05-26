@@ -7,6 +7,8 @@ import PATH from "../../constants/path";
 import { useNavigate } from "react-router-dom";
 import Dialog from "../../components/Dialog";
 import { text } from "@storybook/addon-knobs";
+import { deleteCarts } from "../../api/product";
+import toastMsg from "../../components/Toast";
 
 export const Containers = styled.div`
   display: flex;
@@ -109,11 +111,10 @@ export const BuyButton = styled.button`
 export default function CartList(props: any) {
   const navigate = useNavigate();
   const [cartId, setCartId] = useState(0);
-  const [itemId, setItemId] = useState(0);
-  const { getCartlist, cartData, mutateDeleteCarts } = useMypage();
+  const { getCartlist, cartData } = useMypage();
   useEffect(() => {
     getCartlist();
-  }, [cartId]);
+  }, []);
   const filterValue =
     props.props === 3 ? "SALE" : props.props === 6 ? "RENTAL" : "";
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -125,6 +126,21 @@ export default function CartList(props: any) {
   const closeDialog = () => {
     setIsDialogOpen(false);
   };
+  const deleteCart = async (cartId: number) => {
+    try {
+      await deleteCarts(cartId);
+      toastMsg("장바구니 목록에서 삭제 되었습니다! 👏");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleDeleteCart = async (cartId: number) => {
+    try {
+      await deleteCart(cartId);
+      await getCartlist();
+    } catch (error) {}
+  };
+
   const description = text("descrip", "장바구니에서 제거하시겠습니까? ");
 
   return (
@@ -140,10 +156,7 @@ export default function CartList(props: any) {
               closeDialog();
             }}
             onConfirm={() => {
-              mutateDeleteCarts.mutate({
-                itemId: itemId,
-                cartId: cartId,
-              });
+              handleDeleteCart(cartId);
               closeDialog();
             }}
           />
@@ -170,7 +183,6 @@ export default function CartList(props: any) {
                 <DeleteButton
                   onClick={() => {
                     setCartId(data.cartItemId);
-                    setItemId(data.productId);
                     openDialog();
                   }}
                 >

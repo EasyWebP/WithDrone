@@ -1,6 +1,5 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchProduct } from "../../api/product";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import useDetail from "../../hooks/useDetail";
 import * as S from "./index.style";
 import { text } from "@storybook/addon-knobs";
@@ -13,9 +12,7 @@ export default function Detail() {
     handleDecrease,
     handleIncrease,
     handleQuantityChange,
-    setDetailData,
     detailData,
-    productId,
     quantity,
     like,
     payload,
@@ -207,13 +204,13 @@ export default function Detail() {
                   openDialog();
                 }}
               />
-              <S.BuyButton
+              <S.RentButton
                 onClick={() => {
                   navigate(PATH.PURCHASE);
                 }}
               >
                 대여하기
-              </S.BuyButton>
+              </S.RentButton>
             </S.ButtonContainer>
           </S.RightContainer>
         </S.FlexContainer>

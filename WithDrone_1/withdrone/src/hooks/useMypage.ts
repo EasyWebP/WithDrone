@@ -1,5 +1,5 @@
 import toastMsg from "../components/Toast";
-import { authLogout } from "../api/auth";
+import { authLogout, checkNicknameDuplicate } from "../api/auth";
 import { useNavigate } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -50,8 +50,6 @@ export default function useMypage() {
   const [likeData, setLikeData] = useState<LikeProps>();
   const [orderData, setOrderData] = useState<OrderProps>();
   const [cartData, setCartData] = useState<CartProps>();
-
-  // const payload = { productId: productId };
 
   const handleLogout = () => {
     authLogout().then((isLogout) => {
@@ -105,6 +103,7 @@ export default function useMypage() {
       toastMsg(`${errorCode} / ${message}`);
     },
   });
+
   return {
     handleLogout,
     getLikelist,
