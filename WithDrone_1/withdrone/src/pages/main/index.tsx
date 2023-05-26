@@ -121,13 +121,23 @@ export default function Main() {
           withdrone과 함께
           <br /> 다양한 드론을 만나봐요.
         </h1>
-        <StartButton
-          onClick={() => {
-            navigate(PATH.LOGIN);
-          }}
-        >
-          바로 시작하기 &nbsp;➔
-        </StartButton>
+        {!localStorage.getItem("accessToken") ? (
+          <StartButton
+            onClick={() => {
+              navigate(PATH.LOGIN);
+            }}
+          >
+            바로 시작하기 &nbsp;➔
+          </StartButton>
+        ) : (
+          <StartButton
+            onClick={() => {
+              navigate(PATH.SELL);
+            }}
+          >
+            바로 시작하기 &nbsp;➔
+          </StartButton>
+        )}
       </Top>
       <Bottom>
         <h1>나에게 필요한 드론을 선택할 수 있어요</h1>
