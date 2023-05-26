@@ -87,6 +87,29 @@ export const PayButton = styled.button`
   right: 0;
   bottom: 0;
   margin-right: 16.5rem;
-  margin-bottom: 14rem;
+  margin-bottom: 11.5rem;
   cursor: pointer;
+
+  /* disabled 상태일 때의 스타일 */
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
+
+export const TotalWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  p {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  margin-top: 3rem;
+`;
+
+export const TotalText = styled.p`
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-top: 0.2rem;
+`
