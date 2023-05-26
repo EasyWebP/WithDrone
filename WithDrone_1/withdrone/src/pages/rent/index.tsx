@@ -42,7 +42,6 @@ const TabContainer = styled.ul`
 
 const TabMenu = styled.div`
   display: flex;
-  //width: calc(100% / 4);
   padding: 0.7rem 1rem 0.7rem 1rem;
   font-size: 1rem;
   transition: 0.5s;
@@ -69,7 +68,6 @@ const StyledIconButton = styled(IconButton)`
 const MidContainer = styled.div`
   width: 100%;
   display: flex;
-  //border: 1px solid red;
   justify-content: center;
   gap: 71%;
   margin-bottom: 20px;

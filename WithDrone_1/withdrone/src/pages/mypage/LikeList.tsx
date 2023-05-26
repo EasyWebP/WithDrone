@@ -6,6 +6,7 @@ import { text } from "@storybook/addon-knobs";
 import Dialog from "../../components/Dialog";
 import PATH from "../../constants/path";
 import { useQueryClient } from "@tanstack/react-query";
+import { Nodata } from "./OrderList";
 
 export const Containers = styled.div`
   display: flex;
@@ -126,6 +127,13 @@ export default function LikeList(props: any) {
               </DeleteButton>
             </Box>
           ))}
+        {likeData?.content.filter((item) => item.status === filterValue)
+          .length === 0 && (
+          <Nodata>
+            찜 목록에 상품이 없으시네요. &nbsp; &nbsp; 찜 목록에 상품을
+            추가해보세요! 😋
+          </Nodata>
+        )}
       </Containers>
     </>
   );

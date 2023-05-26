@@ -41,7 +41,6 @@ const WelcomeContainer = styled.div`
   width: 100%;
 `;
 const StyledIcon = styled(icon)`
-  //border: 1px solid red;
   height: 4rem;
 `;
 
@@ -57,14 +56,11 @@ const LeftContainer = styled.div`
 const WelcomeContext = styled.p`
   display: flex;
   gap: 2rem;
-  //border: 1px solid red;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 2.3rem;
-  //line-height: 5rem;
   color: white;
-  //padding-top: 1rem;
   height: 4rem;
   margin-left: 13rem;
 `;

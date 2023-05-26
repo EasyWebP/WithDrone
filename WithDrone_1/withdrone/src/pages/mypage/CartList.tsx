@@ -9,6 +9,7 @@ import Dialog from "../../components/Dialog";
 import { text } from "@storybook/addon-knobs";
 import { deleteCarts } from "../../api/product";
 import toastMsg from "../../components/Toast";
+import { Nodata } from "./OrderList";
 
 export const Containers = styled.div`
   display: flex;
@@ -57,6 +58,7 @@ export const Line = styled.div`
 export const Thinline = styled.div`
   width: 100%;
   color: grey;
+  margin-top: 1.2rem;
   border: 0.5px solid grey;
 `;
 export const DeleteButton = styled.button`
@@ -207,12 +209,19 @@ export default function CartList(props: any) {
                 </DeleteButton>
               </Box>
             ))}
-        <Thinline />
-        {!(
-          cartData &&
-          Array.isArray(cartData) &&
-          cartData.filter((item) => item.status === filterValue).length === 0
-        ) && <BuyButton onClick={handleAllPurchase}>결제하기</BuyButton>}
+        {cartData &&
+        Array.isArray(cartData) &&
+        cartData.filter((item) => item.status === filterValue).length === 0 ? (
+          <Nodata>
+            장바구니에 상품이 없으시네요. &nbsp; &nbsp;장바구니에 상품을
+            담아보세요! 😋
+          </Nodata>
+        ) : (
+          <>
+            <Thinline />
+            <BuyButton onClick={handleAllPurchase}>결제하기</BuyButton>
+          </>
+        )}
       </Containers>
     </>
   );

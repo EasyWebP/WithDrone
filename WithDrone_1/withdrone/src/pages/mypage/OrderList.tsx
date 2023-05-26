@@ -65,12 +65,9 @@ export const InfoBox2 = styled.div`
   gap: 10rem;
   margin-top: 1rem;
   position: relative;
-  //margin-left: 20rem;
-  //border: 1px solid red;
-  //margin-right: 4rem;
+
   h3 {
     width: 15rem;
-    //border: 1px solid red;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: right;
@@ -89,7 +86,6 @@ export const Info = styled.div`
   gap: 2rem;
 `;
 export const ProductImg = styled.img`
-  //border: 1px solid red;
   width: 20rem;
   height: 15rem;
 `;
@@ -98,6 +94,13 @@ export const Line = styled.div`
   color: grey;
   border: 1px solid grey;
 `;
+export const Nodata = styled.div`
+  margin-top: 4rem;
+  font-weight: 600;
+  color: grey;
+  font-size: 1.5rem;
+`;
+
 export default function OrderList(props: any) {
   const { getOrderlist, likeData, orderData } = useMypage();
   useEffect(() => {
@@ -111,10 +114,19 @@ export default function OrderList(props: any) {
       <Containers>
         <Line />
         <Head>
-          <h2>상품 정보</h2>
-          <h1>주문 일자</h1>
-          <h1>주문 번호</h1>
-          <h1>수량</h1>
+          {orderData &&
+          Array.isArray(orderData) &&
+          orderData.filter((item) => item.status === filterValue).length ===
+            0 ? (
+            <Nodata>아직 주문하신 상품이 없으시네요.😋 </Nodata>
+          ) : (
+            <>
+              <h2>상품 정보</h2>
+              <h1>주문 일자</h1>
+              <h1>주문 번호</h1>
+              <h1>수량</h1>
+            </>
+          )}
         </Head>
         {orderData &&
           Array.isArray(orderData) &&

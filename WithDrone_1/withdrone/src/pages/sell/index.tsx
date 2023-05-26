@@ -42,7 +42,6 @@ const TabContainer = styled.ul`
 
 const TabMenu = styled.div`
   display: flex;
-  //width: calc(100% / 4);
   padding: 0.7rem 1rem 0.7rem 1rem;
   font-size: 1rem;
   transition: 0.5s;
@@ -133,8 +132,8 @@ export default function Sell() {
   };
 
   const handleGoToLikeList = () => {
-    navigate(PATH.MYPAGE, {state:2});
-  }
+    navigate(PATH.MYPAGE, { state: 2 });
+  };
 
   return (
     <Containers>

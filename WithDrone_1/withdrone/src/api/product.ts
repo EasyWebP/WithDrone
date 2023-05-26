@@ -58,14 +58,6 @@ export const fetchProductList = async (
   return response.data;
 };
 
-// export const fetchProductList = async (category?: string, like?: boolean, price?: boolean, status?: string, pageable?: { page: number, size: number, sort: string[] }) => {
-//     const { page, size, sort } = pageable ?? {};
-//     const url = `${API.PRODUCT}?category=${category}&like=${like}&price=${price}&status=${status}`;
-//   const response = await unAuthorizationClient.get(url);
-//   return response.data;
-// };
-// &page=${page}&size=${size}&sort=${sort.join(',')}
-
 export const fetchProduct = async (id: number) => {
   const { data } = await authorizationClient.get(`${API.PRODUCT}/${id}`);
   return data;

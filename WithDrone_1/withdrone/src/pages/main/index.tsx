@@ -62,7 +62,6 @@ const Bottom = styled.div`
   gap: 2rem;
   h1 {
     font-weight: bold;
-    //margin-top: -9rem;
   }
   h3 {
     font-weight: 500;
@@ -88,14 +87,12 @@ const CategoryImg = styled.img`
   height: 60%;
   margin-top: 2rem;
   margin-left: 2.5rem;
-  //border-radius: 100%;
 `;
 const Category = styled.div`
   width: 14rem;
   height: 14rem;
   border-radius: 100%;
   display: flex;
-  //justify-content: center;
   border: 2px solid black;
   cursor: pointer;
 `;
@@ -105,14 +102,7 @@ export default function Main() {
   const { memberId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const selectedTab = useSelector((state: Rootstate) => {
-  //   return state.tabReducer;
-  // });
-  //
-  // if (!selectedTab) {
-  //   return null;
-  // }
-  // console.log("텝 확인", selectedTab);
+
   return (
     <Containers>
       <Top>
@@ -153,7 +143,6 @@ export default function Main() {
               <CategoryImg
                 src={category.src}
                 onClick={() => {
-                  // dispatch(setSelectTab(category.id));
                   setTimeout(() => {
                     navigate("/sell", { state: category.id });
                   }, 10);
