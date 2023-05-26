@@ -102,7 +102,7 @@ export const BuyButton = styled.button`
   cursor: pointer;
   height: 4rem;
   font-size: 1.5rem;
-  margin-left: 95rem;
+  margin-left: 102rem;
   &:hover {
     color: ${COLORS.GREY[200]};
     background-color: ${COLORS.BLUE};
@@ -142,18 +142,22 @@ export default function CartList(props: any) {
   };
 
   const description = text("descrip", "장바구니에서 제거하시겠습니까? ");
-  
+
   let totalPrice = 0;
-  cartData && Array.isArray(cartData) && cartData.filter((item) => item.status === filterValue).forEach(e=>{
-    totalPrice+=(e.price*e.count)
-  })
-  console.log("총액", totalPrice)
+  cartData &&
+    Array.isArray(cartData) &&
+    cartData
+      .filter((item) => item.status === filterValue)
+      .forEach((e) => {
+        totalPrice += e.price * e.count;
+      });
+  console.log("총액", totalPrice);
 
   const handleAllPurchase = () => {
     //나중에 뭐샀는지, 수량, 총결제액 구매페이지에 띄울거면 state로 전달
-    navigate(PATH.PURCHASE, { state: {totalPrice: totalPrice} });
-  }
-  
+    navigate(PATH.PURCHASE, { state: { totalPrice: totalPrice } });
+  };
+
   return (
     <>
       <Containers>
@@ -186,7 +190,9 @@ export default function CartList(props: any) {
                 <p>{data.count}개</p>
                 <PurchaseButton
                   onClick={() => {
-                    navigate(PATH.PURCHASE, { state: {totalPrice: (data.price * data.count) } });
+                    navigate(PATH.PURCHASE, {
+                      state: { totalPrice: data.price * data.count },
+                    });
                   }}
                 >
                   구매하기
@@ -206,13 +212,7 @@ export default function CartList(props: any) {
           cartData &&
           Array.isArray(cartData) &&
           cartData.filter((item) => item.status === filterValue).length === 0
-        ) && (
-          <BuyButton
-            onClick={handleAllPurchase}
-          >
-            구매하기
-          </BuyButton>
-        )}
+        ) && <BuyButton onClick={handleAllPurchase}>결제하기</BuyButton>}
       </Containers>
     </>
   );
