@@ -111,5 +111,5 @@ export const TotalWrapper = styled.div`
 export const TotalText = styled.p`
   font-weight: bold;
   font-size: 1.8rem;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 `

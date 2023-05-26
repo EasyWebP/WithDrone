@@ -61,6 +61,7 @@ export default function Purchase() {
   let totalPrice;
   if(count===1) totalPrice = receivedData.totalPrice;
   else totalPrice = receivedData.price * receivedData.quantity;
+  totalPrice += 3000;
   totalPrice = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
   const orderInfo = {
