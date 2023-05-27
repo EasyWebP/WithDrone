@@ -14,6 +14,7 @@ export default function PurchaseConfirm() {
       value: receivedData.address,
     },
   ];
+  
   return (
     <S.Container>
       <S.BoxWrapper>

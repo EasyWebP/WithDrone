@@ -141,7 +141,7 @@ export default function CartList(props: any) {
     data
       .filter((item) => item.status === filterValue)
       .forEach((e) => {
-        totalPrice += e.price * e.count;
+        totalPrice += (e.status === "RENTAL" ? e.price/10 : e.price) * e.count;
       });
   console.log("총액", totalPrice);
 
@@ -183,7 +183,7 @@ export default function CartList(props: any) {
                 <PurchaseButton
                   onClick={() => {
                     navigate(PATH.PURCHASE, {
-                      state: { totalPrice: data.price * data.count },
+                      state: { totalPrice: ((data.status === "RENTAL" ? data.price/10 : data.price) * data.count) },
                     });
                   }}
                 >
