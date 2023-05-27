@@ -74,6 +74,7 @@ export default function Educational() {
               <P.ProductImg src={product.imagePath} alt={product.name} />
             </P.ProductImgDiv>
             <P.ProductTitle>{product.name}</P.ProductTitle>
+            <P.ProductPrice>대여가 {(product.price/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</P.ProductPrice>
           </P.Product>
         ))}
       </P.ProductContainer>

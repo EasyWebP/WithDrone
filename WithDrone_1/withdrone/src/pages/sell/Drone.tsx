@@ -59,6 +59,10 @@ export default function Drone() {
     });
   };
 
+  const handleChangeWon = (price: number): string => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+  
   return (
     <P.Containers>
       <P.ProductContainer>
@@ -72,7 +76,7 @@ export default function Drone() {
               <P.ProductImg src={product.imagePath} alt={product.name} />
             </P.ProductImgDiv>
             <P.ProductTitle>{product.name}</P.ProductTitle>
-            <P.ProductPrice>{product.price}</P.ProductPrice>
+            <P.ProductPrice>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</P.ProductPrice>
           </P.Product>
         ))}
       </P.ProductContainer>
