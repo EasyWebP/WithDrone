@@ -65,6 +65,10 @@ export default function Detail() {
     navigate(PATH.PURCHASE, { state: data });
   };
 
+  const handleChangeWon = (price: number): string => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <S.Containers>
       {isDialogOpen && (
@@ -91,7 +95,7 @@ export default function Detail() {
               <S.Explain>
                 <S.Tr>
                   <S.Td>판매가</S.Td>
-                  <S.Td2>{detailData.price}</S.Td2>
+                  <S.Td2>{handleChangeWon(detailData.price)}원</S.Td2>
                 </S.Tr>
                 <S.Tr>
                   <S.Td>제조사</S.Td>
@@ -168,8 +172,8 @@ export default function Detail() {
               <S.Title>{detailData.name}</S.Title>
               <S.Explain>
                 <S.Tr>
-                  <S.Td>판매가</S.Td>
-                  <S.Td2>{detailData.price}</S.Td2>
+                  <S.Td>대여가</S.Td>
+                  <S.Td2>{handleChangeWon((detailData.price)/10)}원</S.Td2>
                 </S.Tr>
                 <S.Tr>
                   <S.Td>제조사</S.Td>

@@ -177,7 +177,7 @@ export default function CartList(props: any) {
               <Box key={index}>
                 <ProductImg src={data.imagePath} />
                 <h4>{data.name}</h4>
-                <p>{data.price}원</p>
+                <p>{(data.status === "RENTAL" ? data.price/10 : data.price)}원</p>
                 <p>{data.manufacturer}</p>
                 <p>{data.count}개</p>
                 <PurchaseButton

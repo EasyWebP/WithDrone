@@ -135,7 +135,7 @@ export default function OrderList(props: any) {
                   <Info>
                     <h4>{data.productName}</h4>
                     <p>{data.manufacturer}</p>
-                    <p>{data.price}</p>
+                    <p>{(data.status === "RENTAL" ? data.price/10 : data.price)}</p>
                   </Info>
                 </InfoBox>
                 <InfoBox2>
