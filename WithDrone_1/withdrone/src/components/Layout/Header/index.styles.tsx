@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import COLORS from "../../../constants/color";
-import { startTransition } from "react";
 import IconButton from "../../IconButton";
 
 export const Container = styled.div`

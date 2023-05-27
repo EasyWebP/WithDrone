@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import Commercial from "./Commercial";
@@ -9,11 +9,8 @@ import COLORS from "../../constants/color";
 import Ad2 from "../../img/Ad2.png";
 import Drone from "./Drone";
 import IconButton from "../../components/IconButton";
-import { StyledIcon } from "../../components/IconButton/index.styles";
-import Icon from "../../components/Icon";
 import PATH from "../../constants/path";
-import { fetchProductList } from "../../api/product";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLikeOrder } from "../../store/likeReducer";
 import { setPriceOrder } from "../../store/priceReducer";
 import Child from "./Child";
@@ -84,19 +81,10 @@ const Line = styled.div`
   background-color: ${COLORS.GREY[300]};
 `;
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  manufacturer: string;
-  imagePath: string;
-}
-
 export default function Rent() {
   const navigate = useNavigate();
-  const [droneLists, setDroneLists] = useState<Product[]>([]);
   const { state } = useLocation();
-  const [selectedTabs, setSelectedTabs] = useState(Number(state) || 1);
+  const [selectedTabs, setSelectedTabs] = useState(Number(state) || 4);
 
   const tabs = [
     { id: 0, label: "전체 🔗", content: <Drone />, color: COLORS.GREY[200] },

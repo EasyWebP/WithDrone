@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import COLORS from "../../constants/color";
-import exp from "constants";
 
 export const Container = styled.div`
   display: flex;
@@ -8,7 +7,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  //border: 1px solid red;
   h2 {
     margin-top: 2rem;
     font-weight: bold;
@@ -19,7 +17,6 @@ export const BoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-  //border: 1px solid red;
   padding: 20px;
   gap: 2rem;
   h2 {
@@ -47,23 +44,19 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
   display: flex;
-  //border: 1px solid blue;
 `;
 
 export const Index = styled.div`
   width: 14rem;
-  //border: 1px solid red;
   text-align: right;
   padding: 1rem 1rem 1rem 0;
   background-color: ${COLORS.GREY[200]};
 `;
 export const Info = styled.div`
-  //border: 1px solid red;
   padding: 1rem 1rem 1rem 1rem;
 `;
 
 export const Input = styled.input`
-  //border: 1px solid red;
   border: none;
   &:hover {
     outline: none;
@@ -112,4 +105,4 @@ export const TotalText = styled.p`
   font-weight: bold;
   font-size: 1.8rem;
   margin-top: 0.2rem;
-`
+`;

@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import COLORS from "../../constants/color";
 import * as S from "../../components/Layout/Header/index.styles";
 import logo from "../../img/drone.png";
 import useLogin from "../../hooks/useLogin";
 import PATH from "../../constants/path";
-import toastMsg from "../../components/Toast";
 import SNSLogin from "./sns";
 
 const Containers = styled.div`
@@ -126,7 +125,6 @@ export default function Login() {
     onChangePassword,
     mutateLogin,
   } = useLogin();
-  const { memberId } = useParams();
 
   let message = "";
   if (!isValidateEmail && email.length > 0) {

@@ -1,19 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import home from "../../img/home.png";
 import hobby from "../../img/gamepad.png";
 import photo from "../../img/camera.png";
 import industry from "../../img/robotic-arm.png";
 import educate from "../../img/elearning.png";
 import PATH from "../../constants/path";
-import Commercial from "../sell/Commercial";
-import Sell from "../sell";
-import { useDispatch, useSelector } from "react-redux";
-import { Rootstate } from "../../index";
-import { setSelectTab } from "../../store/tabReducer";
-import IconButton from "../../components/IconButton";
-import Icon from "../../components/Icon";
 
 const Containers = styled.div`
   width: 100%;
@@ -99,9 +92,7 @@ const Category = styled.div`
 
 // @ts-ignore
 export default function Main() {
-  const { memberId } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   return (
     <Containers>

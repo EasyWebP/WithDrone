@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as P from "../../components/Product";
 import { fetchProductList } from "../../api/product";
 import { useEffect, useState } from "react";
@@ -34,9 +34,11 @@ export default function Drone() {
   const [droneLists, setDroneLists] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchProductList(undefined, undefined, undefined, "RENTAL").then((fetchedData) => {
-      setTotalProduct(fetchedData.totalElements); //해당 카테고리 개수 할당 위함
-    });
+    fetchProductList(undefined, undefined, undefined, "RENTAL").then(
+      (fetchedData) => {
+        setTotalProduct(fetchedData.totalElements); //해당 카테고리 개수 할당 위함
+      }
+    );
   }, []);
 
   useEffect(() => {

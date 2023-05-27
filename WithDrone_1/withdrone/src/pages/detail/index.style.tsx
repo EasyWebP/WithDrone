@@ -80,7 +80,7 @@ export const InputContainer = styled.div`
 `;
 
 export const NumberInput = styled.input`
-  height: 4.6rem; //
+  height: 4.6rem;
   padding-right: 0;
   width: 7rem;
   text-align: center;
@@ -99,7 +99,6 @@ export const InputButtonContainer = styled.div`
   & button {
     width: 100%;
     height: 50%;
-    // border: none;
     background-color: rgba(0, 0, 0, 0.02);
     cursor: pointer;
     outline: none;

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as P from "../../components/Product";
 import { fetchProductList } from "../../api/product";
 import { useEffect, useState } from "react";
@@ -35,9 +35,11 @@ export default function Educational() {
   const [droneLists, setDroneLists] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchProductList("교육용", undefined, undefined, "RENTAL").then((fetchedData) => {
-      setTotalProduct(fetchedData.numberOfElements); //해당 카테고리 개수 할당 위함
-    });
+    fetchProductList("교육용", undefined, undefined, "RENTAL").then(
+      (fetchedData) => {
+        setTotalProduct(fetchedData.numberOfElements); //해당 카테고리 개수 할당 위함
+      }
+    );
   }, []);
 
   useEffect(() => {

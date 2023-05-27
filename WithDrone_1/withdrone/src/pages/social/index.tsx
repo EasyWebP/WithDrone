@@ -1,9 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import Input from "../../components/Input";
 import * as S from "./index.styles";
-import PATH from "../../constants/path";
 import TopSection from "../../pages/signup/TopSection";
 import useSocialSignup from "../../hooks/useSocialSignup";
 
@@ -20,14 +17,6 @@ export default function Social() {
     mutateSocialLogin,
     isChecked,
   } = useSocialSignup();
-  // const applicationPassword = "1234";
-  const navigate = useNavigate();
-  interface IUserInfo {
-    id: number;
-    username: "string";
-    nickname: "string";
-    email: "string";
-  }
 
   type InputProps = {
     label: string;

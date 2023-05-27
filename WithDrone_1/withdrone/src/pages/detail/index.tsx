@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useDetail from "../../hooks/useDetail";
 import * as S from "./index.style";
 import { text } from "@storybook/addon-knobs";
@@ -22,7 +22,6 @@ export default function Detail() {
   } = useDetail();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
   const [num, setNum] = useState(3);
 
@@ -61,9 +60,9 @@ export default function Detail() {
       price: detailData.price,
       quantity: quantity,
       id: detailData.id,
-    }
+    };
     navigate(PATH.PURCHASE, { state: data });
-  }
+  };
 
   return (
     <S.Containers>
@@ -156,11 +155,7 @@ export default function Detail() {
                   </S.DecrementButton>
                 </S.InputButtonContainer>
               </S.InputContainer>
-              <S.BuyButton
-                onClick={handlePurchase}
-              >
-                구매하기
-              </S.BuyButton>
+              <S.BuyButton onClick={handlePurchase}>구매하기</S.BuyButton>
             </S.BuyContainer>
           </S.RightContainer>
         </S.FlexContainer>

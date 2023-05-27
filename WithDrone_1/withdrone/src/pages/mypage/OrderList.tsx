@@ -18,12 +18,10 @@ export const Head = styled.div`
   width: 100%;
   justify-content: center;
   h2 {
-    //padding-right: 15rem;
     width: 40rem;
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
-    //padding-left: 12rem;
     margin-top: 0.8rem;
   }
   h1 {
@@ -42,7 +40,6 @@ export const Box = styled.div`
   margin-top: 1rem;
 
   h4 {
-    //border: 1px solid red;
     width: 23rem;
     font-weight: bold;
   }
@@ -52,7 +49,6 @@ export const Box = styled.div`
 `;
 export const InfoBox = styled.div`
   display: flex;
-  // ;
   width: 40rem;
   align-items: center;
   gap: 2rem;
@@ -102,7 +98,7 @@ export const Nodata = styled.div`
 `;
 
 export default function OrderList(props: any) {
-  const { getOrderlist, likeData, orderData } = useMypage();
+  const { getOrderlist, orderData } = useMypage();
   useEffect(() => {
     getOrderlist();
   }, []);

@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import COLORS from "../../constants/color";
-import * as S from "../../components/Layout/Header/index.styles";
-import logo from "../../img/drone.png";
 import { fetchMember } from "../../api/user";
 import OrderList from "./OrderList";
 import LikeList from "./LikeList";
 import CartList from "./CartList";
-import toastMsg from "../../components/Toast";
-import { authLogout } from "../../api/auth";
 import useMypage from "../../hooks/useMypage";
 import NoExist from "../noExist";
-import Icon from "../../components/Icon";
 import icon from "../../components/Icon";
 
 const Containers = styled.div`

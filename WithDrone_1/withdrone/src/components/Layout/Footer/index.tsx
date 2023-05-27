@@ -1,10 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import logo from "../../../img/drone.png";
 import insta from "../../../img/insta.png";
 import kakao from "../../../img/kakao.png";
 import youtbe from "../../../img/youtube.png";
-import PATH from "../../../constants/path";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`

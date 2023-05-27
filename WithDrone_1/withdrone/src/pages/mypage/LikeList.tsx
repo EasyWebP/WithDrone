@@ -4,11 +4,7 @@ import React, { useEffect, useState } from "react";
 import useMypage from "../../hooks/useMypage";
 import { text } from "@storybook/addon-knobs";
 import Dialog from "../../components/Dialog";
-import PATH from "../../constants/path";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Nodata } from "./OrderList";
-import QUERYKEYS from "../../constants/querykey";
-import { getLikeList } from "../../api/product";
 
 export const Containers = styled.div`
   display: flex;
@@ -27,7 +23,6 @@ export const Containers = styled.div`
 `;
 export const Box = styled.div`
   display: flex;
-  //border: 1px solid red;
   width: 100%;
   align-items: center;
   gap: 8rem;
@@ -35,7 +30,6 @@ export const Box = styled.div`
   margin-top: 1rem;
 
   h4 {
-    //border: 1px solid red;
     width: 23rem;
     font-weight: bold;
   }
