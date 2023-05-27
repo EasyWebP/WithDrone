@@ -52,8 +52,8 @@ export default function Purchase() {
 
   const location = useLocation();
   const receivedData = location.state;
-  const count = Object.keys(receivedData).length;
   console.log("receivedData", receivedData);
+  const count = Object.keys(receivedData).length;
 
   let totalPrice;
   if (count === 1) totalPrice = receivedData.totalPrice;

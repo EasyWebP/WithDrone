@@ -57,10 +57,11 @@ export default function Detail() {
     //나중에 뭐샀는지, 수량, 총결제액 구매페이지에 띄울거면 state로 전달
     const data = {
       name: detailData.name,
-      price: detailData.price,
+      price: detailData?.status === "RENTAL"? (detailData.price)/10 : detailData.price,
       quantity: quantity,
       id: detailData.id,
     };
+    console.log("data", data)
     navigate(PATH.PURCHASE, { state: data });
   };
 
@@ -215,9 +216,7 @@ export default function Detail() {
                 }}
               />
               <S.RentButton
-                onClick={() => {
-                  navigate(PATH.PURCHASE);
-                }}
+                onClick={handlePurchase}
               >
                 대여하기
               </S.RentButton>
