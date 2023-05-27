@@ -22,6 +22,7 @@ export const Product = styled.div`
   width: 27rem;
   height: 36rem;
   display: block;
+  cursor: pointer;
 `;
 
 export const ProductImgDiv = styled.div`
@@ -79,6 +80,9 @@ export const PageNumberContainer = styled.div`
   }
   ul.pagination li:last-child {
     border-radius: 0 5px 5px 0;
+  }
+  ul.pagination li {
+    cursor: pointer;
   }
   ul.pagination li a {
     text-decoration: none;
