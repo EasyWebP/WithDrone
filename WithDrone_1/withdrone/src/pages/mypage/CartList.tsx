@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import useMypage from "../../hooks/useMypage";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import COLORS from "../../constants/color";
-import * as S from "../detail/index.style";
 import PATH from "../../constants/path";
 import { useNavigate } from "react-router-dom";
 import Dialog from "../../components/Dialog";
 import { text } from "@storybook/addon-knobs";
-import { deleteCarts, getCartList, getLikeList } from "../../api/product";
+import { deleteCarts, getCartList } from "../../api/product";
 import toastMsg from "../../components/Toast";
 import { Nodata } from "./OrderList";
 import QUERYKEYS from "../../constants/querykey";
@@ -30,7 +28,6 @@ export const Containers = styled.div`
 `;
 export const Box = styled.div`
   display: flex;
-  //border: 1px solid red;
   width: 100%;
   position: relative;
   align-items: center;
@@ -38,8 +35,6 @@ export const Box = styled.div`
   margin-top: 1rem;
 
   h4 {
-    //border: 1px solid red;
-    //width: 23rem;
     font-weight: bold;
   }
   p {
@@ -48,7 +43,6 @@ export const Box = styled.div`
   }
 `;
 export const ProductImg = styled.img`
-  //border: 1px solid red;
   width: 20rem;
   height: 15rem;
 `;
@@ -95,7 +89,6 @@ export const PurchaseButton = styled.button`
   }
 `;
 export const BuyButton = styled.button`
-  //flex: 1;
   background-color: #3583f7;
   color: white;
   border: none;
@@ -115,7 +108,6 @@ export const BuyButton = styled.button`
 export default function CartList(props: any) {
   const navigate = useNavigate();
   const [cartId, setCartId] = useState(0);
-  const { getCartlist } = useMypage();
   const filterValue =
     props.props === 3 ? "SALE" : props.props === 6 ? "RENTAL" : "";
   const [isDialogOpen, setIsDialogOpen] = useState(false);
