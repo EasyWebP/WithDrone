@@ -7,9 +7,11 @@ import PATH from "../../constants/path";
 import { useNavigate } from "react-router-dom";
 import Dialog from "../../components/Dialog";
 import { text } from "@storybook/addon-knobs";
-import { deleteCarts } from "../../api/product";
+import { deleteCarts, getCartList, getLikeList } from "../../api/product";
 import toastMsg from "../../components/Toast";
 import { Nodata } from "./OrderList";
+import QUERYKEYS from "../../constants/querykey";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const Containers = styled.div`
   display: flex;
@@ -113,10 +115,7 @@ export const BuyButton = styled.button`
 export default function CartList(props: any) {
   const navigate = useNavigate();
   const [cartId, setCartId] = useState(0);
-  const { getCartlist, cartData } = useMypage();
-  useEffect(() => {
-    getCartlist();
-  }, []);
+  const { getCartlist } = useMypage();
   const filterValue =
     props.props === 3 ? "SALE" : props.props === 6 ? "RENTAL" : "";
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -128,27 +127,26 @@ export default function CartList(props: any) {
   const closeDialog = () => {
     setIsDialogOpen(false);
   };
+  const queryClient = useQueryClient();
+
   const deleteCart = async (cartId: number) => {
     try {
       await deleteCarts(cartId);
       toastMsg("장바구니 목록에서 삭제 되었습니다! 👏");
+      queryClient.invalidateQueries([QUERYKEYS.GET_CART_LIST]);
     } catch (error) {
       console.log(error);
     }
   };
-  const handleDeleteCart = async (cartId: number) => {
-    try {
-      await deleteCart(cartId);
-      await getCartlist();
-    } catch (error) {}
-  };
+
+  const { data } = useQuery([QUERYKEYS.GET_CART_LIST], getCartList);
 
   const description = text("descrip", "장바구니에서 제거하시겠습니까? ");
 
   let totalPrice = 0;
-  cartData &&
-    Array.isArray(cartData) &&
-    cartData
+  data &&
+    Array.isArray(data) &&
+    data
       .filter((item) => item.status === filterValue)
       .forEach((e) => {
         totalPrice += e.price * e.count;
@@ -173,21 +171,21 @@ export default function CartList(props: any) {
               closeDialog();
             }}
             onConfirm={() => {
-              handleDeleteCart(cartId);
+              deleteCart(cartId);
               closeDialog();
             }}
           />
         )}
         <Line />
-        {cartData &&
-          Array.isArray(cartData) &&
-          cartData
+        {data &&
+          Array.isArray(data) &&
+          data
             .filter((item) => item.status === filterValue)
             .map((data, index) => (
               <Box key={index}>
                 <ProductImg src={data.imagePath} />
                 <h4>{data.name}</h4>
-                <p>{data.price}</p>
+                <p>{data.price}원</p>
                 <p>{data.manufacturer}</p>
                 <p>{data.count}개</p>
                 <PurchaseButton
@@ -209,9 +207,9 @@ export default function CartList(props: any) {
                 </DeleteButton>
               </Box>
             ))}
-        {cartData &&
-        Array.isArray(cartData) &&
-        cartData.filter((item) => item.status === filterValue).length === 0 ? (
+        {data &&
+        Array.isArray(data) &&
+        data.filter((item) => item.status === filterValue).length === 0 ? (
           <Nodata>
             장바구니에 상품이 없으시네요. &nbsp; &nbsp;장바구니에 상품을
             담아보세요! 😋

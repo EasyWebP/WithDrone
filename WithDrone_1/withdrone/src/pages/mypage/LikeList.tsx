@@ -5,8 +5,10 @@ import useMypage from "../../hooks/useMypage";
 import { text } from "@storybook/addon-knobs";
 import Dialog from "../../components/Dialog";
 import PATH from "../../constants/path";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Nodata } from "./OrderList";
+import QUERYKEYS from "../../constants/querykey";
+import { getLikeList } from "../../api/product";
 
 export const Containers = styled.div`
   display: flex;
@@ -83,6 +85,7 @@ export default function LikeList(props: any) {
   useEffect(() => {
     getLikelist();
   }, []);
+
   const handleDeleteLike = async (id: number) => {
     try {
       await mutateDeleteLike.mutateAsync({ productId: id });

@@ -1,17 +1,14 @@
 import toastMsg from "../components/Toast";
-import { authLogout, checkNicknameDuplicate } from "../api/auth";
+import { authLogout } from "../api/auth";
 import { useNavigate } from "react-router";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import {
-  deleteCarts,
-  fetchProduct,
   getCartList,
   getLike,
   getLikeList,
   getOrderList,
 } from "../api/product";
-import { useEffect, useState } from "react";
-import QUERYKEYS from "../constants/querykey";
+import { useState } from "react";
 
 interface LikeProps {
   content: {
@@ -44,8 +41,6 @@ interface CartProps {
   status: string;
 }
 export default function useMypage() {
-  const queryClient = useQueryClient();
-
   const navigate = useNavigate();
   const [likeData, setLikeData] = useState<LikeProps>();
   const [orderData, setOrderData] = useState<OrderProps>();
@@ -68,6 +63,7 @@ export default function useMypage() {
     const data = await getOrderList();
     setOrderData(data);
   };
+
   const getCartlist = async () => {
     const data = await getCartList();
     setCartData(data);
@@ -77,23 +73,9 @@ export default function useMypage() {
     onSuccess: (data) => {
       if (data.like) {
         toastMsg("찜 목록에 추가 되었습니다! 👏");
-        queryClient.invalidateQueries([QUERYKEYS.GET_LIKE_LIST]);
       } else {
         toastMsg("찜 목록에서 삭제 되었습니다! 👏");
-        queryClient.invalidateQueries([QUERYKEYS.GET_LIKE_LIST]);
       }
-    },
-    onError: ({
-      response: {
-        data: { errorCode, message },
-      },
-    }) => {
-      toastMsg(`${errorCode} / ${message}`);
-    },
-  });
-  const mutateDeleteCarts = useMutation(["deleteCarts"], deleteCarts, {
-    onSuccess: () => {
-      toastMsg("장바구니에서 해당 제품이 삭제 되었습니다! 👏");
     },
     onError: ({
       response: {
@@ -113,6 +95,5 @@ export default function useMypage() {
     getCartlist,
     cartData,
     mutateDeleteLike,
-    mutateDeleteCarts,
   };
 }
