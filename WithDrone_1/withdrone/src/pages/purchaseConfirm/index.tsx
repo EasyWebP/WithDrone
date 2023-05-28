@@ -1,10 +1,13 @@
 import React from "react";
 import * as S from "./index.style";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import PATH from "../../constants/path";
 
 export default function PurchaseConfirm() {
+  const navigate = useNavigate();
   const location = useLocation();
   const receivedData = location.state;
+  
 
   const inputList = [
     { label: "받는사람", value: receivedData.memberName },
@@ -39,7 +42,7 @@ export default function PurchaseConfirm() {
         </S.ReceiverInfo>
         <S.ThinLine />
       </S.BoxWrapper>
-      <S.PayButton>쇼핑하러가기</S.PayButton>
+      <S.PayButton onClick={()=>{navigate(PATH.RENT)}}>쇼핑하러가기</S.PayButton>
     </S.Container>
   );
 }
