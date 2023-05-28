@@ -65,6 +65,7 @@ export const Input = styled.input`
     outline: none;
   }
   padding: 1rem 1rem 1rem 1rem;
+  width: 50rem;
 `;
 
 export const PayButton = styled.button`

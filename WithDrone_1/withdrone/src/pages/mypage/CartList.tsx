@@ -187,7 +187,7 @@ export default function CartList(props: any) {
                     });
                   }}
                 >
-                  구매하기
+                  {(data.status === "RENTAL" ? "대여하기" : "구매하기")}
                 </PurchaseButton>
                 <DeleteButton
                   onClick={() => {
